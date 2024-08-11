@@ -1,0 +1,3 @@
+recursive-include shufflish *.py *.h *.c
+include LICENSE
+prune test

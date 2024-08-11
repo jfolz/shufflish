@@ -1,0 +1,29 @@
+[project]
+name = "shufflish"
+description = "A dumb but fast bloom filter."
+readme = "README.rst"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+]
+requires-python = ">=3.7"
+license = { file = "LICENSE" }
+authors = [{ name = "Joachim Folz", email = "joachim.folz@dfki.de" }]
+keywords = ["bloom", "filter", "bloomfilter"]
+dynamic = ["dependencies", "version"]
+
+[project.urls]
+Documentation = "https://gitlab.com/jfolz/simplebloom/blob/master/README.rst"
+Source = "https://gitlab.com/jfolz/simplebloom"
+Tracker = "https://gitlab.com/jfolz/simplebloom/issues"
+
+[build-system]
+requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.cibuildwheel]
+environment = "PIP_ONLY_BINARY=:all:"
+build-verbosity = 1
+test-requires = "pytest>=5.3.2"
+test-command = "pytest {project}/test -vv"
