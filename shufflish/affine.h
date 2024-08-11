@@ -13,7 +13,7 @@ struct affineCipherParameters {
     int scramble;
 };
 
-inline uint64_t affineCipher(affineCipherParameters * param, uint64_t i) {
+inline uint64_t affineCipher(struct affineCipherParameters * param, uint64_t i) {
     i %= param->domain;
 
     switch (param->scramble) {
