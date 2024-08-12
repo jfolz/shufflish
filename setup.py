@@ -43,6 +43,7 @@ def make_bloom_module():
         ])
         extra_compile_args.extend([
             '-O3',  # gotta go fast
+            '-march=x86-64',
         ])
 
     return Extension(
