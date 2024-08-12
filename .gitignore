@@ -1,5 +1,6 @@
 /dist
 /scratch
+__pycache__
 *.egg-info
 *.so
 *.html
