@@ -40,10 +40,15 @@ cdef class Affine0(AffineBase):
     def __getitem__(self, index):
         cdef uint64_t i, stop, step
         if isinstance(index, slice):
-            start, stop, step = index.indices(self.params.domain)
-            while i < stop:
-                yield affineCipher0(&self.params, i)
-                i += step
+            i, stop, step = index.indices(self.params.domain)
+            if step > 0:
+                while i < stop:
+                    yield affineCipher0(&self.params, i)
+                    i += step
+            else:
+                while i > stop:
+                    yield affineCipher0(&self.params, i)
+                    i += step
         else:
             return affineCipher0(&self.params, index)
 
@@ -56,9 +61,14 @@ cdef class Affine1(AffineBase):
         cdef uint64_t i, stop, step
         if isinstance(index, slice):
             i, stop, step = index.indices(self.params.domain)
-            while i < stop:
-                yield affineCipher1(&self.params, i)
-                i += step
+            if step > 0:
+                while i < stop:
+                    yield affineCipher1(&self.params, i)
+                    i += step
+            else:
+                while i > stop:
+                    yield affineCipher1(&self.params, i)
+                    i += step
         else:
             return affineCipher1(&self.params, index)
 
@@ -71,9 +81,14 @@ cdef class Affine2(AffineBase):
         cdef uint64_t i, stop, step
         if isinstance(index, slice):
             i, stop, step = index.indices(self.params.domain)
-            while i < stop:
-                yield affineCipher2(&self.params, i)
-                i += step
+            if step > 0:
+                while i < stop:
+                    yield affineCipher2(&self.params, i)
+                    i += step
+            else:
+                while i > stop:
+                    yield affineCipher2(&self.params, i)
+                    i += step
         else:
             return affineCipher2(&self.params, index)
 
@@ -86,9 +101,14 @@ cdef class Affine3(AffineBase):
         cdef uint64_t i, stop, step
         if isinstance(index, slice):
             i, stop, step = index.indices(self.params.domain)
-            while i < stop:
-                yield affineCipher3(&self.params, i)
-                i += step
+            if step > 0:
+                while i < stop:
+                    yield affineCipher3(&self.params, i)
+                    i += step
+            else:
+                while i > stop:
+                    yield affineCipher3(&self.params, i)
+                    i += step
         else:
             return affineCipher3(&self.params, index)
 
