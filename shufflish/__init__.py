@@ -1,7 +1,7 @@
 from abc import abstractmethod
 import bisect
 import random
-from .affine import Affine0, Affine1, Affine2, Affine3
+from ._affine import Affine0, Affine1, Affine2, Affine3
 
 
 __version__ = "0.0.1"

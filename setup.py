@@ -24,13 +24,13 @@ PACKAGE_DIR = ROOT_DIR / 'shufflish'
 
 def make_bloom_module():
     include_dirs = [PACKAGE_DIR]
-    cython_files = [PACKAGE_DIR / 'affine.pyx']
+    cython_files = [PACKAGE_DIR / '_affine.pyx']
     for cython_file in cython_files:
         if cython_file.exists():
             cythonize(str(cython_file))
 
     # source files must be strings
-    sources = [str(Path('shufflish', 'affine.c'))]
+    sources = [str(Path('shufflish', '_affine.c'))]
 
     extra_link_args = []
     extra_compile_args = []
@@ -47,7 +47,7 @@ def make_bloom_module():
         ])
 
     return Extension(
-        'shufflish.affine',
+        'shufflish._affine',
         sources,
         language='C',
         include_dirs=include_dirs,

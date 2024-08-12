@@ -15,7 +15,7 @@ import cython
 from libc.stdint cimport *
 
 
-cdef extern from "affine.h":
+cdef extern from "_affine.h":
     struct affineCipherParameters:
         uint64_t domain
         uint64_t prime

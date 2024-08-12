@@ -4,17 +4,17 @@
 {
     "distutils": {
         "depends": [
-            "shufflish/affine.h"
+            "shufflish/_affine.h"
         ],
         "include_dirs": [
             "shufflish"
         ],
-        "name": "shufflish.affine",
+        "name": "shufflish._affine",
         "sources": [
-            "/home/folz/Code/shufflish/shufflish/affine.pyx"
+            "/home/folz/Code/shufflish/shufflish/_affine.pyx"
         ]
     },
-    "module_name": "shufflish.affine"
+    "module_name": "shufflish._affine"
 }
 END: Cython Metadata */
 
@@ -1234,11 +1234,11 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__shufflish__affine
-#define __PYX_HAVE_API__shufflish__affine
+#define __PYX_HAVE__shufflish___affine
+#define __PYX_HAVE_API__shufflish___affine
 /* Early includes */
 #include <stdint.h>
-#include "affine.h"
+#include "_affine.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -1488,7 +1488,7 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "<stringsource>",
-  "shufflish/affine.pyx",
+  "shufflish/_affine.pyx",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* ForceInitThreads.proto */
@@ -1501,140 +1501,140 @@ static const char *__pyx_f[] = {
 /* #### Code section: type_declarations ### */
 
 /*--- Type declarations ---*/
-struct __pyx_obj_9shufflish_6affine_AffineBase;
-struct __pyx_obj_9shufflish_6affine_Affine0;
-struct __pyx_obj_9shufflish_6affine_Affine1;
-struct __pyx_obj_9shufflish_6affine_Affine2;
-struct __pyx_obj_9shufflish_6affine_Affine3;
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__;
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__;
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__;
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__;
+struct __pyx_obj_9shufflish_7_affine_AffineBase;
+struct __pyx_obj_9shufflish_7_affine_Affine0;
+struct __pyx_obj_9shufflish_7_affine_Affine1;
+struct __pyx_obj_9shufflish_7_affine_Affine2;
+struct __pyx_obj_9shufflish_7_affine_Affine3;
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__;
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__;
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__;
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__;
 
-/* "shufflish/affine.pyx":30
+/* "shufflish/_affine.pyx":30
  * 
  * 
  * cdef class AffineBase:             # <<<<<<<<<<<<<<
  *     cdef affineCipherParameters params
  * 
  */
-struct __pyx_obj_9shufflish_6affine_AffineBase {
+struct __pyx_obj_9shufflish_7_affine_AffineBase {
   PyObject_HEAD
   struct affineCipherParameters params;
 };
 
 
-/* "shufflish/affine.pyx":39
+/* "shufflish/_affine.pyx":39
  * 
  * 
  * cdef class Affine0(AffineBase):             # <<<<<<<<<<<<<<
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  */
-struct __pyx_obj_9shufflish_6affine_Affine0 {
-  struct __pyx_obj_9shufflish_6affine_AffineBase __pyx_base;
+struct __pyx_obj_9shufflish_7_affine_Affine0 {
+  struct __pyx_obj_9shufflish_7_affine_AffineBase __pyx_base;
 };
 
 
-/* "shufflish/affine.pyx":59
+/* "shufflish/_affine.pyx":59
  * 
  * 
  * cdef class Affine1(AffineBase):             # <<<<<<<<<<<<<<
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  */
-struct __pyx_obj_9shufflish_6affine_Affine1 {
-  struct __pyx_obj_9shufflish_6affine_AffineBase __pyx_base;
+struct __pyx_obj_9shufflish_7_affine_Affine1 {
+  struct __pyx_obj_9shufflish_7_affine_AffineBase __pyx_base;
 };
 
 
-/* "shufflish/affine.pyx":79
+/* "shufflish/_affine.pyx":79
  * 
  * 
  * cdef class Affine2(AffineBase):             # <<<<<<<<<<<<<<
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  */
-struct __pyx_obj_9shufflish_6affine_Affine2 {
-  struct __pyx_obj_9shufflish_6affine_AffineBase __pyx_base;
+struct __pyx_obj_9shufflish_7_affine_Affine2 {
+  struct __pyx_obj_9shufflish_7_affine_AffineBase __pyx_base;
 };
 
 
-/* "shufflish/affine.pyx":99
+/* "shufflish/_affine.pyx":99
  * 
  * 
  * cdef class Affine3(AffineBase):             # <<<<<<<<<<<<<<
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  */
-struct __pyx_obj_9shufflish_6affine_Affine3 {
-  struct __pyx_obj_9shufflish_6affine_AffineBase __pyx_base;
+struct __pyx_obj_9shufflish_7_affine_Affine3 {
+  struct __pyx_obj_9shufflish_7_affine_AffineBase __pyx_base;
 };
 
 
-/* "shufflish/affine.pyx":40
+/* "shufflish/_affine.pyx":40
  * 
  * cdef class Affine0(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  */
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ {
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ {
   PyObject_HEAD
   uint64_t __pyx_v_i;
   PyObject *__pyx_v_index;
-  struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self;
+  struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self;
   uint64_t __pyx_v_step;
   uint64_t __pyx_v_stop;
 };
 
 
-/* "shufflish/affine.pyx":60
+/* "shufflish/_affine.pyx":60
  * 
  * cdef class Affine1(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  */
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ {
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ {
   PyObject_HEAD
   uint64_t __pyx_v_i;
   PyObject *__pyx_v_index;
-  struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self;
+  struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self;
   uint64_t __pyx_v_step;
   uint64_t __pyx_v_stop;
 };
 
 
-/* "shufflish/affine.pyx":80
+/* "shufflish/_affine.pyx":80
  * 
  * cdef class Affine2(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  */
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ {
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ {
   PyObject_HEAD
   uint64_t __pyx_v_i;
   PyObject *__pyx_v_index;
-  struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self;
+  struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self;
   uint64_t __pyx_v_step;
   uint64_t __pyx_v_stop;
 };
 
 
-/* "shufflish/affine.pyx":100
+/* "shufflish/_affine.pyx":100
  * 
  * cdef class Affine3(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  */
-struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ {
+struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ {
   PyObject_HEAD
   uint64_t __pyx_v_i;
   PyObject *__pyx_v_index;
-  struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self;
+  struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self;
   uint64_t __pyx_v_step;
   uint64_t __pyx_v_stop;
 };
@@ -2227,14 +2227,14 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from "libc.stdint" */
 
-/* Module declarations from "shufflish.affine" */
+/* Module declarations from "shufflish._affine" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "shufflish.affine"
-extern int __pyx_module_is_main_shufflish__affine;
-int __pyx_module_is_main_shufflish__affine = 0;
+#define __Pyx_MODULE_NAME "shufflish._affine"
+extern int __pyx_module_is_main_shufflish___affine;
+int __pyx_module_is_main_shufflish___affine = 0;
 
-/* Implementation of "shufflish.affine" */
+/* Implementation of "shufflish._affine" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_TypeError;
 /* #### Code section: string_decls ### */
@@ -2269,38 +2269,38 @@ static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_AffineBase[] = "AffineBase";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_shufflish_affine[] = "shufflish.affine";
 static const char __pyx_k_Affine0___getitem[] = "Affine0.__getitem__";
 static const char __pyx_k_Affine1___getitem[] = "Affine1.__getitem__";
 static const char __pyx_k_Affine2___getitem[] = "Affine2.__getitem__";
 static const char __pyx_k_Affine3___getitem[] = "Affine3.__getitem__";
+static const char __pyx_k_shufflish__affine[] = "shufflish._affine";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_Pickling_of_struct_members_such[] = "Pickling of struct members such as self.params must be explicitly requested with @auto_pickle(True)";
 /* #### Code section: decls ### */
-static int __pyx_pf_9shufflish_6affine_10AffineBase___init__(struct __pyx_obj_9shufflish_6affine_AffineBase *__pyx_v_self, uint64_t __pyx_v_domain, uint64_t __pyx_v_prime, uint64_t __pyx_v_offset); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_AffineBase *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_AffineBase *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0___getitem__(struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_3index(struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1___getitem__(struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_3index(struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2___getitem__(struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_3index(struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3___getitem__(struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_3index(struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_9shufflish_6affine_AffineBase(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct____getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_1___getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_2___getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_3___getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_9shufflish_7_affine_10AffineBase___init__(struct __pyx_obj_9shufflish_7_affine_AffineBase *__pyx_v_self, uint64_t __pyx_v_domain, uint64_t __pyx_v_prime, uint64_t __pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_10AffineBase_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineBase *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_10AffineBase_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineBase *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0_3index(struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1_3index(struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2_3index(struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3_3index(struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self, uint64_t __pyx_v_i); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_9shufflish_7_affine_AffineBase(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct____getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_1___getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_2___getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_3___getitem__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -2333,25 +2333,25 @@ typedef struct {
   #if CYTHON_USE_MODULE_STATE
   #endif
   #if CYTHON_USE_MODULE_STATE
-  PyObject *__pyx_type_9shufflish_6affine_AffineBase;
-  PyObject *__pyx_type_9shufflish_6affine_Affine0;
-  PyObject *__pyx_type_9shufflish_6affine_Affine1;
-  PyObject *__pyx_type_9shufflish_6affine_Affine2;
-  PyObject *__pyx_type_9shufflish_6affine_Affine3;
-  PyObject *__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__;
-  PyObject *__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__;
-  PyObject *__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__;
-  PyObject *__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__;
+  PyObject *__pyx_type_9shufflish_7_affine_AffineBase;
+  PyObject *__pyx_type_9shufflish_7_affine_Affine0;
+  PyObject *__pyx_type_9shufflish_7_affine_Affine1;
+  PyObject *__pyx_type_9shufflish_7_affine_Affine2;
+  PyObject *__pyx_type_9shufflish_7_affine_Affine3;
+  PyObject *__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__;
+  PyObject *__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__;
+  PyObject *__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__;
+  PyObject *__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__;
   #endif
-  PyTypeObject *__pyx_ptype_9shufflish_6affine_AffineBase;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine_Affine0;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine_Affine1;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine_Affine2;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine_Affine3;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__;
-  PyTypeObject *__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine_AffineBase;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine_Affine0;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine_Affine1;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine_Affine2;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine_Affine3;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__;
+  PyTypeObject *__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__;
   PyObject *__pyx_n_s_;
   PyObject *__pyx_n_s_Affine0;
   PyObject *__pyx_n_s_Affine0___getitem;
@@ -2387,7 +2387,7 @@ typedef struct {
   PyObject *__pyx_n_s_send;
   PyObject *__pyx_n_s_setstate;
   PyObject *__pyx_n_s_setstate_cython;
-  PyObject *__pyx_n_s_shufflish_affine;
+  PyObject *__pyx_n_s_shufflish__affine;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_throw;
 } __pyx_mstate;
@@ -2432,24 +2432,24 @@ static int __pyx_m_clear(PyObject *m) {
   #ifdef __Pyx_FusedFunction_USED
   Py_CLEAR(clear_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine_AffineBase);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine_AffineBase);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine_Affine0);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine_Affine0);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine_Affine1);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine_Affine1);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine_Affine2);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine_Affine2);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine_Affine3);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine_Affine3);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__);
-  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__);
-  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine_AffineBase);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine_AffineBase);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine_Affine0);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine_Affine0);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine_Affine1);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine_Affine1);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine_Affine2);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine_Affine2);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine_Affine3);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine_Affine3);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__);
+  Py_CLEAR(clear_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__);
+  Py_CLEAR(clear_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__);
   Py_CLEAR(clear_module_state->__pyx_n_s_);
   Py_CLEAR(clear_module_state->__pyx_n_s_Affine0);
   Py_CLEAR(clear_module_state->__pyx_n_s_Affine0___getitem);
@@ -2485,7 +2485,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_send);
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate);
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate_cython);
-  Py_CLEAR(clear_module_state->__pyx_n_s_shufflish_affine);
+  Py_CLEAR(clear_module_state->__pyx_n_s_shufflish__affine);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_throw);
   return 0;
@@ -2508,24 +2508,24 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine_AffineBase);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine_AffineBase);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine_Affine0);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine_Affine0);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine_Affine1);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine_Affine1);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine_Affine2);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine_Affine2);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine_Affine3);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine_Affine3);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__);
-  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__);
-  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine_AffineBase);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine_AffineBase);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine_Affine0);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine_Affine0);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine_Affine1);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine_Affine1);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine_Affine2);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine_Affine2);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine_Affine3);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine_Affine3);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__);
+  Py_VISIT(traverse_module_state->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__);
+  Py_VISIT(traverse_module_state->__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__);
   Py_VISIT(traverse_module_state->__pyx_n_s_);
   Py_VISIT(traverse_module_state->__pyx_n_s_Affine0);
   Py_VISIT(traverse_module_state->__pyx_n_s_Affine0___getitem);
@@ -2561,7 +2561,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_send);
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate);
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate_cython);
-  Py_VISIT(traverse_module_state->__pyx_n_s_shufflish_affine);
+  Py_VISIT(traverse_module_state->__pyx_n_s_shufflish__affine);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_throw);
   return 0;
@@ -2597,25 +2597,25 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #if CYTHON_USE_MODULE_STATE
 #endif
 #if CYTHON_USE_MODULE_STATE
-#define __pyx_type_9shufflish_6affine_AffineBase __pyx_mstate_global->__pyx_type_9shufflish_6affine_AffineBase
-#define __pyx_type_9shufflish_6affine_Affine0 __pyx_mstate_global->__pyx_type_9shufflish_6affine_Affine0
-#define __pyx_type_9shufflish_6affine_Affine1 __pyx_mstate_global->__pyx_type_9shufflish_6affine_Affine1
-#define __pyx_type_9shufflish_6affine_Affine2 __pyx_mstate_global->__pyx_type_9shufflish_6affine_Affine2
-#define __pyx_type_9shufflish_6affine_Affine3 __pyx_mstate_global->__pyx_type_9shufflish_6affine_Affine3
-#define __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__ __pyx_mstate_global->__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__
-#define __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__ __pyx_mstate_global->__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__
-#define __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__ __pyx_mstate_global->__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__
-#define __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__ __pyx_mstate_global->__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__
+#define __pyx_type_9shufflish_7_affine_AffineBase __pyx_mstate_global->__pyx_type_9shufflish_7_affine_AffineBase
+#define __pyx_type_9shufflish_7_affine_Affine0 __pyx_mstate_global->__pyx_type_9shufflish_7_affine_Affine0
+#define __pyx_type_9shufflish_7_affine_Affine1 __pyx_mstate_global->__pyx_type_9shufflish_7_affine_Affine1
+#define __pyx_type_9shufflish_7_affine_Affine2 __pyx_mstate_global->__pyx_type_9shufflish_7_affine_Affine2
+#define __pyx_type_9shufflish_7_affine_Affine3 __pyx_mstate_global->__pyx_type_9shufflish_7_affine_Affine3
+#define __pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__ __pyx_mstate_global->__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__
+#define __pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__ __pyx_mstate_global->__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__
+#define __pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__ __pyx_mstate_global->__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__
+#define __pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__ __pyx_mstate_global->__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__
 #endif
-#define __pyx_ptype_9shufflish_6affine_AffineBase __pyx_mstate_global->__pyx_ptype_9shufflish_6affine_AffineBase
-#define __pyx_ptype_9shufflish_6affine_Affine0 __pyx_mstate_global->__pyx_ptype_9shufflish_6affine_Affine0
-#define __pyx_ptype_9shufflish_6affine_Affine1 __pyx_mstate_global->__pyx_ptype_9shufflish_6affine_Affine1
-#define __pyx_ptype_9shufflish_6affine_Affine2 __pyx_mstate_global->__pyx_ptype_9shufflish_6affine_Affine2
-#define __pyx_ptype_9shufflish_6affine_Affine3 __pyx_mstate_global->__pyx_ptype_9shufflish_6affine_Affine3
-#define __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__
-#define __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__
-#define __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__
-#define __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__
+#define __pyx_ptype_9shufflish_7_affine_AffineBase __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine_AffineBase
+#define __pyx_ptype_9shufflish_7_affine_Affine0 __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine_Affine0
+#define __pyx_ptype_9shufflish_7_affine_Affine1 __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine_Affine1
+#define __pyx_ptype_9shufflish_7_affine_Affine2 __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine_Affine2
+#define __pyx_ptype_9shufflish_7_affine_Affine3 __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine_Affine3
+#define __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__
+#define __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__
+#define __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__
+#define __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__ __pyx_mstate_global->__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__
 #define __pyx_n_s_ __pyx_mstate_global->__pyx_n_s_
 #define __pyx_n_s_Affine0 __pyx_mstate_global->__pyx_n_s_Affine0
 #define __pyx_n_s_Affine0___getitem __pyx_mstate_global->__pyx_n_s_Affine0___getitem
@@ -2651,12 +2651,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_send __pyx_mstate_global->__pyx_n_s_send
 #define __pyx_n_s_setstate __pyx_mstate_global->__pyx_n_s_setstate
 #define __pyx_n_s_setstate_cython __pyx_mstate_global->__pyx_n_s_setstate_cython
-#define __pyx_n_s_shufflish_affine __pyx_mstate_global->__pyx_n_s_shufflish_affine
+#define __pyx_n_s_shufflish__affine __pyx_mstate_global->__pyx_n_s_shufflish__affine
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_throw __pyx_mstate_global->__pyx_n_s_throw
 /* #### Code section: module_code ### */
 
-/* "shufflish/affine.pyx":33
+/* "shufflish/_affine.pyx":33
  *     cdef affineCipherParameters params
  * 
  *     def __init__(self, uint64_t domain, uint64_t prime, uint64_t offset):             # <<<<<<<<<<<<<<
@@ -2665,8 +2665,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
  */
 
 /* Python wrapper */
-static int __pyx_pw_9shufflish_6affine_10AffineBase_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_9shufflish_6affine_10AffineBase_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   uint64_t __pyx_v_domain;
   uint64_t __pyx_v_prime;
   uint64_t __pyx_v_offset;
@@ -2756,11 +2756,11 @@ static int __pyx_pw_9shufflish_6affine_10AffineBase_1__init__(PyObject *__pyx_v_
       __Pyx_Arg_XDECREF_VARARGS(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.AffineBase.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.AffineBase.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_10AffineBase___init__(((struct __pyx_obj_9shufflish_6affine_AffineBase *)__pyx_v_self), __pyx_v_domain, __pyx_v_prime, __pyx_v_offset);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_10AffineBase___init__(((struct __pyx_obj_9shufflish_7_affine_AffineBase *)__pyx_v_self), __pyx_v_domain, __pyx_v_prime, __pyx_v_offset);
 
   /* function exit code */
   {
@@ -2773,10 +2773,10 @@ static int __pyx_pw_9shufflish_6affine_10AffineBase_1__init__(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-static int __pyx_pf_9shufflish_6affine_10AffineBase___init__(struct __pyx_obj_9shufflish_6affine_AffineBase *__pyx_v_self, uint64_t __pyx_v_domain, uint64_t __pyx_v_prime, uint64_t __pyx_v_offset) {
+static int __pyx_pf_9shufflish_7_affine_10AffineBase___init__(struct __pyx_obj_9shufflish_7_affine_AffineBase *__pyx_v_self, uint64_t __pyx_v_domain, uint64_t __pyx_v_prime, uint64_t __pyx_v_offset) {
   int __pyx_r;
 
-  /* "shufflish/affine.pyx":34
+  /* "shufflish/_affine.pyx":34
  * 
  *     def __init__(self, uint64_t domain, uint64_t prime, uint64_t offset):
  *         self.params.domain = domain             # <<<<<<<<<<<<<<
@@ -2785,7 +2785,7 @@ static int __pyx_pf_9shufflish_6affine_10AffineBase___init__(struct __pyx_obj_9s
  */
   __pyx_v_self->params.domain = __pyx_v_domain;
 
-  /* "shufflish/affine.pyx":35
+  /* "shufflish/_affine.pyx":35
  *     def __init__(self, uint64_t domain, uint64_t prime, uint64_t offset):
  *         self.params.domain = domain
  *         self.params.prime = prime % domain             # <<<<<<<<<<<<<<
@@ -2794,7 +2794,7 @@ static int __pyx_pf_9shufflish_6affine_10AffineBase___init__(struct __pyx_obj_9s
  */
   __pyx_v_self->params.prime = (__pyx_v_prime % __pyx_v_domain);
 
-  /* "shufflish/affine.pyx":36
+  /* "shufflish/_affine.pyx":36
  *         self.params.domain = domain
  *         self.params.prime = prime % domain
  *         self.params.offset = offset % domain             # <<<<<<<<<<<<<<
@@ -2803,7 +2803,7 @@ static int __pyx_pf_9shufflish_6affine_10AffineBase___init__(struct __pyx_obj_9s
  */
   __pyx_v_self->params.offset = (__pyx_v_offset % __pyx_v_domain);
 
-  /* "shufflish/affine.pyx":33
+  /* "shufflish/_affine.pyx":33
  *     cdef affineCipherParameters params
  * 
  *     def __init__(self, uint64_t domain, uint64_t prime, uint64_t offset):             # <<<<<<<<<<<<<<
@@ -2823,14 +2823,14 @@ static int __pyx_pf_9shufflish_6affine_10AffineBase___init__(struct __pyx_obj_9s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_10AffineBase_3__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_10AffineBase_3__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_10AffineBase_3__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_10AffineBase_3__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2855,14 +2855,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_9shufflish_6affine_10AffineBase_2__reduce_cython__(((struct __pyx_obj_9shufflish_6affine_AffineBase *)__pyx_v_self));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_10AffineBase_2__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_AffineBase *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_AffineBase *__pyx_v_self) {
+static PyObject *__pyx_pf_9shufflish_7_affine_10AffineBase_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineBase *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -2887,7 +2887,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_2__reduce_cython__(CYT
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.AffineBase.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.AffineBase.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -2902,14 +2902,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_2__reduce_cython__(CYT
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_10AffineBase_5__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_10AffineBase_5__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_10AffineBase_5__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_10AffineBase_5__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2979,11 +2979,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.AffineBase.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.AffineBase.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_10AffineBase_4__setstate_cython__(((struct __pyx_obj_9shufflish_6affine_AffineBase *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_10AffineBase_4__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_AffineBase *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -2996,7 +2996,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_AffineBase *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_9shufflish_7_affine_10AffineBase_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineBase *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3021,15 +3021,15 @@ static PyObject *__pyx_pf_9shufflish_6affine_10AffineBase_4__setstate_cython__(C
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.AffineBase.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.AffineBase.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine0_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "shufflish/affine.pyx":40
+/* "shufflish/_affine.pyx":40
  * 
  * cdef class Affine0(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -3038,31 +3038,31 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine0___getitem__(((struct __pyx_obj_9shufflish_6affine_Affine0 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine0___getitem__(((struct __pyx_obj_9shufflish_7_affine_Affine0 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0___getitem__(struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self, PyObject *__pyx_v_index) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *__pyx_cur_scope;
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self, PyObject *__pyx_v_index) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
-  __pyx_cur_scope = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct____getitem__(__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct____getitem__(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(1, 40, __pyx_L1_error)
   } else {
@@ -3075,7 +3075,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0___getitem__(struct __pyx_o
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_index);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_index);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_6affine_7Affine0_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine0___getitem, __pyx_n_s_shufflish_affine); if (unlikely(!gen)) __PYX_ERR(1, 40, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_7Affine0_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine0___getitem, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(1, 40, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3083,7 +3083,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0___getitem__(struct __pyx_o
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine0.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine0.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -3091,9 +3091,9 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0___getitem__(struct __pyx_o
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine0_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *)__pyx_generator->closure);
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
@@ -3122,7 +3122,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 40, __pyx_L1_error)
 
-  /* "shufflish/affine.pyx":42
+  /* "shufflish/_affine.pyx":42
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -3132,7 +3132,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
   __pyx_t_1 = PySlice_Check(__pyx_cur_scope->__pyx_v_index); 
   if (__pyx_t_1) {
 
-    /* "shufflish/affine.pyx":43
+    /* "shufflish/_affine.pyx":43
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)             # <<<<<<<<<<<<<<
@@ -3229,7 +3229,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
     __pyx_cur_scope->__pyx_v_stop = __pyx_t_10;
     __pyx_cur_scope->__pyx_v_step = __pyx_t_11;
 
-    /* "shufflish/affine.pyx":44
+    /* "shufflish/_affine.pyx":44
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -3239,7 +3239,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
     __pyx_t_1 = (__pyx_cur_scope->__pyx_v_step > 0);
     if (__pyx_t_1) {
 
-      /* "shufflish/affine.pyx":45
+      /* "shufflish/_affine.pyx":45
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:
  *                 while i < stop:             # <<<<<<<<<<<<<<
@@ -3250,7 +3250,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i < __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":46
+        /* "shufflish/_affine.pyx":46
  *             if step > 0:
  *                 while i < stop:
  *                     yield affineCipher0(&self.params, i)             # <<<<<<<<<<<<<<
@@ -3270,7 +3270,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
         __pyx_L10_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 46, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":47
+        /* "shufflish/_affine.pyx":47
  *                 while i < stop:
  *                     yield affineCipher0(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -3280,7 +3280,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
         __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step);
       }
 
-      /* "shufflish/affine.pyx":44
+      /* "shufflish/_affine.pyx":44
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -3290,7 +3290,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
       goto __pyx_L7;
     }
 
-    /* "shufflish/affine.pyx":49
+    /* "shufflish/_affine.pyx":49
  *                     i += step
  *             else:
  *                 while i > stop:             # <<<<<<<<<<<<<<
@@ -3302,7 +3302,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i > __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":50
+        /* "shufflish/_affine.pyx":50
  *             else:
  *                 while i > stop:
  *                     yield affineCipher0(&self.params, i)             # <<<<<<<<<<<<<<
@@ -3322,7 +3322,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
         __pyx_L13_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 50, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":51
+        /* "shufflish/_affine.pyx":51
  *                 while i > stop:
  *                     yield affineCipher0(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -3334,7 +3334,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
     }
     __pyx_L7:;
 
-    /* "shufflish/affine.pyx":42
+    /* "shufflish/_affine.pyx":42
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -3344,7 +3344,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
     goto __pyx_L4;
   }
 
-  /* "shufflish/affine.pyx":53
+  /* "shufflish/_affine.pyx":53
  *                     i += step
  *         else:
  *             return affineCipher0(&self.params, index)             # <<<<<<<<<<<<<<
@@ -3363,7 +3363,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
   __pyx_L4:;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "shufflish/affine.pyx":40
+  /* "shufflish/_affine.pyx":40
  * 
  * cdef class Affine0(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -3393,7 +3393,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
   return __pyx_r;
 }
 
-/* "shufflish/affine.pyx":55
+/* "shufflish/_affine.pyx":55
  *             return affineCipher0(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -3402,14 +3402,14 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine0_2generator(__pyx_Coroutine
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3479,11 +3479,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine0.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine0.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine0_3index(((struct __pyx_obj_9shufflish_6affine_Affine0 *)__pyx_v_self), __pyx_v_i);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine0_3index(((struct __pyx_obj_9shufflish_7_affine_Affine0 *)__pyx_v_self), __pyx_v_i);
 
   /* function exit code */
   {
@@ -3496,7 +3496,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_3index(struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self, uint64_t __pyx_v_i) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0_3index(struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self, uint64_t __pyx_v_i) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3505,7 +3505,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_3index(struct __pyx_obj_9s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("index", 1);
 
-  /* "shufflish/affine.pyx":56
+  /* "shufflish/_affine.pyx":56
  * 
  *     def index(self, uint64_t i):
  *         return affineCipher0(&self.params, i)             # <<<<<<<<<<<<<<
@@ -3519,7 +3519,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_3index(struct __pyx_obj_9s
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "shufflish/affine.pyx":55
+  /* "shufflish/_affine.pyx":55
  *             return affineCipher0(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -3530,7 +3530,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_3index(struct __pyx_obj_9s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("shufflish.affine.Affine0.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine0.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3545,14 +3545,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_3index(struct __pyx_obj_9s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3577,14 +3577,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine0_5__reduce_cython__(((struct __pyx_obj_9shufflish_6affine_Affine0 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine0_5__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine0 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3609,7 +3609,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_5__reduce_cython__(CYTHON_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine0.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine0.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -3624,14 +3624,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_5__reduce_cython__(CYTHON_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine0_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine0_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3701,11 +3701,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine0.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine0.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine0_7__setstate_cython__(((struct __pyx_obj_9shufflish_6affine_Affine0 *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine0_7__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine0 *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -3718,7 +3718,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine0 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine0_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine0 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3743,15 +3743,15 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine0_7__setstate_cython__(CYTHO
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine0.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine0.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine1_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "shufflish/affine.pyx":60
+/* "shufflish/_affine.pyx":60
  * 
  * cdef class Affine1(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -3760,31 +3760,31 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine1___getitem__(((struct __pyx_obj_9shufflish_6affine_Affine1 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine1___getitem__(((struct __pyx_obj_9shufflish_7_affine_Affine1 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1___getitem__(struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self, PyObject *__pyx_v_index) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *__pyx_cur_scope;
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self, PyObject *__pyx_v_index) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
-  __pyx_cur_scope = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_1___getitem__(__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_1___getitem__(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(1, 60, __pyx_L1_error)
   } else {
@@ -3797,7 +3797,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1___getitem__(struct __pyx_o
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_index);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_index);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_6affine_7Affine1_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine1___getitem, __pyx_n_s_shufflish_affine); if (unlikely(!gen)) __PYX_ERR(1, 60, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_7Affine1_2generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine1___getitem, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(1, 60, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3805,7 +3805,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1___getitem__(struct __pyx_o
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine1.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine1.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -3813,9 +3813,9 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1___getitem__(struct __pyx_o
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine1_2generator1(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *)__pyx_generator->closure);
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
@@ -3844,7 +3844,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 60, __pyx_L1_error)
 
-  /* "shufflish/affine.pyx":62
+  /* "shufflish/_affine.pyx":62
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -3854,7 +3854,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
   __pyx_t_1 = PySlice_Check(__pyx_cur_scope->__pyx_v_index); 
   if (__pyx_t_1) {
 
-    /* "shufflish/affine.pyx":63
+    /* "shufflish/_affine.pyx":63
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)             # <<<<<<<<<<<<<<
@@ -3951,7 +3951,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
     __pyx_cur_scope->__pyx_v_stop = __pyx_t_10;
     __pyx_cur_scope->__pyx_v_step = __pyx_t_11;
 
-    /* "shufflish/affine.pyx":64
+    /* "shufflish/_affine.pyx":64
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -3961,7 +3961,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
     __pyx_t_1 = (__pyx_cur_scope->__pyx_v_step > 0);
     if (__pyx_t_1) {
 
-      /* "shufflish/affine.pyx":65
+      /* "shufflish/_affine.pyx":65
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:
  *                 while i < stop:             # <<<<<<<<<<<<<<
@@ -3972,7 +3972,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i < __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":66
+        /* "shufflish/_affine.pyx":66
  *             if step > 0:
  *                 while i < stop:
  *                     yield affineCipher1(&self.params, i)             # <<<<<<<<<<<<<<
@@ -3992,7 +3992,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
         __pyx_L10_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 66, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":67
+        /* "shufflish/_affine.pyx":67
  *                 while i < stop:
  *                     yield affineCipher1(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -4002,7 +4002,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
         __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step);
       }
 
-      /* "shufflish/affine.pyx":64
+      /* "shufflish/_affine.pyx":64
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -4012,7 +4012,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
       goto __pyx_L7;
     }
 
-    /* "shufflish/affine.pyx":69
+    /* "shufflish/_affine.pyx":69
  *                     i += step
  *             else:
  *                 while i > stop:             # <<<<<<<<<<<<<<
@@ -4024,7 +4024,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i > __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":70
+        /* "shufflish/_affine.pyx":70
  *             else:
  *                 while i > stop:
  *                     yield affineCipher1(&self.params, i)             # <<<<<<<<<<<<<<
@@ -4044,7 +4044,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
         __pyx_L13_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 70, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":71
+        /* "shufflish/_affine.pyx":71
  *                 while i > stop:
  *                     yield affineCipher1(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -4056,7 +4056,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
     }
     __pyx_L7:;
 
-    /* "shufflish/affine.pyx":62
+    /* "shufflish/_affine.pyx":62
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -4066,7 +4066,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
     goto __pyx_L4;
   }
 
-  /* "shufflish/affine.pyx":73
+  /* "shufflish/_affine.pyx":73
  *                     i += step
  *         else:
  *             return affineCipher1(&self.params, index)             # <<<<<<<<<<<<<<
@@ -4085,7 +4085,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
   __pyx_L4:;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "shufflish/affine.pyx":60
+  /* "shufflish/_affine.pyx":60
  * 
  * cdef class Affine1(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -4115,7 +4115,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
   return __pyx_r;
 }
 
-/* "shufflish/affine.pyx":75
+/* "shufflish/_affine.pyx":75
  *             return affineCipher1(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -4124,14 +4124,14 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine1_2generator1(__pyx_Coroutin
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4201,11 +4201,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine1.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine1.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine1_3index(((struct __pyx_obj_9shufflish_6affine_Affine1 *)__pyx_v_self), __pyx_v_i);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine1_3index(((struct __pyx_obj_9shufflish_7_affine_Affine1 *)__pyx_v_self), __pyx_v_i);
 
   /* function exit code */
   {
@@ -4218,7 +4218,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_3index(struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self, uint64_t __pyx_v_i) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1_3index(struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self, uint64_t __pyx_v_i) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4227,7 +4227,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_3index(struct __pyx_obj_9s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("index", 1);
 
-  /* "shufflish/affine.pyx":76
+  /* "shufflish/_affine.pyx":76
  * 
  *     def index(self, uint64_t i):
  *         return affineCipher1(&self.params, i)             # <<<<<<<<<<<<<<
@@ -4241,7 +4241,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_3index(struct __pyx_obj_9s
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "shufflish/affine.pyx":75
+  /* "shufflish/_affine.pyx":75
  *             return affineCipher1(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -4252,7 +4252,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_3index(struct __pyx_obj_9s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("shufflish.affine.Affine1.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine1.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4267,14 +4267,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_3index(struct __pyx_obj_9s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4299,14 +4299,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine1_5__reduce_cython__(((struct __pyx_obj_9shufflish_6affine_Affine1 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine1_5__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine1 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -4331,7 +4331,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_5__reduce_cython__(CYTHON_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine1.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine1.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -4346,14 +4346,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_5__reduce_cython__(CYTHON_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine1_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine1_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4423,11 +4423,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine1.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine1.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine1_7__setstate_cython__(((struct __pyx_obj_9shufflish_6affine_Affine1 *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine1_7__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine1 *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -4440,7 +4440,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine1 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine1_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine1 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -4465,15 +4465,15 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine1_7__setstate_cython__(CYTHO
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine1.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine1.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine2_2generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "shufflish/affine.pyx":80
+/* "shufflish/_affine.pyx":80
  * 
  * cdef class Affine2(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -4482,31 +4482,31 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine2___getitem__(((struct __pyx_obj_9shufflish_6affine_Affine2 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine2___getitem__(((struct __pyx_obj_9shufflish_7_affine_Affine2 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2___getitem__(struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self, PyObject *__pyx_v_index) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *__pyx_cur_scope;
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self, PyObject *__pyx_v_index) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
-  __pyx_cur_scope = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_2___getitem__(__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_2___getitem__(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(1, 80, __pyx_L1_error)
   } else {
@@ -4519,7 +4519,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2___getitem__(struct __pyx_o
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_index);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_index);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_6affine_7Affine2_2generator2, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine2___getitem, __pyx_n_s_shufflish_affine); if (unlikely(!gen)) __PYX_ERR(1, 80, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_7Affine2_2generator2, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine2___getitem, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(1, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -4527,7 +4527,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2___getitem__(struct __pyx_o
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine2.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine2.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -4535,9 +4535,9 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2___getitem__(struct __pyx_o
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine2_2generator2(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *)__pyx_generator->closure);
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
@@ -4566,7 +4566,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 80, __pyx_L1_error)
 
-  /* "shufflish/affine.pyx":82
+  /* "shufflish/_affine.pyx":82
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -4576,7 +4576,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
   __pyx_t_1 = PySlice_Check(__pyx_cur_scope->__pyx_v_index); 
   if (__pyx_t_1) {
 
-    /* "shufflish/affine.pyx":83
+    /* "shufflish/_affine.pyx":83
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)             # <<<<<<<<<<<<<<
@@ -4673,7 +4673,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
     __pyx_cur_scope->__pyx_v_stop = __pyx_t_10;
     __pyx_cur_scope->__pyx_v_step = __pyx_t_11;
 
-    /* "shufflish/affine.pyx":84
+    /* "shufflish/_affine.pyx":84
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -4683,7 +4683,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
     __pyx_t_1 = (__pyx_cur_scope->__pyx_v_step > 0);
     if (__pyx_t_1) {
 
-      /* "shufflish/affine.pyx":85
+      /* "shufflish/_affine.pyx":85
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:
  *                 while i < stop:             # <<<<<<<<<<<<<<
@@ -4694,7 +4694,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i < __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":86
+        /* "shufflish/_affine.pyx":86
  *             if step > 0:
  *                 while i < stop:
  *                     yield affineCipher2(&self.params, i)             # <<<<<<<<<<<<<<
@@ -4714,7 +4714,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
         __pyx_L10_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 86, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":87
+        /* "shufflish/_affine.pyx":87
  *                 while i < stop:
  *                     yield affineCipher2(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -4724,7 +4724,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
         __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step);
       }
 
-      /* "shufflish/affine.pyx":84
+      /* "shufflish/_affine.pyx":84
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -4734,7 +4734,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
       goto __pyx_L7;
     }
 
-    /* "shufflish/affine.pyx":89
+    /* "shufflish/_affine.pyx":89
  *                     i += step
  *             else:
  *                 while i > stop:             # <<<<<<<<<<<<<<
@@ -4746,7 +4746,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i > __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":90
+        /* "shufflish/_affine.pyx":90
  *             else:
  *                 while i > stop:
  *                     yield affineCipher2(&self.params, i)             # <<<<<<<<<<<<<<
@@ -4766,7 +4766,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
         __pyx_L13_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 90, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":91
+        /* "shufflish/_affine.pyx":91
  *                 while i > stop:
  *                     yield affineCipher2(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -4778,7 +4778,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
     }
     __pyx_L7:;
 
-    /* "shufflish/affine.pyx":82
+    /* "shufflish/_affine.pyx":82
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -4788,7 +4788,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
     goto __pyx_L4;
   }
 
-  /* "shufflish/affine.pyx":93
+  /* "shufflish/_affine.pyx":93
  *                     i += step
  *         else:
  *             return affineCipher2(&self.params, index)             # <<<<<<<<<<<<<<
@@ -4807,7 +4807,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
   __pyx_L4:;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "shufflish/affine.pyx":80
+  /* "shufflish/_affine.pyx":80
  * 
  * cdef class Affine2(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -4837,7 +4837,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
   return __pyx_r;
 }
 
-/* "shufflish/affine.pyx":95
+/* "shufflish/_affine.pyx":95
  *             return affineCipher2(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -4846,14 +4846,14 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine2_2generator2(__pyx_Coroutin
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4923,11 +4923,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine2.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine2.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine2_3index(((struct __pyx_obj_9shufflish_6affine_Affine2 *)__pyx_v_self), __pyx_v_i);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine2_3index(((struct __pyx_obj_9shufflish_7_affine_Affine2 *)__pyx_v_self), __pyx_v_i);
 
   /* function exit code */
   {
@@ -4940,7 +4940,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_3index(struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self, uint64_t __pyx_v_i) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2_3index(struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self, uint64_t __pyx_v_i) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4949,7 +4949,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_3index(struct __pyx_obj_9s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("index", 1);
 
-  /* "shufflish/affine.pyx":96
+  /* "shufflish/_affine.pyx":96
  * 
  *     def index(self, uint64_t i):
  *         return affineCipher2(&self.params, i)             # <<<<<<<<<<<<<<
@@ -4963,7 +4963,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_3index(struct __pyx_obj_9s
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "shufflish/affine.pyx":95
+  /* "shufflish/_affine.pyx":95
  *             return affineCipher2(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -4974,7 +4974,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_3index(struct __pyx_obj_9s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("shufflish.affine.Affine2.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine2.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4989,14 +4989,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_3index(struct __pyx_obj_9s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5021,14 +5021,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine2_5__reduce_cython__(((struct __pyx_obj_9shufflish_6affine_Affine2 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine2_5__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine2 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -5053,7 +5053,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_5__reduce_cython__(CYTHON_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine2.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine2.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -5068,14 +5068,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_5__reduce_cython__(CYTHON_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine2_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine2_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5145,11 +5145,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine2.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine2.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine2_7__setstate_cython__(((struct __pyx_obj_9shufflish_6affine_Affine2 *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine2_7__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine2 *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -5162,7 +5162,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine2 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine2_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine2 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -5187,15 +5187,15 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine2_7__setstate_cython__(CYTHO
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine2.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine2.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine3_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "shufflish/affine.pyx":100
+/* "shufflish/_affine.pyx":100
  * 
  * cdef class Affine3(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -5204,31 +5204,31 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_1__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
   __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine3___getitem__(((struct __pyx_obj_9shufflish_6affine_Affine3 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine3___getitem__(((struct __pyx_obj_9shufflish_7_affine_Affine3 *)__pyx_v_self), ((PyObject *)__pyx_v_index));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3___getitem__(struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self, PyObject *__pyx_v_index) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *__pyx_cur_scope;
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3___getitem__(struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self, PyObject *__pyx_v_index) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__getitem__", 0);
-  __pyx_cur_scope = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_3___getitem__(__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__, __pyx_empty_tuple, NULL);
+  __pyx_cur_scope = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_3___getitem__(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__, __pyx_empty_tuple, NULL);
   if (unlikely(!__pyx_cur_scope)) {
-    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *)Py_None);
+    __pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *)Py_None);
     __Pyx_INCREF(Py_None);
     __PYX_ERR(1, 100, __pyx_L1_error)
   } else {
@@ -5241,7 +5241,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3___getitem__(struct __pyx_o
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_index);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_index);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_6affine_7Affine3_2generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine3___getitem, __pyx_n_s_shufflish_affine); if (unlikely(!gen)) __PYX_ERR(1, 100, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_7Affine3_2generator3, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_getitem, __pyx_n_s_Affine3___getitem, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(1, 100, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -5249,7 +5249,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3___getitem__(struct __pyx_o
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine3.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine3.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_DECREF((PyObject *)__pyx_cur_scope);
   __Pyx_XGIVEREF(__pyx_r);
@@ -5257,9 +5257,9 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3___getitem__(struct __pyx_o
   return __pyx_r;
 }
 
-static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
+static PyObject *__pyx_gb_9shufflish_7_affine_7Affine3_2generator3(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value) /* generator body */
 {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *)__pyx_generator->closure);
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
@@ -5288,7 +5288,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
   __pyx_L3_first_run:;
   if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 100, __pyx_L1_error)
 
-  /* "shufflish/affine.pyx":102
+  /* "shufflish/_affine.pyx":102
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -5298,7 +5298,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
   __pyx_t_1 = PySlice_Check(__pyx_cur_scope->__pyx_v_index); 
   if (__pyx_t_1) {
 
-    /* "shufflish/affine.pyx":103
+    /* "shufflish/_affine.pyx":103
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)             # <<<<<<<<<<<<<<
@@ -5395,7 +5395,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
     __pyx_cur_scope->__pyx_v_stop = __pyx_t_10;
     __pyx_cur_scope->__pyx_v_step = __pyx_t_11;
 
-    /* "shufflish/affine.pyx":104
+    /* "shufflish/_affine.pyx":104
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -5405,7 +5405,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
     __pyx_t_1 = (__pyx_cur_scope->__pyx_v_step > 0);
     if (__pyx_t_1) {
 
-      /* "shufflish/affine.pyx":105
+      /* "shufflish/_affine.pyx":105
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:
  *                 while i < stop:             # <<<<<<<<<<<<<<
@@ -5416,7 +5416,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i < __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":106
+        /* "shufflish/_affine.pyx":106
  *             if step > 0:
  *                 while i < stop:
  *                     yield affineCipher3(&self.params, i)             # <<<<<<<<<<<<<<
@@ -5436,7 +5436,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
         __pyx_L10_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 106, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":107
+        /* "shufflish/_affine.pyx":107
  *                 while i < stop:
  *                     yield affineCipher3(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -5446,7 +5446,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
         __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step);
       }
 
-      /* "shufflish/affine.pyx":104
+      /* "shufflish/_affine.pyx":104
  *         if isinstance(index, slice):
  *             i, stop, step = index.indices(self.params.domain)
  *             if step > 0:             # <<<<<<<<<<<<<<
@@ -5456,7 +5456,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
       goto __pyx_L7;
     }
 
-    /* "shufflish/affine.pyx":109
+    /* "shufflish/_affine.pyx":109
  *                     i += step
  *             else:
  *                 while i > stop:             # <<<<<<<<<<<<<<
@@ -5468,7 +5468,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
         __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i > __pyx_cur_scope->__pyx_v_stop);
         if (!__pyx_t_1) break;
 
-        /* "shufflish/affine.pyx":110
+        /* "shufflish/_affine.pyx":110
  *             else:
  *                 while i > stop:
  *                     yield affineCipher3(&self.params, i)             # <<<<<<<<<<<<<<
@@ -5488,7 +5488,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
         __pyx_L13_resume_from_yield:;
         if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 110, __pyx_L1_error)
 
-        /* "shufflish/affine.pyx":111
+        /* "shufflish/_affine.pyx":111
  *                 while i > stop:
  *                     yield affineCipher3(&self.params, i)
  *                     i += step             # <<<<<<<<<<<<<<
@@ -5500,7 +5500,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
     }
     __pyx_L7:;
 
-    /* "shufflish/affine.pyx":102
+    /* "shufflish/_affine.pyx":102
  *     def __getitem__(self, index):
  *         cdef uint64_t i, stop, step
  *         if isinstance(index, slice):             # <<<<<<<<<<<<<<
@@ -5510,7 +5510,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
     goto __pyx_L4;
   }
 
-  /* "shufflish/affine.pyx":113
+  /* "shufflish/_affine.pyx":113
  *                     i += step
  *         else:
  *             return affineCipher3(&self.params, index)             # <<<<<<<<<<<<<<
@@ -5529,7 +5529,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
   __pyx_L4:;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "shufflish/affine.pyx":100
+  /* "shufflish/_affine.pyx":100
  * 
  * cdef class Affine3(AffineBase):
  *     def __getitem__(self, index):             # <<<<<<<<<<<<<<
@@ -5559,7 +5559,7 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
   return __pyx_r;
 }
 
-/* "shufflish/affine.pyx":115
+/* "shufflish/_affine.pyx":115
  *             return affineCipher3(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -5567,14 +5567,14 @@ static PyObject *__pyx_gb_9shufflish_6affine_7Affine3_2generator3(__pyx_Coroutin
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_4index(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_4index(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5644,11 +5644,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine3.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine3.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine3_3index(((struct __pyx_obj_9shufflish_6affine_Affine3 *)__pyx_v_self), __pyx_v_i);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine3_3index(((struct __pyx_obj_9shufflish_7_affine_Affine3 *)__pyx_v_self), __pyx_v_i);
 
   /* function exit code */
   {
@@ -5661,7 +5661,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_3index(struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self, uint64_t __pyx_v_i) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3_3index(struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self, uint64_t __pyx_v_i) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -5670,7 +5670,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_3index(struct __pyx_obj_9s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("index", 1);
 
-  /* "shufflish/affine.pyx":116
+  /* "shufflish/_affine.pyx":116
  * 
  *     def index(self, uint64_t i):
  *         return affineCipher3(&self.params, i)             # <<<<<<<<<<<<<<
@@ -5682,7 +5682,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_3index(struct __pyx_obj_9s
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "shufflish/affine.pyx":115
+  /* "shufflish/_affine.pyx":115
  *             return affineCipher3(&self.params, index)
  * 
  *     def index(self, uint64_t i):             # <<<<<<<<<<<<<<
@@ -5692,7 +5692,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_3index(struct __pyx_obj_9s
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("shufflish.affine.Affine3.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine3.index", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5707,14 +5707,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_3index(struct __pyx_obj_9s
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_6__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_6__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5739,14 +5739,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine3_5__reduce_cython__(((struct __pyx_obj_9shufflish_6affine_Affine3 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine3_5__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine3 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3_5__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -5771,7 +5771,7 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_5__reduce_cython__(CYTHON_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine3.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine3.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -5786,14 +5786,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_5__reduce_cython__(CYTHON_
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_6affine_7Affine3_8__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_7Affine3_8__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5863,11 +5863,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       __Pyx_Arg_XDECREF_FASTCALL(values[__pyx_temp]);
     }
   }
-  __Pyx_AddTraceback("shufflish.affine.Affine3.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine3.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_6affine_7Affine3_7__setstate_cython__(((struct __pyx_obj_9shufflish_6affine_Affine3 *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_7Affine3_7__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_Affine3 *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -5880,7 +5880,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_6affine_Affine3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_9shufflish_7_affine_7Affine3_7__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_Affine3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -5905,14 +5905,14 @@ static PyObject *__pyx_pf_9shufflish_6affine_7Affine3_7__setstate_cython__(CYTHO
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_AddTraceback("shufflish.affine.Affine3.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("shufflish._affine.Affine3.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_9shufflish_6affine_AffineBase(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_9shufflish_7_affine_AffineBase(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
@@ -5928,10 +5928,10 @@ static PyObject *__pyx_tp_new_9shufflish_6affine_AffineBase(PyTypeObject *t, CYT
   return o;
 }
 
-static void __pyx_tp_dealloc_9shufflish_6affine_AffineBase(PyObject *o) {
+static void __pyx_tp_dealloc_9shufflish_7_affine_AffineBase(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && (!PyType_IS_GC(Py_TYPE(o)) || !__Pyx_PyObject_GC_IsFinalized(o))) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_6affine_AffineBase) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_7_affine_AffineBase) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -5946,34 +5946,34 @@ static void __pyx_tp_dealloc_9shufflish_6affine_AffineBase(PyObject *o) {
   #endif
 }
 
-static PyMethodDef __pyx_methods_9shufflish_6affine_AffineBase[] = {
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_10AffineBase_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_10AffineBase_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_9shufflish_7_affine_AffineBase[] = {
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_10AffineBase_3__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_10AffineBase_5__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine_AffineBase_slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_6affine_AffineBase},
-  {Py_tp_methods, (void *)__pyx_methods_9shufflish_6affine_AffineBase},
-  {Py_tp_init, (void *)__pyx_pw_9shufflish_6affine_10AffineBase_1__init__},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine_AffineBase},
+static PyType_Slot __pyx_type_9shufflish_7_affine_AffineBase_slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_7_affine_AffineBase},
+  {Py_tp_methods, (void *)__pyx_methods_9shufflish_7_affine_AffineBase},
+  {Py_tp_init, (void *)__pyx_pw_9shufflish_7_affine_10AffineBase_1__init__},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine_AffineBase},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine_AffineBase_spec = {
-  "shufflish.affine.AffineBase",
-  sizeof(struct __pyx_obj_9shufflish_6affine_AffineBase),
+static PyType_Spec __pyx_type_9shufflish_7_affine_AffineBase_spec = {
+  "shufflish._affine.AffineBase",
+  sizeof(struct __pyx_obj_9shufflish_7_affine_AffineBase),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_9shufflish_6affine_AffineBase_slots,
+  __pyx_type_9shufflish_7_affine_AffineBase_slots,
 };
 #else
 
-static PyTypeObject __pyx_type_9shufflish_6affine_AffineBase = {
+static PyTypeObject __pyx_type_9shufflish_7_affine_AffineBase = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""AffineBase", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine_AffineBase), /*tp_basicsize*/
+  "shufflish._affine.""AffineBase", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine_AffineBase), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine_AffineBase, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine_AffineBase, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6006,7 +6006,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_AffineBase = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_9shufflish_6affine_AffineBase, /*tp_methods*/
+  __pyx_methods_9shufflish_7_affine_AffineBase, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -6016,9 +6016,9 @@ static PyTypeObject __pyx_type_9shufflish_6affine_AffineBase = {
   #if !CYTHON_USE_TYPE_SPECS
   0, /*tp_dictoffset*/
   #endif
-  __pyx_pw_9shufflish_6affine_10AffineBase_1__init__, /*tp_init*/
+  __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine_AffineBase, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine_AffineBase, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6052,7 +6052,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_AffineBase = {
   #endif
 };
 #endif
-static PyObject *__pyx_sq_item_9shufflish_6affine_Affine0(PyObject *o, Py_ssize_t i) {
+static PyObject *__pyx_sq_item_9shufflish_7_affine_Affine0(PyObject *o, Py_ssize_t i) {
   PyObject *r;
   PyObject *x = PyInt_FromSsize_t(i); if(!x) return 0;
   r = Py_TYPE(o)->tp_as_mapping->mp_subscript(o, x);
@@ -6060,26 +6060,26 @@ static PyObject *__pyx_sq_item_9shufflish_6affine_Affine0(PyObject *o, Py_ssize_
   return r;
 }
 
-static PyMethodDef __pyx_methods_9shufflish_6affine_Affine0[] = {
-  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine0_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine0_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine0_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_9shufflish_7_affine_Affine0[] = {
+  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine0_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine0_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine0_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine_Affine0_slots[] = {
-  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_6affine_Affine0},
-  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_6affine_7Affine0_1__getitem__},
-  {Py_tp_methods, (void *)__pyx_methods_9shufflish_6affine_Affine0},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine_AffineBase},
+static PyType_Slot __pyx_type_9shufflish_7_affine_Affine0_slots[] = {
+  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_7_affine_Affine0},
+  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_7_affine_7Affine0_1__getitem__},
+  {Py_tp_methods, (void *)__pyx_methods_9shufflish_7_affine_Affine0},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine_AffineBase},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine_Affine0_spec = {
-  "shufflish.affine.Affine0",
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine0),
+static PyType_Spec __pyx_type_9shufflish_7_affine_Affine0_spec = {
+  "shufflish._affine.Affine0",
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine0),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_9shufflish_6affine_Affine0_slots,
+  __pyx_type_9shufflish_7_affine_Affine0_slots,
 };
 #else
 
@@ -6087,7 +6087,7 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine0 = {
   0, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
-  __pyx_sq_item_9shufflish_6affine_Affine0, /*sq_item*/
+  __pyx_sq_item_9shufflish_7_affine_Affine0, /*sq_item*/
   0, /*sq_slice*/
   0, /*sq_ass_item*/
   0, /*sq_ass_slice*/
@@ -6098,16 +6098,16 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine0 = {
 
 static PyMappingMethods __pyx_tp_as_mapping_Affine0 = {
   0, /*mp_length*/
-  __pyx_pw_9shufflish_6affine_7Affine0_1__getitem__, /*mp_subscript*/
+  __pyx_pw_9shufflish_7_affine_7Affine0_1__getitem__, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_9shufflish_6affine_Affine0 = {
+static PyTypeObject __pyx_type_9shufflish_7_affine_Affine0 = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""Affine0", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine0), /*tp_basicsize*/
+  "shufflish._affine.""Affine0", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine0), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine_AffineBase, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine_AffineBase, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6140,7 +6140,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine0 = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_9shufflish_6affine_Affine0, /*tp_methods*/
+  __pyx_methods_9shufflish_7_affine_Affine0, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -6151,12 +6151,12 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine0 = {
   0, /*tp_dictoffset*/
   #endif
   #if CYTHON_COMPILING_IN_PYPY || 0
-  __pyx_pw_9shufflish_6affine_10AffineBase_1__init__, /*tp_init*/
+  __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__, /*tp_init*/
   #else
   0, /*tp_init*/
   #endif
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine_AffineBase, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine_AffineBase, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6190,7 +6190,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine0 = {
   #endif
 };
 #endif
-static PyObject *__pyx_sq_item_9shufflish_6affine_Affine1(PyObject *o, Py_ssize_t i) {
+static PyObject *__pyx_sq_item_9shufflish_7_affine_Affine1(PyObject *o, Py_ssize_t i) {
   PyObject *r;
   PyObject *x = PyInt_FromSsize_t(i); if(!x) return 0;
   r = Py_TYPE(o)->tp_as_mapping->mp_subscript(o, x);
@@ -6198,26 +6198,26 @@ static PyObject *__pyx_sq_item_9shufflish_6affine_Affine1(PyObject *o, Py_ssize_
   return r;
 }
 
-static PyMethodDef __pyx_methods_9shufflish_6affine_Affine1[] = {
-  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine1_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine1_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine1_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_9shufflish_7_affine_Affine1[] = {
+  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine1_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine1_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine1_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine_Affine1_slots[] = {
-  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_6affine_Affine1},
-  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_6affine_7Affine1_1__getitem__},
-  {Py_tp_methods, (void *)__pyx_methods_9shufflish_6affine_Affine1},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine_AffineBase},
+static PyType_Slot __pyx_type_9shufflish_7_affine_Affine1_slots[] = {
+  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_7_affine_Affine1},
+  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_7_affine_7Affine1_1__getitem__},
+  {Py_tp_methods, (void *)__pyx_methods_9shufflish_7_affine_Affine1},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine_AffineBase},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine_Affine1_spec = {
-  "shufflish.affine.Affine1",
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine1),
+static PyType_Spec __pyx_type_9shufflish_7_affine_Affine1_spec = {
+  "shufflish._affine.Affine1",
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine1),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_9shufflish_6affine_Affine1_slots,
+  __pyx_type_9shufflish_7_affine_Affine1_slots,
 };
 #else
 
@@ -6225,7 +6225,7 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine1 = {
   0, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
-  __pyx_sq_item_9shufflish_6affine_Affine1, /*sq_item*/
+  __pyx_sq_item_9shufflish_7_affine_Affine1, /*sq_item*/
   0, /*sq_slice*/
   0, /*sq_ass_item*/
   0, /*sq_ass_slice*/
@@ -6236,16 +6236,16 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine1 = {
 
 static PyMappingMethods __pyx_tp_as_mapping_Affine1 = {
   0, /*mp_length*/
-  __pyx_pw_9shufflish_6affine_7Affine1_1__getitem__, /*mp_subscript*/
+  __pyx_pw_9shufflish_7_affine_7Affine1_1__getitem__, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_9shufflish_6affine_Affine1 = {
+static PyTypeObject __pyx_type_9shufflish_7_affine_Affine1 = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""Affine1", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine1), /*tp_basicsize*/
+  "shufflish._affine.""Affine1", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine1), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine_AffineBase, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine_AffineBase, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6278,7 +6278,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine1 = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_9shufflish_6affine_Affine1, /*tp_methods*/
+  __pyx_methods_9shufflish_7_affine_Affine1, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -6289,12 +6289,12 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine1 = {
   0, /*tp_dictoffset*/
   #endif
   #if CYTHON_COMPILING_IN_PYPY || 0
-  __pyx_pw_9shufflish_6affine_10AffineBase_1__init__, /*tp_init*/
+  __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__, /*tp_init*/
   #else
   0, /*tp_init*/
   #endif
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine_AffineBase, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine_AffineBase, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6328,7 +6328,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine1 = {
   #endif
 };
 #endif
-static PyObject *__pyx_sq_item_9shufflish_6affine_Affine2(PyObject *o, Py_ssize_t i) {
+static PyObject *__pyx_sq_item_9shufflish_7_affine_Affine2(PyObject *o, Py_ssize_t i) {
   PyObject *r;
   PyObject *x = PyInt_FromSsize_t(i); if(!x) return 0;
   r = Py_TYPE(o)->tp_as_mapping->mp_subscript(o, x);
@@ -6336,26 +6336,26 @@ static PyObject *__pyx_sq_item_9shufflish_6affine_Affine2(PyObject *o, Py_ssize_
   return r;
 }
 
-static PyMethodDef __pyx_methods_9shufflish_6affine_Affine2[] = {
-  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine2_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine2_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine2_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_9shufflish_7_affine_Affine2[] = {
+  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine2_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine2_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine2_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine_Affine2_slots[] = {
-  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_6affine_Affine2},
-  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_6affine_7Affine2_1__getitem__},
-  {Py_tp_methods, (void *)__pyx_methods_9shufflish_6affine_Affine2},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine_AffineBase},
+static PyType_Slot __pyx_type_9shufflish_7_affine_Affine2_slots[] = {
+  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_7_affine_Affine2},
+  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_7_affine_7Affine2_1__getitem__},
+  {Py_tp_methods, (void *)__pyx_methods_9shufflish_7_affine_Affine2},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine_AffineBase},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine_Affine2_spec = {
-  "shufflish.affine.Affine2",
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine2),
+static PyType_Spec __pyx_type_9shufflish_7_affine_Affine2_spec = {
+  "shufflish._affine.Affine2",
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine2),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_9shufflish_6affine_Affine2_slots,
+  __pyx_type_9shufflish_7_affine_Affine2_slots,
 };
 #else
 
@@ -6363,7 +6363,7 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine2 = {
   0, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
-  __pyx_sq_item_9shufflish_6affine_Affine2, /*sq_item*/
+  __pyx_sq_item_9shufflish_7_affine_Affine2, /*sq_item*/
   0, /*sq_slice*/
   0, /*sq_ass_item*/
   0, /*sq_ass_slice*/
@@ -6374,16 +6374,16 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine2 = {
 
 static PyMappingMethods __pyx_tp_as_mapping_Affine2 = {
   0, /*mp_length*/
-  __pyx_pw_9shufflish_6affine_7Affine2_1__getitem__, /*mp_subscript*/
+  __pyx_pw_9shufflish_7_affine_7Affine2_1__getitem__, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_9shufflish_6affine_Affine2 = {
+static PyTypeObject __pyx_type_9shufflish_7_affine_Affine2 = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""Affine2", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine2), /*tp_basicsize*/
+  "shufflish._affine.""Affine2", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine2), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine_AffineBase, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine_AffineBase, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6416,7 +6416,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine2 = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_9shufflish_6affine_Affine2, /*tp_methods*/
+  __pyx_methods_9shufflish_7_affine_Affine2, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -6427,12 +6427,12 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine2 = {
   0, /*tp_dictoffset*/
   #endif
   #if CYTHON_COMPILING_IN_PYPY || 0
-  __pyx_pw_9shufflish_6affine_10AffineBase_1__init__, /*tp_init*/
+  __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__, /*tp_init*/
   #else
   0, /*tp_init*/
   #endif
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine_AffineBase, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine_AffineBase, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6466,7 +6466,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine2 = {
   #endif
 };
 #endif
-static PyObject *__pyx_sq_item_9shufflish_6affine_Affine3(PyObject *o, Py_ssize_t i) {
+static PyObject *__pyx_sq_item_9shufflish_7_affine_Affine3(PyObject *o, Py_ssize_t i) {
   PyObject *r;
   PyObject *x = PyInt_FromSsize_t(i); if(!x) return 0;
   r = Py_TYPE(o)->tp_as_mapping->mp_subscript(o, x);
@@ -6474,26 +6474,26 @@ static PyObject *__pyx_sq_item_9shufflish_6affine_Affine3(PyObject *o, Py_ssize_
   return r;
 }
 
-static PyMethodDef __pyx_methods_9shufflish_6affine_Affine3[] = {
-  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine3_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine3_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_6affine_7Affine3_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+static PyMethodDef __pyx_methods_9shufflish_7_affine_Affine3[] = {
+  {"index", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine3_4index, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine3_6__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_7Affine3_8__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine_Affine3_slots[] = {
-  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_6affine_Affine3},
-  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_6affine_7Affine3_1__getitem__},
-  {Py_tp_methods, (void *)__pyx_methods_9shufflish_6affine_Affine3},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine_AffineBase},
+static PyType_Slot __pyx_type_9shufflish_7_affine_Affine3_slots[] = {
+  {Py_sq_item, (void *)__pyx_sq_item_9shufflish_7_affine_Affine3},
+  {Py_mp_subscript, (void *)__pyx_pw_9shufflish_7_affine_7Affine3_1__getitem__},
+  {Py_tp_methods, (void *)__pyx_methods_9shufflish_7_affine_Affine3},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine_AffineBase},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine_Affine3_spec = {
-  "shufflish.affine.Affine3",
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine3),
+static PyType_Spec __pyx_type_9shufflish_7_affine_Affine3_spec = {
+  "shufflish._affine.Affine3",
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine3),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE,
-  __pyx_type_9shufflish_6affine_Affine3_slots,
+  __pyx_type_9shufflish_7_affine_Affine3_slots,
 };
 #else
 
@@ -6501,7 +6501,7 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine3 = {
   0, /*sq_length*/
   0, /*sq_concat*/
   0, /*sq_repeat*/
-  __pyx_sq_item_9shufflish_6affine_Affine3, /*sq_item*/
+  __pyx_sq_item_9shufflish_7_affine_Affine3, /*sq_item*/
   0, /*sq_slice*/
   0, /*sq_ass_item*/
   0, /*sq_ass_slice*/
@@ -6512,16 +6512,16 @@ static PySequenceMethods __pyx_tp_as_sequence_Affine3 = {
 
 static PyMappingMethods __pyx_tp_as_mapping_Affine3 = {
   0, /*mp_length*/
-  __pyx_pw_9shufflish_6affine_7Affine3_1__getitem__, /*mp_subscript*/
+  __pyx_pw_9shufflish_7_affine_7Affine3_1__getitem__, /*mp_subscript*/
   0, /*mp_ass_subscript*/
 };
 
-static PyTypeObject __pyx_type_9shufflish_6affine_Affine3 = {
+static PyTypeObject __pyx_type_9shufflish_7_affine_Affine3 = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""Affine3", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine_Affine3), /*tp_basicsize*/
+  "shufflish._affine.""Affine3", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine_Affine3), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine_AffineBase, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine_AffineBase, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6554,7 +6554,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine3 = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_9shufflish_6affine_Affine3, /*tp_methods*/
+  __pyx_methods_9shufflish_7_affine_Affine3, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -6565,12 +6565,12 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine3 = {
   0, /*tp_dictoffset*/
   #endif
   #if CYTHON_COMPILING_IN_PYPY || 0
-  __pyx_pw_9shufflish_6affine_10AffineBase_1__init__, /*tp_init*/
+  __pyx_pw_9shufflish_7_affine_10AffineBase_1__init__, /*tp_init*/
   #else
   0, /*tp_init*/
   #endif
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine_AffineBase, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine_AffineBase, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6606,20 +6606,20 @@ static PyTypeObject __pyx_type_9shufflish_6affine_Affine3 = {
 #endif
 
 #if CYTHON_USE_FREELISTS
-static struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *__pyx_freelist_9shufflish_6affine___pyx_scope_struct____getitem__[8];
-static int __pyx_freecount_9shufflish_6affine___pyx_scope_struct____getitem__ = 0;
+static struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *__pyx_freelist_9shufflish_7_affine___pyx_scope_struct____getitem__[8];
+static int __pyx_freecount_9shufflish_7_affine___pyx_scope_struct____getitem__ = 0;
 #endif
 
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct____getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct____getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct____getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__)))) {
-    o = (PyObject*)__pyx_freelist_9shufflish_6affine___pyx_scope_struct____getitem__[--__pyx_freecount_9shufflish_6affine___pyx_scope_struct____getitem__];
-    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__));
+  if (likely((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct____getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__)))) {
+    o = (PyObject*)__pyx_freelist_9shufflish_7_affine___pyx_scope_struct____getitem__[--__pyx_freecount_9shufflish_7_affine___pyx_scope_struct____getitem__];
+    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -6632,11 +6632,11 @@ static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct____getitem__
   return o;
 }
 
-static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct____getitem__(PyObject *o) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *)o;
+static void __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct____getitem__(PyObject *o) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct____getitem__) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct____getitem__) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -6645,8 +6645,8 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct____getitem__(
   Py_CLEAR(p->__pyx_v_index);
   Py_CLEAR(p->__pyx_v_self);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct____getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__)))) {
-    __pyx_freelist_9shufflish_6affine___pyx_scope_struct____getitem__[__pyx_freecount_9shufflish_6affine___pyx_scope_struct____getitem__++] = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *)o);
+  if (((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct____getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__)))) {
+    __pyx_freelist_9shufflish_7_affine___pyx_scope_struct____getitem__[__pyx_freecount_9shufflish_7_affine___pyx_scope_struct____getitem__++] = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *)o);
   } else
   #endif
   {
@@ -6661,9 +6661,9 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct____getitem__(
   }
 }
 
-static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct____getitem__(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct____getitem__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__ *)o;
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__ *)o;
   if (p->__pyx_v_index) {
     e = (*v)(p->__pyx_v_index, a); if (e) return e;
   }
@@ -6673,27 +6673,27 @@ static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct____getitem__(
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem___slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct____getitem__},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct____getitem__},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct____getitem__},
+static PyType_Slot __pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem___slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct____getitem__},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct____getitem__},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct____getitem__},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem___spec = {
-  "shufflish.affine.__pyx_scope_struct____getitem__",
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__),
+static PyType_Spec __pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem___spec = {
+  "shufflish._affine.__pyx_scope_struct____getitem__",
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem___slots,
+  __pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem___slots,
 };
 #else
 
-static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__ = {
+static PyTypeObject __pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""__pyx_scope_struct____getitem__", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct____getitem__), /*tp_basicsize*/
+  "shufflish._affine.""__pyx_scope_struct____getitem__", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____getitem__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct____getitem__, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct____getitem__, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6720,7 +6720,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem_
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct____getitem__, /*tp_traverse*/
+  __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct____getitem__, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -6738,7 +6738,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem_
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine___pyx_scope_struct____getitem__, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine___pyx_scope_struct____getitem__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6774,20 +6774,20 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct____getitem_
 #endif
 
 #if CYTHON_USE_FREELISTS
-static struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *__pyx_freelist_9shufflish_6affine___pyx_scope_struct_1___getitem__[8];
-static int __pyx_freecount_9shufflish_6affine___pyx_scope_struct_1___getitem__ = 0;
+static struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *__pyx_freelist_9shufflish_7_affine___pyx_scope_struct_1___getitem__[8];
+static int __pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1___getitem__ = 0;
 #endif
 
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_1___getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_1___getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct_1___getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__)))) {
-    o = (PyObject*)__pyx_freelist_9shufflish_6affine___pyx_scope_struct_1___getitem__[--__pyx_freecount_9shufflish_6affine___pyx_scope_struct_1___getitem__];
-    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__));
+  if (likely((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1___getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__)))) {
+    o = (PyObject*)__pyx_freelist_9shufflish_7_affine___pyx_scope_struct_1___getitem__[--__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1___getitem__];
+    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -6800,11 +6800,11 @@ static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_1___getitem_
   return o;
 }
 
-static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_1___getitem__(PyObject *o) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *)o;
+static void __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_1___getitem__(PyObject *o) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_1___getitem__) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_1___getitem__) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -6813,8 +6813,8 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_1___getitem__
   Py_CLEAR(p->__pyx_v_index);
   Py_CLEAR(p->__pyx_v_self);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct_1___getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__)))) {
-    __pyx_freelist_9shufflish_6affine___pyx_scope_struct_1___getitem__[__pyx_freecount_9shufflish_6affine___pyx_scope_struct_1___getitem__++] = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *)o);
+  if (((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1___getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__)))) {
+    __pyx_freelist_9shufflish_7_affine___pyx_scope_struct_1___getitem__[__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1___getitem__++] = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *)o);
   } else
   #endif
   {
@@ -6829,9 +6829,9 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_1___getitem__
   }
 }
 
-static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_1___getitem__(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_1___getitem__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__ *)o;
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__ *)o;
   if (p->__pyx_v_index) {
     e = (*v)(p->__pyx_v_index, a); if (e) return e;
   }
@@ -6841,27 +6841,27 @@ static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_1___getitem__
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem___slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_1___getitem__},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_1___getitem__},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_1___getitem__},
+static PyType_Slot __pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem___slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_1___getitem__},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_1___getitem__},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_1___getitem__},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem___spec = {
-  "shufflish.affine.__pyx_scope_struct_1___getitem__",
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__),
+static PyType_Spec __pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem___spec = {
+  "shufflish._affine.__pyx_scope_struct_1___getitem__",
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem___slots,
+  __pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem___slots,
 };
 #else
 
-static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__ = {
+static PyTypeObject __pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""__pyx_scope_struct_1___getitem__", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_1___getitem__), /*tp_basicsize*/
+  "shufflish._affine.""__pyx_scope_struct_1___getitem__", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1___getitem__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_1___getitem__, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_1___getitem__, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -6888,7 +6888,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_1___getitem__, /*tp_traverse*/
+  __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_1___getitem__, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -6906,7 +6906,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine___pyx_scope_struct_1___getitem__, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_1___getitem__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6942,20 +6942,20 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem
 #endif
 
 #if CYTHON_USE_FREELISTS
-static struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *__pyx_freelist_9shufflish_6affine___pyx_scope_struct_2___getitem__[8];
-static int __pyx_freecount_9shufflish_6affine___pyx_scope_struct_2___getitem__ = 0;
+static struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *__pyx_freelist_9shufflish_7_affine___pyx_scope_struct_2___getitem__[8];
+static int __pyx_freecount_9shufflish_7_affine___pyx_scope_struct_2___getitem__ = 0;
 #endif
 
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_2___getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_2___getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct_2___getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__)))) {
-    o = (PyObject*)__pyx_freelist_9shufflish_6affine___pyx_scope_struct_2___getitem__[--__pyx_freecount_9shufflish_6affine___pyx_scope_struct_2___getitem__];
-    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__));
+  if (likely((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_2___getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__)))) {
+    o = (PyObject*)__pyx_freelist_9shufflish_7_affine___pyx_scope_struct_2___getitem__[--__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_2___getitem__];
+    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -6968,11 +6968,11 @@ static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_2___getitem_
   return o;
 }
 
-static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_2___getitem__(PyObject *o) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *)o;
+static void __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_2___getitem__(PyObject *o) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_2___getitem__) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_2___getitem__) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -6981,8 +6981,8 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_2___getitem__
   Py_CLEAR(p->__pyx_v_index);
   Py_CLEAR(p->__pyx_v_self);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct_2___getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__)))) {
-    __pyx_freelist_9shufflish_6affine___pyx_scope_struct_2___getitem__[__pyx_freecount_9shufflish_6affine___pyx_scope_struct_2___getitem__++] = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *)o);
+  if (((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_2___getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__)))) {
+    __pyx_freelist_9shufflish_7_affine___pyx_scope_struct_2___getitem__[__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_2___getitem__++] = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *)o);
   } else
   #endif
   {
@@ -6997,9 +6997,9 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_2___getitem__
   }
 }
 
-static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_2___getitem__(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_2___getitem__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__ *)o;
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__ *)o;
   if (p->__pyx_v_index) {
     e = (*v)(p->__pyx_v_index, a); if (e) return e;
   }
@@ -7009,27 +7009,27 @@ static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_2___getitem__
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem___slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_2___getitem__},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_2___getitem__},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_2___getitem__},
+static PyType_Slot __pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem___slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_2___getitem__},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_2___getitem__},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_2___getitem__},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem___spec = {
-  "shufflish.affine.__pyx_scope_struct_2___getitem__",
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__),
+static PyType_Spec __pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem___spec = {
+  "shufflish._affine.__pyx_scope_struct_2___getitem__",
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem___slots,
+  __pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem___slots,
 };
 #else
 
-static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__ = {
+static PyTypeObject __pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""__pyx_scope_struct_2___getitem__", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_2___getitem__), /*tp_basicsize*/
+  "shufflish._affine.""__pyx_scope_struct_2___getitem__", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_2___getitem__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_2___getitem__, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_2___getitem__, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -7056,7 +7056,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_2___getitem__, /*tp_traverse*/
+  __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_2___getitem__, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -7074,7 +7074,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine___pyx_scope_struct_2___getitem__, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_2___getitem__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -7110,20 +7110,20 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem
 #endif
 
 #if CYTHON_USE_FREELISTS
-static struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *__pyx_freelist_9shufflish_6affine___pyx_scope_struct_3___getitem__[8];
-static int __pyx_freecount_9shufflish_6affine___pyx_scope_struct_3___getitem__ = 0;
+static struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *__pyx_freelist_9shufflish_7_affine___pyx_scope_struct_3___getitem__[8];
+static int __pyx_freecount_9shufflish_7_affine___pyx_scope_struct_3___getitem__ = 0;
 #endif
 
-static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_3___getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_3___getitem__(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
   PyObject *o;
   #if CYTHON_COMPILING_IN_LIMITED_API
   allocfunc alloc_func = (allocfunc)PyType_GetSlot(t, Py_tp_alloc);
   o = alloc_func(t, 0);
   #else
   #if CYTHON_USE_FREELISTS
-  if (likely((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct_3___getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__)))) {
-    o = (PyObject*)__pyx_freelist_9shufflish_6affine___pyx_scope_struct_3___getitem__[--__pyx_freecount_9shufflish_6affine___pyx_scope_struct_3___getitem__];
-    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__));
+  if (likely((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_3___getitem__ > 0) & (int)(t->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__)))) {
+    o = (PyObject*)__pyx_freelist_9shufflish_7_affine___pyx_scope_struct_3___getitem__[--__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_3___getitem__];
+    memset(o, 0, sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__));
     (void) PyObject_INIT(o, t);
     PyObject_GC_Track(o);
   } else
@@ -7136,11 +7136,11 @@ static PyObject *__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_3___getitem_
   return o;
 }
 
-static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_3___getitem__(PyObject *o) {
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *)o;
+static void __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_3___getitem__(PyObject *o) {
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *)o;
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely((PY_VERSION_HEX >= 0x03080000 || __Pyx_PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE)) && __Pyx_PyObject_GetSlot(o, tp_finalize, destructor)) && !__Pyx_PyObject_GC_IsFinalized(o)) {
-    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_3___getitem__) {
+    if (__Pyx_PyObject_GetSlot(o, tp_dealloc, destructor) == __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_3___getitem__) {
       if (PyObject_CallFinalizerFromDealloc(o)) return;
     }
   }
@@ -7149,8 +7149,8 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_3___getitem__
   Py_CLEAR(p->__pyx_v_index);
   Py_CLEAR(p->__pyx_v_self);
   #if CYTHON_USE_FREELISTS
-  if (((int)(__pyx_freecount_9shufflish_6affine___pyx_scope_struct_3___getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__)))) {
-    __pyx_freelist_9shufflish_6affine___pyx_scope_struct_3___getitem__[__pyx_freecount_9shufflish_6affine___pyx_scope_struct_3___getitem__++] = ((struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *)o);
+  if (((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_3___getitem__ < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__)))) {
+    __pyx_freelist_9shufflish_7_affine___pyx_scope_struct_3___getitem__[__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_3___getitem__++] = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *)o);
   } else
   #endif
   {
@@ -7165,9 +7165,9 @@ static void __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_3___getitem__
   }
 }
 
-static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_3___getitem__(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_3___getitem__(PyObject *o, visitproc v, void *a) {
   int e;
-  struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *p = (struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__ *)o;
+  struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *p = (struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__ *)o;
   if (p->__pyx_v_index) {
     e = (*v)(p->__pyx_v_index, a); if (e) return e;
   }
@@ -7177,27 +7177,27 @@ static int __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_3___getitem__
   return 0;
 }
 #if CYTHON_USE_TYPE_SPECS
-static PyType_Slot __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem___slots[] = {
-  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_3___getitem__},
-  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_3___getitem__},
-  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_6affine___pyx_scope_struct_3___getitem__},
+static PyType_Slot __pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem___slots[] = {
+  {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_3___getitem__},
+  {Py_tp_traverse, (void *)__pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_3___getitem__},
+  {Py_tp_new, (void *)__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_3___getitem__},
   {0, 0},
 };
-static PyType_Spec __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem___spec = {
-  "shufflish.affine.__pyx_scope_struct_3___getitem__",
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__),
+static PyType_Spec __pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem___spec = {
+  "shufflish._affine.__pyx_scope_struct_3___getitem__",
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__),
   0,
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE,
-  __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem___slots,
+  __pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem___slots,
 };
 #else
 
-static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__ = {
+static PyTypeObject __pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__ = {
   PyVarObject_HEAD_INIT(0, 0)
-  "shufflish.affine.""__pyx_scope_struct_3___getitem__", /*tp_name*/
-  sizeof(struct __pyx_obj_9shufflish_6affine___pyx_scope_struct_3___getitem__), /*tp_basicsize*/
+  "shufflish._affine.""__pyx_scope_struct_3___getitem__", /*tp_name*/
+  sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_3___getitem__), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_9shufflish_6affine___pyx_scope_struct_3___getitem__, /*tp_dealloc*/
+  __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_3___getitem__, /*tp_dealloc*/
   #if PY_VERSION_HEX < 0x030800b4
   0, /*tp_print*/
   #endif
@@ -7224,7 +7224,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_HAVE_GC|Py_TPFLAGS_HAVE_FINALIZE, /*tp_flags*/
   0, /*tp_doc*/
-  __pyx_tp_traverse_9shufflish_6affine___pyx_scope_struct_3___getitem__, /*tp_traverse*/
+  __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_3___getitem__, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
@@ -7242,7 +7242,7 @@ static PyTypeObject __pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem
   #endif
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_9shufflish_6affine___pyx_scope_struct_3___getitem__, /*tp_new*/
+  __pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_3___getitem__, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -7328,7 +7328,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_send, __pyx_k_send, sizeof(__pyx_k_send), 0, 0, 1, 1},
     {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
     {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
-    {&__pyx_n_s_shufflish_affine, __pyx_k_shufflish_affine, sizeof(__pyx_k_shufflish_affine), 0, 0, 1, 1},
+    {&__pyx_n_s_shufflish__affine, __pyx_k_shufflish__affine, sizeof(__pyx_k_shufflish__affine), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
     {0, 0, 0, 0, 0, 0, 0}
@@ -7406,214 +7406,214 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_6affine_AffineBase = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine_AffineBase_spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_6affine_AffineBase)) __PYX_ERR(1, 30, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine_AffineBase_spec, __pyx_ptype_9shufflish_6affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine_AffineBase = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_AffineBase_spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine_AffineBase)) __PYX_ERR(1, 30, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_AffineBase_spec, __pyx_ptype_9shufflish_7_affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine_AffineBase = &__pyx_type_9shufflish_6affine_AffineBase;
+  __pyx_ptype_9shufflish_7_affine_AffineBase = &__pyx_type_9shufflish_7_affine_AffineBase;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine_AffineBase->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine_AffineBase->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine_AffineBase->tp_dictoffset && __pyx_ptype_9shufflish_6affine_AffineBase->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine_AffineBase->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine_AffineBase->tp_dictoffset && __pyx_ptype_9shufflish_7_affine_AffineBase->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine_AffineBase->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AffineBase, (PyObject *) __pyx_ptype_9shufflish_6affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AffineBase, (PyObject *) __pyx_ptype_9shufflish_7_affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_6affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_AffineBase) < 0) __PYX_ERR(1, 30, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_6affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 39, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_7_affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_9shufflish_6affine_Affine0 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine_Affine0_spec, __pyx_t_1);
+  __pyx_ptype_9shufflish_7_affine_Affine0 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_Affine0_spec, __pyx_t_1);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_ptype_9shufflish_6affine_Affine0)) __PYX_ERR(1, 39, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine_Affine0_spec, __pyx_ptype_9shufflish_6affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
+  if (unlikely(!__pyx_ptype_9shufflish_7_affine_Affine0)) __PYX_ERR(1, 39, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_Affine0_spec, __pyx_ptype_9shufflish_7_affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine_Affine0 = &__pyx_type_9shufflish_6affine_Affine0;
+  __pyx_ptype_9shufflish_7_affine_Affine0 = &__pyx_type_9shufflish_7_affine_Affine0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_ptype_9shufflish_6affine_Affine0->tp_base = __pyx_ptype_9shufflish_6affine_AffineBase;
+  __pyx_ptype_9shufflish_7_affine_Affine0->tp_base = __pyx_ptype_9shufflish_7_affine_AffineBase;
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine_Affine0->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine_Affine0->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine_Affine0->tp_dictoffset && __pyx_ptype_9shufflish_6affine_Affine0->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine_Affine0->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine_Affine0->tp_dictoffset && __pyx_ptype_9shufflish_7_affine_Affine0->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine_Affine0->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine0, (PyObject *) __pyx_ptype_9shufflish_6affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine0, (PyObject *) __pyx_ptype_9shufflish_7_affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_6affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_Affine0) < 0) __PYX_ERR(1, 39, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_6affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 59, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_7_affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_9shufflish_6affine_Affine1 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine_Affine1_spec, __pyx_t_1);
+  __pyx_ptype_9shufflish_7_affine_Affine1 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_Affine1_spec, __pyx_t_1);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_ptype_9shufflish_6affine_Affine1)) __PYX_ERR(1, 59, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine_Affine1_spec, __pyx_ptype_9shufflish_6affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
+  if (unlikely(!__pyx_ptype_9shufflish_7_affine_Affine1)) __PYX_ERR(1, 59, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_Affine1_spec, __pyx_ptype_9shufflish_7_affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine_Affine1 = &__pyx_type_9shufflish_6affine_Affine1;
+  __pyx_ptype_9shufflish_7_affine_Affine1 = &__pyx_type_9shufflish_7_affine_Affine1;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_ptype_9shufflish_6affine_Affine1->tp_base = __pyx_ptype_9shufflish_6affine_AffineBase;
+  __pyx_ptype_9shufflish_7_affine_Affine1->tp_base = __pyx_ptype_9shufflish_7_affine_AffineBase;
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine_Affine1->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine_Affine1->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine_Affine1->tp_dictoffset && __pyx_ptype_9shufflish_6affine_Affine1->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine_Affine1->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine_Affine1->tp_dictoffset && __pyx_ptype_9shufflish_7_affine_Affine1->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine_Affine1->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine1, (PyObject *) __pyx_ptype_9shufflish_6affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine1, (PyObject *) __pyx_ptype_9shufflish_7_affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_6affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_Affine1) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_6affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 79, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_7_affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_9shufflish_6affine_Affine2 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine_Affine2_spec, __pyx_t_1);
+  __pyx_ptype_9shufflish_7_affine_Affine2 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_Affine2_spec, __pyx_t_1);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_ptype_9shufflish_6affine_Affine2)) __PYX_ERR(1, 79, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine_Affine2_spec, __pyx_ptype_9shufflish_6affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
+  if (unlikely(!__pyx_ptype_9shufflish_7_affine_Affine2)) __PYX_ERR(1, 79, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_Affine2_spec, __pyx_ptype_9shufflish_7_affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine_Affine2 = &__pyx_type_9shufflish_6affine_Affine2;
+  __pyx_ptype_9shufflish_7_affine_Affine2 = &__pyx_type_9shufflish_7_affine_Affine2;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_ptype_9shufflish_6affine_Affine2->tp_base = __pyx_ptype_9shufflish_6affine_AffineBase;
+  __pyx_ptype_9shufflish_7_affine_Affine2->tp_base = __pyx_ptype_9shufflish_7_affine_AffineBase;
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine_Affine2->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine_Affine2->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine_Affine2->tp_dictoffset && __pyx_ptype_9shufflish_6affine_Affine2->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine_Affine2->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine_Affine2->tp_dictoffset && __pyx_ptype_9shufflish_7_affine_Affine2->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine_Affine2->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine2, (PyObject *) __pyx_ptype_9shufflish_6affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine2, (PyObject *) __pyx_ptype_9shufflish_7_affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_6affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_Affine2) < 0) __PYX_ERR(1, 79, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_6affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_Pack(1, (PyObject *)__pyx_ptype_9shufflish_7_affine_AffineBase); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_ptype_9shufflish_6affine_Affine3 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine_Affine3_spec, __pyx_t_1);
+  __pyx_ptype_9shufflish_7_affine_Affine3 = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_Affine3_spec, __pyx_t_1);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_ptype_9shufflish_6affine_Affine3)) __PYX_ERR(1, 99, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine_Affine3_spec, __pyx_ptype_9shufflish_6affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
+  if (unlikely(!__pyx_ptype_9shufflish_7_affine_Affine3)) __PYX_ERR(1, 99, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_Affine3_spec, __pyx_ptype_9shufflish_7_affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine_Affine3 = &__pyx_type_9shufflish_6affine_Affine3;
+  __pyx_ptype_9shufflish_7_affine_Affine3 = &__pyx_type_9shufflish_7_affine_Affine3;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  __pyx_ptype_9shufflish_6affine_Affine3->tp_base = __pyx_ptype_9shufflish_6affine_AffineBase;
+  __pyx_ptype_9shufflish_7_affine_Affine3->tp_base = __pyx_ptype_9shufflish_7_affine_AffineBase;
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine_Affine3->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine_Affine3->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine_Affine3->tp_dictoffset && __pyx_ptype_9shufflish_6affine_Affine3->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine_Affine3->tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine_Affine3->tp_dictoffset && __pyx_ptype_9shufflish_7_affine_Affine3->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine_Affine3->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine3, (PyObject *) __pyx_ptype_9shufflish_6affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Affine3, (PyObject *) __pyx_ptype_9shufflish_7_affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_6affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_Affine3) < 0) __PYX_ERR(1, 99, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__)) __PYX_ERR(1, 40, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem___spec, __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__) < 0) __PYX_ERR(1, 40, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__)) __PYX_ERR(1, 40, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem___spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__) < 0) __PYX_ERR(1, 40, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__ = &__pyx_type_9shufflish_6affine___pyx_scope_struct____getitem__;
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__ = &__pyx_type_9shufflish_7_affine___pyx_scope_struct____getitem__;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__) < 0) __PYX_ERR(1, 40, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__) < 0) __PYX_ERR(1, 40, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__->tp_dictoffset && __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine___pyx_scope_struct____getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
-  }
-  #endif
-  #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__)) __PYX_ERR(1, 60, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem___spec, __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__) < 0) __PYX_ERR(1, 60, __pyx_L1_error)
-  #else
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__ = &__pyx_type_9shufflish_6affine___pyx_scope_struct_1___getitem__;
-  #endif
-  #if !CYTHON_COMPILING_IN_LIMITED_API
-  #endif
-  #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__) < 0) __PYX_ERR(1, 60, __pyx_L1_error)
-  #endif
-  #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__->tp_print = 0;
-  #endif
-  #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__->tp_dictoffset && __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine___pyx_scope_struct_1___getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__->tp_dictoffset && __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__)) __PYX_ERR(1, 80, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem___spec, __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__) < 0) __PYX_ERR(1, 80, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__)) __PYX_ERR(1, 60, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem___spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__) < 0) __PYX_ERR(1, 60, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__ = &__pyx_type_9shufflish_6affine___pyx_scope_struct_2___getitem__;
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__ = &__pyx_type_9shufflish_7_affine___pyx_scope_struct_1___getitem__;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__) < 0) __PYX_ERR(1, 80, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__) < 0) __PYX_ERR(1, 60, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__->tp_dictoffset && __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine___pyx_scope_struct_2___getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__->tp_dictoffset && __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1___getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__)) __PYX_ERR(1, 100, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem___spec, __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__) < 0) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__)) __PYX_ERR(1, 80, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem___spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__) < 0) __PYX_ERR(1, 80, __pyx_L1_error)
   #else
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__ = &__pyx_type_9shufflish_6affine___pyx_scope_struct_3___getitem__;
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__ = &__pyx_type_9shufflish_7_affine___pyx_scope_struct_2___getitem__;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__) < 0) __PYX_ERR(1, 100, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__) < 0) __PYX_ERR(1, 80, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
-  __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__->tp_print = 0;
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__->tp_print = 0;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__->tp_dictoffset && __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__->tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_ptype_9shufflish_6affine___pyx_scope_struct_3___getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__->tp_dictoffset && __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_2___getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
+  }
+  #endif
+  #if CYTHON_USE_TYPE_SPECS
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__)) __PYX_ERR(1, 100, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem___spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__) < 0) __PYX_ERR(1, 100, __pyx_L1_error)
+  #else
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__ = &__pyx_type_9shufflish_7_affine___pyx_scope_struct_3___getitem__;
+  #endif
+  #if !CYTHON_COMPILING_IN_LIMITED_API
+  #endif
+  #if !CYTHON_USE_TYPE_SPECS
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__) < 0) __PYX_ERR(1, 100, __pyx_L1_error)
+  #endif
+  #if PY_MAJOR_VERSION < 3
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__->tp_print = 0;
+  #endif
+  #if !CYTHON_COMPILING_IN_LIMITED_API
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__->tp_dictoffset && __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__->tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_3___getitem__->tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   #endif
   __Pyx_RefNannyFinishContext();
@@ -7652,10 +7652,10 @@ static int __Pyx_modinit_function_import_code(void) {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_affine(PyObject* module); /*proto*/
+static int __pyx_pymod_exec__affine(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_affine},
+  {Py_mod_exec, (void*)__pyx_pymod_exec__affine},
   {0, NULL}
 };
 #endif
@@ -7668,7 +7668,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "affine",
+      "_affine",
       0, /* m_doc */
     #if CYTHON_PEP489_MULTI_PHASE_INIT
       0, /* m_size */
@@ -7716,11 +7716,11 @@ namespace {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initaffine(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initaffine(void)
+__Pyx_PyMODINIT_FUNC init_affine(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC init_affine(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_affine(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_affine(void)
+__Pyx_PyMODINIT_FUNC PyInit__affine(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit__affine(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -7801,7 +7801,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_affine(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec__affine(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -7818,7 +7818,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_affine(PyObject *__pyx_pyinit_modu
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'affine' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module '_affine' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -7830,13 +7830,13 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_affine(PyObject *__pyx_pyinit_modu
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("affine", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("_affine", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   if (unlikely(!__pyx_m)) __PYX_ERR(1, 1, __pyx_L1_error)
   #elif CYTHON_USE_MODULE_STATE
   __pyx_t_1 = PyModule_Create(&__pyx_moduledef); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   {
     int add_module_result = PyState_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "affine" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "_affine" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -7860,7 +7860,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_affine(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit__affine(void)", 0);
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -7898,14 +7898,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_shufflish__affine) {
+  if (__pyx_module_is_main_shufflish___affine) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(1, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "shufflish.affine")) {
-      if (unlikely((PyDict_SetItemString(modules, "shufflish.affine", __pyx_m) < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "shufflish._affine")) {
+      if (unlikely((PyDict_SetItemString(modules, "shufflish._affine", __pyx_m) < 0))) __PYX_ERR(1, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -7926,7 +7926,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(1, 1, __pyx_L1_error)
   #endif
 
-  /* "shufflish/affine.pyx":1
+  /* "shufflish/_affine.pyx":1
  * # cython: language_level=3             # <<<<<<<<<<<<<<
  * # cython: binding=False
  * # cython: embedsignature=False
@@ -7943,7 +7943,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init shufflish.affine", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init shufflish._affine", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -7957,7 +7957,7 @@ if (!__Pyx_RefNanny) {
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init shufflish.affine");
+    PyErr_SetString(PyExc_ImportError, "init shufflish._affine");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
