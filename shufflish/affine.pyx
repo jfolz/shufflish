@@ -41,8 +41,6 @@ cdef class Affine0(AffineBase):
         cdef uint64_t i, stop, step
         if isinstance(index, slice):
             i, stop, step = index.indices(self.params.domain)
-            print(i, stop, step)
-            print(self.params.prime, self.params.offset, self.params.domain)
             if step > 0:
                 while i < stop:
                     yield affineCipher0(&self.params, i)

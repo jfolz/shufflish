@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdint.h>
 
 #ifndef AFFINE_H
@@ -18,7 +19,7 @@ inline uint64_t name(const struct affineCipherParameters * param, uint64_t i) { 
 
 newAffineCipher(affineCipher0,
     if (i % 2 == 0) {
-        i = domain - i / 2;
+        i = domain - 1 - i / 2;
     } else {
         i /= 2;
     }
@@ -30,7 +31,7 @@ newAffineCipher(affineCipher2,
     if (i % 2 == 0) {
         i /= 2;
     } else {
-        i = domain - i / 2;
+        i = domain - 1 - i / 2;
     });
 newAffineCipher(affineCipher3,
     {}
