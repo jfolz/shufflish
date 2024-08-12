@@ -17,9 +17,9 @@ from libc.stdint cimport *
 
 cdef extern from "affine.h":
     struct affineCipherParameters:
+        uint64_t domain
         uint64_t prime
         uint64_t offset
-        uint64_t domain
 
     cdef uint64_t affineCipher0(affineCipherParameters * param, uint64_t i) noexcept
     cdef uint64_t affineCipher1(affineCipherParameters * param, uint64_t i) noexcept
@@ -31,9 +31,9 @@ cdef class AffineBase:
     cdef affineCipherParameters params
 
     def __init__(self, uint64_t domain, uint64_t prime, uint64_t offset):
+        self.params.domain = domain
         self.params.prime = prime % domain
         self.params.offset = offset % domain
-        self.params.domain = domain
 
 
 cdef class Affine0(AffineBase):
@@ -41,6 +41,8 @@ cdef class Affine0(AffineBase):
         cdef uint64_t i, stop, step
         if isinstance(index, slice):
             i, stop, step = index.indices(self.params.domain)
+            print(i, stop, step)
+            print(self.params.prime, self.params.offset, self.params.domain)
             if step > 0:
                 while i < stop:
                     yield affineCipher0(&self.params, i)

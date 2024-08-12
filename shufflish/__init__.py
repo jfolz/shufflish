@@ -1,3 +1,4 @@
+from abc import abstractmethod
 import bisect
 import random
 from .affine import Affine0, Affine1, Affine2, Affine3
@@ -68,17 +69,22 @@ class ShufflishPy:
         self.index = methods[seed % n]
         seed //= n
         # Step 2: select prime number
-        # we need gcd(n, prime) = 1,
-        # which we can guarantee by exluding all primes <= n
-        first_prime = bisect.bisect(primes, domain)
-        n = len(primes) - first_prime
-        if n <= 0:
-            raise ValueError("your n is too big so we ran out of primes")
-        self.prime = primes[seed % n + first_prime] % domain
+        # we need gcd(n, prime) = 1, since one of them is prime,
+        # we only need to check if one is a factor of the other
+        primes = [p for p in primes if domain % p != 0 and p % domain != 0]
+        n = len(primes)
+        self.prime = primes[seed % n] % domain
         seed //= n
         # Step 3: select offset
         # n // 7 is used so
         self.offset = domain // 7 + seed % domain
+
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            for i in range(*index.indices(self.domain)):
+                yield self.index(i)
+        else:
+            return self.index(index)
 
     def __s0(self, i):
         domain = self.domain
@@ -123,7 +129,7 @@ class ShufflishPy2:
         # Step 1: select prime number
         # we need gcd(n, prime) = 1,
         # which we can guarantee by exluding all primes <= n
-        large_primes = [p for p in large_primes if domain % p != 0]
+        large_primes = [p for p in large_primes if domain % p != 0 and p % domain != 0]
         n = len(large_primes)
         self.prime = large_primes[seed % n] % domain
         seed //= n
@@ -148,10 +154,21 @@ class ShufflishPy2:
 
 
 class __ShufflishBase:
-    def __init__(self, prime, offset, domain):
+    def __init__(self, domain, prime, offset):
+        self.domain = domain
         self.prime = prime
         self.offset = offset
-        self.domain = domain
+
+    @abstractmethod
+    def index(self, i):
+        pass
+
+    def __getitem__(self, index):
+        if isinstance(index, slice):
+            for i in range(*index.indices(self.domain)):
+                yield self.index(i)
+        else:
+            return self.index(index)
 
 
 class __Shufflish0(__ShufflishBase):
@@ -202,7 +219,6 @@ CLASSESC = [Affine0, Affine1, Affine2, Affine3]
 
 
 def shufflishc(domain, seed, primes=PRIMES, classes=CLASSESC):
-    seed = random.Random(seed).randrange(2**64)
     # Step 1: select index scrambling method
     # doing this first minmizes the risk of producing the
     # same permutation for similar seeds
@@ -218,7 +234,7 @@ def shufflishc(domain, seed, primes=PRIMES, classes=CLASSESC):
     # Step 3: select offset
     # n // 7 is used so
     offset = domain // 7 + seed % domain
-    return cls(prime, offset, domain)
+    return cls(domain, prime, offset)
 
 
 def shufflishpy(domain, seed, primes=PRIMES, classes=CLASSESPY):
