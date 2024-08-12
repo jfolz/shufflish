@@ -32,7 +32,8 @@ newAffineCipher(affineCipher2,
         i /= 2;
     } else {
         i = domain - 1 - i / 2;
-    });
+    }
+);
 newAffineCipher(affineCipher3,
     {}
 );

@@ -39,11 +39,12 @@ def make_bloom_module():
             '-Wl,'  # following are linker options
             '--strip-all,'  # Remove all symbols
             '--exclude-libs,ALL,'  # Do not export symbols
-            '--gc-sections'  # Remove unused sections
+            '--gc-sections',  # Remove unused sections
         ])
         extra_compile_args.extend([
             '-O3',  # gotta go fast
-            '-march=x86-64',
+            '-ffunction-sections', # for --gc-sections
+            '-fdata-sections', # for --gc-sections
         ])
 
     return Extension(
