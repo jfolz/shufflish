@@ -9,6 +9,9 @@
 # cython: initializedcheck=False
 # cython: nonecheck=False
 # cython: overflowcheck=False
+# cython: emit_code_comments=False
+# cython: linetrace=False
+# cython: freethreading_compatible=True
 
 
 import cython
