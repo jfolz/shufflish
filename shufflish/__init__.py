@@ -219,6 +219,8 @@ CLASSESC = [Affine0, Affine1, Affine2, Affine3]
 
 
 def shufflishc(domain, seed, primes=PRIMES, classes=CLASSESC):
+    if domain >= 2**63:
+        raise ValueError("domain must be < 2**63")
     # Step 1: select index scrambling method
     # doing this first minmizes the risk of producing the
     # same permutation for similar seeds
