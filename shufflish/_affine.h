@@ -3,6 +3,38 @@
 
 #ifndef AFFINE_H
 
+// uint128_t is directly supported by the compiler
+#if defined(UINT128_MAX)
+
+inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+    return (uint64_t)((uint128_t)a * (uint128_t)b % (uint128_t)N);
+}
+
+// use GCC/Clang/... extension type
+#elif defined(__SIZEOF_INT128__)
+
+#ifndef uint128_t
+#define uint128_t unsigned __int128
+#endif
+
+inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+    return (uint64_t)((uint128_t)a * (uint128_t)b % (uint128_t)N);
+}
+
+// use intrinsics for MSVC
+#elif defined(_MSC_VER)
+
+#include <intrin.h>
+
+inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+    uint64_t high, low, remainder;
+    low = _umul128(a, b, &high);
+    _udiv128(high, low, N, &remainder);
+    return remainder;
+}
+
+#endif
+
 struct affineCipherParameters {
     uint64_t domain;
     uint64_t prime;
@@ -14,7 +46,7 @@ inline uint64_t name(const struct affineCipherParameters * param, uint64_t i) { 
     uint64_t domain = param->domain; \
     i %= domain; \
     scramble \
-    return ((i * param->prime % domain) + param->offset) % domain; \
+    return (mul_mod(i, param->prime, domain) + param->offset) % domain; \
 }
 
 newAffineCipher(affineCipher0,

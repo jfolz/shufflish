@@ -30,7 +30,7 @@ def make_bloom_module():
             cythonize(str(cython_file))
 
     # source files must be strings
-    sources = [str(Path('shufflish', '_affine.c'))]
+    sources = [str(PACKAGE_DIR / '_affine.c')]
 
     extra_link_args = []
     extra_compile_args = []
