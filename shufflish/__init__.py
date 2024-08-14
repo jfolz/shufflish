@@ -1,7 +1,32 @@
-from abc import abstractmethod
+from __future__ import annotations
+
+from typing import Generator, Iterable, Sequence
+from abc import ABC, abstractmethod
+
 import random
-from ._affine import Affine0, Affine1
+import warnings
+from itertools import islice
+try:
+    from itertools import batched as __batched
+except ImportError:
+    def __batched(iterable, n):
+        """
+        Reimplementation of itertools.batched for Python < 3.12.
+        """
+        if n < 1:
+            raise ValueError("n must be at least one")
+        iterator = iter(iterable)
+        while batch := tuple(islice(iterator, n)):
+            yield batch
+
 from ._version import __version__, __version_tuple__
+from ._affine import AffineCipher
+
+
+__all__ = (
+    "permutation",
+    "local_shuffle",
+)
 
 
 PRIMES = (
@@ -102,10 +127,33 @@ PRIMES = (
 )
 
 
-CLASSES = Affine0, Affine1
+def select_primes(domain: int, primes: Sequence[int], min_factor: float) -> list[int]:
+    """
+    Select the subset of unique values ``prime % domain`` from candiates
+    in ``primes`` that are a good fit for an affine cipher with the given
+    ``domain``.
 
+    .. warning::
+        Values in ``primes`` **must** be prime, or else nothing works.
+        This function **does not check** whether they are prime.
 
-def select_primes(domain, primes, min_jump):
+    In more detail, the following steps are performed:
+
+    * Check co-prime, i.e., ``gcd(domain, prime) = 1``. For primes,
+      testing that ``prime`` is not a factor of ``domain`` is sufficient.
+    * Continue with ``prime % domain`` and check for uniqueness.
+      In modular arithmetic, multiplication with ``prime`` and
+      ``prime % domain`` produces the same result, with the added benefit
+      that we can remove values with the same congruence class.
+    * Check ``prime % domain / domain >= min_factor``. This ensures
+      ``prime % domain`` are not too small relative to ``domain``,
+      and avoids outputs of the affine cipher clumping together.
+
+    .. warning::
+        If ``min_factor`` is too high such that no primes are selected,
+        this function returns all values that satisfy the remaining
+        conditions instead.
+    """
     selected = []
     eligible = []
     seen = set()
@@ -117,41 +165,68 @@ def select_primes(domain, primes, min_jump):
         # (a * b) % c = ((a % c) * (b % c)) % c
         # thus, we can take prime % domain and check for repetitions
         p %= domain
-        eligible.append(p)
         # we don't want multiples of the same prime
         if p in seen:
             continue
         seen.add(p)
+        eligible.append(p)
         # avoid small jumps in domain
-        if p / domain < min_jump:
+        if p / domain < min_factor:
             continue
         selected.append(p)
     # for the unlikely case that no prime passed above tests,
     # we fall back to using all eligible primes
-    if not selected:
+    if not eligible:
+        raise ValueError(
+            f"Could not find any co-prime numbers for domain {domain}."
+            " Make sure values in primes are truly prime numbers."
+        )
+    elif not selected:
+        warnings.warn(
+            f"min_factor={min_factor} is too high and no primes were selected,"
+            " returning all eligible values instead."
+        )
         selected = eligible
-    if not selected:
-        raise ValueError(f"BUG! Could not find a co-prime number for domain {domain}")
     return selected
 
 
-def shufflish(domain, seed, primes=PRIMES, classes=CLASSES, min_jump=0.01):
+def permutation(
+    domain: int,
+    seed: int | None = None,
+    primes: Sequence[int] = PRIMES,
+    min_factor: float = 0.01
+) -> AffineCipher:
+    """
+    Return a permutation for the given ``domain``, i.e.,
+    a random shuffle of ``range(domain)``.
+    """
     if domain >= 2**63:
         raise ValueError("domain must be < 2**63")
-    # Step 1: select cipher class
-    # doing this first reduces the risk of producing the
-    # same permutation for adjacent seeds
-    n = len(classes)
-    cls = classes[seed % n]
-    seed //= n
-    # Step 2: select prime number
-    selected = select_primes(domain, primes, min_jump)
+    if seed is None:
+        seed = random.randrange(2**64)
+    # Step 1: select prime number
+    selected = select_primes(domain, primes, min_factor)
     n = len(selected)
     prime = selected[seed % n] % domain
     seed //= n
-    # Step 3: select offset
+    # Step 2: vary zig-zag direction
+    pre_offset = seed % 2
+    seed //= 2
+    # Step 2: select post offset
     # domain // 7 is used so small seeds do not start at the beginning
     # there is nothing magic to it, it's just a value I decided to use
-    offset = (domain // 7 + seed) % domain
-    #print(classes.index(cls), prime, offset)
-    return cls(domain, prime, offset)
+    post_offset = (domain // 7 + seed) % domain
+    #seed //= domain
+    return AffineCipher(domain, prime, pre_offset, post_offset)
+
+
+def local_shuffle(iterable: Iterable, chunk_size: int = 2**14) -> Generator[int]:
+    """
+    Retrieve chunks of the given ``chunk_size`` from ``iterable``,
+    and perform a true shuffle on them.
+    Then yield individual values from the shuffled chunks.
+    """
+    for batch in __batched(iterable, chunk_size):
+        batch = list(batch)
+        random.shuffle(batch)
+        yield from batch

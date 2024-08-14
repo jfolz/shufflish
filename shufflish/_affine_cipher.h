@@ -43,33 +43,19 @@ inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
 struct affineCipherParameters {
     uint64_t domain;
     uint64_t prime;
-    uint64_t offset;
+    uint64_t pre_offset;
+    uint64_t post_offset;
 };
 
-#define newAffineCipher(name, scramble) \
-inline uint64_t name(const struct affineCipherParameters * param, uint64_t i) { \
-    uint64_t domain = param->domain; \
-    i %= domain; \
-    scramble \
-    return (mul_mod(i, param->prime, domain) + param->offset) % domain; \
+inline uint64_t affineCipher(const struct affineCipherParameters * param, uint64_t i) {
+    uint64_t domain = param->domain;
+    i = (i + param->pre_offset) % domain;
+    if (i % 2 == 0) {
+        i = domain - 1 - i / 2;
+    } else {
+        i /= 2;
+    }
+    return (mul_mod(i, param->prime, domain) + param->post_offset) % domain;
 }
-
-// Affine cipher with zigzag pattern, high index first.
-newAffineCipher(affineCipher0,
-    if (i % 2 == 0) {
-        i = domain - 1 - i / 2;
-    } else {
-        i /= 2;
-    }
-);
-
-// Affine cipher with zigzag pattern, low index first.
-newAffineCipher(affineCipher1,
-    if (i % 2 == 0) {
-        i /= 2;
-    } else {
-        i = domain - 1 - i / 2;
-    }
-);
 
 #endif

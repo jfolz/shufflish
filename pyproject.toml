@@ -1,6 +1,6 @@
 [project]
 name = "shufflish"
-description = "shufflish - For when you kinda need to shuffle something."
+description = "For when you kinda need to shuffle enormous lists."
 readme = "README.md"
 classifiers = [
     "Development Status :: 5 - Production/Stable",

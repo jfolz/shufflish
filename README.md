@@ -1,8 +1,11 @@
 # shufflish
+
 For when you need to kind of shuffle something, but not quite.
 
 
 # naive
+
+[PractRand](https://sourceforge.net/projects/pracrand)
 
 ```
 practrand-RNG_test using PractRand version 0.95
