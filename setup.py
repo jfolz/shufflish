@@ -22,8 +22,8 @@ ROOT_DIR = Path(__file__).parent
 PACKAGE_DIR = ROOT_DIR / 'shufflish'
 
 
-def make_bloom_module():
-    include_dirs = [PACKAGE_DIR]
+def make_module():
+    include_dirs = [str(PACKAGE_DIR)]
     cython_files = [PACKAGE_DIR / '_affine.pyx']
     for cython_file in cython_files:
         if cython_file.exists():
@@ -74,7 +74,7 @@ exclude_package_data = find_package_data(packages, ('*.h', '*.c', '*.pyx'))
 
 
 # define extensions
-ext_modules = [make_bloom_module()]
+ext_modules = [make_module()]
 
 
 def read(*names):
