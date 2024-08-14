@@ -21,15 +21,21 @@ from ._affine_cipher cimport *
 
 cdef class AffineCipher:
     """
-    Produces indices from a permutation.
-    You can iterate over all of them, get a range, or access randomly::
+    Produces indices from a permutation of ``range(domain)``.
+    You can iterate over all indices, get a range, or access randomly::
 
         from shufflish import permutation
         p = permutation(10)
-        print(list(p.get(7)))
+        for i in p:
+            print(i)
         print(list(p))
-        print(list(p[5:]))
-        print(list(p[9]))
+        print(p.get(7))
+        print(list(p.slice(3)))
+        print(list(p[3:8]))
+        print(p[3])
+
+    Importantly, there is no setup time, an instance occupies just 48 bytes,
+    and it is more than twice as fast as ``random.random()``.
     """
 
     cdef affineCipherParameters params
