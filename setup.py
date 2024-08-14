@@ -27,7 +27,7 @@ def ext_modules():
         if cython_file.exists():
             cythonize(str(cython_file))
 
-    # source files must be strings
+    # source files must be strings relative to setup.py
     sources = ['shufflish/_affine.c']
 
     extra_link_args = []
