@@ -2,6 +2,7 @@
 /dist
 /scratch
 __pycache__
+/shufflish/_version.py
 *.egg-info
 *.so
 *.html
