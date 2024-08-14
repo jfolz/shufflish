@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 import platform
 
-from setuptools import Extension, setup
+from setuptools import Extension, setup, find_packages
 
 # don't require Cython for building
 try:
@@ -55,4 +55,18 @@ def make_module():
     )
 
 
-setup(ext_modules=[make_module()])
+def exclude_package_data():
+    packages = find_packages(
+        include=['shufflish', 'shufflish.*'],
+    )
+    patterns = ('*.h', '*.c', '*.pyx', '*.pxd')
+    return {
+        package: patterns
+        for package in packages
+    }
+
+
+setup(
+    ext_modules=[make_module()],
+    exclude_package_data=exclude_package_data()
+)
