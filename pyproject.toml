@@ -1,6 +1,6 @@
 [project]
 name = "shufflish"
-description = "A dumb but fast bloom filter."
+description = "shufflish - For when you kinda need to shuffle something."
 readme = "README.md"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -10,20 +10,35 @@ classifiers = [
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
 authors = [{ name = "Joachim Folz", email = "joachim.folz@dfki.de" }]
-keywords = ["bloom", "filter", "bloomfilter"]
-dynamic = ["dependencies", "version"]
+keywords = [
+    "shuffle",
+    "shuffling",
+    "random",
+    "rng",
+    "affine",
+    "cipher",
+    "affine cipher",
+]
+dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://gitlab.com/jfolz/simplebloom/blob/master/README.rst"
-Source = "https://gitlab.com/jfolz/simplebloom"
-Tracker = "https://gitlab.com/jfolz/simplebloom/issues"
+Documentation = "https://github.com/jfolz/shuffling/blob/master/README.md"
+Source = "https://gitlab.com/jfolz/shuffling"
+Tracker = "https://gitlab.com/jfolz/shuffling/issues"
 
 [build-system]
-requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0.0"]
+requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0.0", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools_scm]
+write_to = "shufflish/_version.py"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["shufflish", "shufflish.*"]
+namespaces = false
+
 [tool.cibuildwheel]
-environment = "PIP_ONLY_BINARY=:all:"
 build-verbosity = 1
 test-requires = "pytest>=5.3.2"
 test-command = "pytest {project}/test -vv"

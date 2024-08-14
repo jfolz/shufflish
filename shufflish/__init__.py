@@ -1,9 +1,7 @@
 from abc import abstractmethod
 import random
 from ._affine import Affine0, Affine1
-
-
-__version__ = "0.0.1"
+from ._version import __version__, __version_tuple__
 
 
 PRIMES = (
