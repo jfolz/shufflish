@@ -1,6 +1,6 @@
 from abc import abstractmethod
 import random
-from ._affine import Affine0, Affine1, Affine2, Affine3
+from ._affine import Affine0, Affine1
 
 
 __version__ = "0.0.1"
@@ -104,69 +104,7 @@ PRIMES = (
 )
 
 
-class __AffineBase:
-    def __init__(self, domain, prime, offset):
-        self.domain = domain
-        self.prime = prime
-        self.offset = offset
-
-    @abstractmethod
-    def index(self, i):
-        pass
-
-    def __getitem__(self, index):
-        if isinstance(index, slice):
-            for i in range(*index.indices(self.domain)):
-                yield self.index(i)
-        else:
-            return self.index(index)
-
-
-class __Affine0(__AffineBase):
-    def index(self, i):
-        domain = self.domain
-        i %= domain
-        # Zig-zag pattern, high first:
-        # 9081726354
-        if i & 1:
-            i >>= 1
-        else:
-            i = domain - i >> 1
-        return (i * self.prime + self.offset) % domain
-
-
-class __Affine1(__AffineBase):
-    def index(self, i):
-        domain = self.domain
-        i %= domain
-        # Reverse pattern:
-        # 9876543210
-        i = domain - i
-        return (i * self.prime + self.offset) % domain
-
-
-class __Affine2(__AffineBase):
-    def index(self, i):
-        domain = self.domain
-        i %= domain
-        # Zig-zag pattern, low first:
-        # 0918273645
-        if i & 1:
-            i = domain - i >> 1
-        else:
-            i >>= 1
-        return (i * self.prime + self.offset) % domain
-
-
-class __Affine3(__AffineBase):
-    def index(self, i):
-        domain = self.domain
-        i %= domain
-        return (i * self.prime + self.offset) % domain
-
-
-CLASSESC = Affine0, Affine1, Affine2, Affine3
-CLASSESPY = __Affine0, __Affine1, __Affine2, __Affine3
+CLASSES = Affine0, Affine1
 
 
 def select_primes(domain, primes, min_jump):
@@ -199,7 +137,7 @@ def select_primes(domain, primes, min_jump):
     return selected
 
 
-def shufflish(domain, seed, primes=PRIMES, classes=CLASSESC, min_jump=0.01):
+def shufflish(domain, seed, primes=PRIMES, classes=CLASSES, min_jump=0.01):
     if domain >= 2**63:
         raise ValueError("domain must be < 2**63")
     # Step 1: select cipher class
@@ -219,7 +157,3 @@ def shufflish(domain, seed, primes=PRIMES, classes=CLASSESC, min_jump=0.01):
     offset = (domain // 7 + seed) % domain
     #print(classes.index(cls), prime, offset)
     return cls(domain, prime, offset)
-
-
-def shufflishpy(domain, seed, primes=PRIMES, classes=CLASSESPY):
-    return shufflish(domain, seed, primes=primes, classes=classes)

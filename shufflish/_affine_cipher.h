@@ -63,23 +63,13 @@ newAffineCipher(affineCipher0,
     }
 );
 
-// Affine cipher with in-order pattern in reverse direction.
-newAffineCipher(affineCipher1,
-    i = domain - i;
-);
-
 // Affine cipher with zigzag pattern, low index first.
-newAffineCipher(affineCipher2,
+newAffineCipher(affineCipher1,
     if (i % 2 == 0) {
         i /= 2;
     } else {
         i = domain - 1 - i / 2;
     }
-);
-
-// Affine cipher with in-order pattern in forward direction.
-newAffineCipher(affineCipher3,
-    {}
 );
 
 #endif

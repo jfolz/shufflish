@@ -8,5 +8,3 @@ cdef extern from "_affine_cipher.h":
 
     cdef uint64_t affineCipher0(affineCipherParameters * param, uint64_t i) noexcept
     cdef uint64_t affineCipher1(affineCipherParameters * param, uint64_t i) noexcept
-    cdef uint64_t affineCipher2(affineCipherParameters * param, uint64_t i) noexcept
-    cdef uint64_t affineCipher3(affineCipherParameters * param, uint64_t i) noexcept
