@@ -20,7 +20,7 @@ ROOT_DIR = Path(__file__).parent
 PACKAGE_DIR = ROOT_DIR / 'shufflish'
 
 
-def make_module():
+def ext_modules():
     include_dirs = [str(PACKAGE_DIR)]
     cython_files = [PACKAGE_DIR / '_affine.pyx']
     for cython_file in cython_files:
@@ -45,14 +45,14 @@ def make_module():
             '-fdata-sections', # for --gc-sections
         ])
 
-    return Extension(
+    return [Extension(
         'shufflish._affine',
         sources,
         language='C',
         include_dirs=include_dirs,
         extra_link_args=extra_link_args,
         extra_compile_args=extra_compile_args,
-    )
+    )]
 
 
 def exclude_package_data():
@@ -67,6 +67,6 @@ def exclude_package_data():
 
 
 setup(
-    ext_modules=[make_module()],
+    ext_modules=ext_modules(),
     exclude_package_data=exclude_package_data()
 )
