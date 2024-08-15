@@ -44,10 +44,7 @@ cdef class AffineCipher:
         uint64_t pre_offset,
         uint64_t post_offset,
     ):
-        self.params.domain = domain
-        self.params.prime = prime % domain
-        self.params.pre_offset = pre_offset % domain
-        self.params.post_offset = post_offset % domain
+        fillAffineCipherParameters(&self.params, domain, prime, pre_offset, post_offset)
 
     def __iter__(self):
         cdef uint64_t i

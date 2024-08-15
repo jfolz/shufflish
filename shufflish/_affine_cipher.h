@@ -13,12 +13,12 @@ inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
 // use GCC/Clang/... extension type
 #elif defined(__SIZEOF_INT128__)
 
-#ifndef uint128_t
-#define uint128_t unsigned __int128
+#ifndef __uint128_t
+#define __uint128_t unsigned __int128
 #endif
 
-inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
-    return (uint64_t)((uint128_t)a * (uint128_t)b % (uint128_t)N);
+static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+    return (uint64_t)((__uint128_t)a * (__uint128_t)b % (__uint128_t)N);
 }
 
 // use intrinsics for MSVC
@@ -26,7 +26,7 @@ inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
 
 #include <intrin.h>
 
-inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
     uint64_t high, low, remainder;
     low = _umul128(a, b, &high);
     _udiv128(high, low, N, &remainder);
@@ -47,15 +47,29 @@ struct affineCipherParameters {
     uint64_t post_offset;
 };
 
-inline uint64_t affineCipher(const struct affineCipherParameters * param, uint64_t i) {
-    uint64_t domain = param->domain;
-    i = (i + param->pre_offset) % domain;
-    if (i % 2 == 0) {
-        i = domain - 1 - i / 2;
-    } else {
+static inline void fillAffineCipherParameters(
+    struct affineCipherParameters * params,
+    uint64_t domain,
+    uint64_t prime,
+    uint64_t pre_offset,
+    uint64_t post_offset
+) {
+    params->domain = domain;
+    params->prime = prime % domain;
+    params->pre_offset = pre_offset % domain;
+    params->post_offset = post_offset % domain;
+}
+
+// IMPORTANT: Unless i < 2^63 nothing works here!
+static inline uint64_t affineCipher(const struct affineCipherParameters * params, uint64_t i) {
+    uint64_t domain = params->domain;
+    i = (i + params->pre_offset) % domain;
+    if (i & 1) {
         i /= 2;
+    } else {
+        i = domain - 1 - i / 2;
     }
-    return (mul_mod(i, param->prime, domain) + param->post_offset) % domain;
+    return (mul_mod(i, params->prime, domain) + params->post_offset) % domain;
 }
 
 #endif
