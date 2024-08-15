@@ -39,7 +39,8 @@ cdef class AffineCipher:
     cdef affineCipherParameters params
 
     def __init__(
-        self, uint64_t domain,
+        self,
+        uint64_t domain,
         uint64_t prime,
         uint64_t pre_offset,
         uint64_t post_offset,
