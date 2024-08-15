@@ -29,8 +29,6 @@ cdef class AffineCipher:
         for i in p:
             print(i)
         print(list(p))
-        print(p.get(7))
-        print(list(p.slice(3)))
         print(list(p[3:8]))
         print(p[3])
 
@@ -52,36 +50,48 @@ cdef class AffineCipher:
         self.params.post_offset = post_offset % domain
 
     def __iter__(self):
-        return self.__slice(0, self.params.domain, 1)
+        cdef uint64_t i
+        for i in range(self.params.domain):
+            yield affineCipher(&self.params, i)
 
-    def __slice(self, uint64_t i, uint64_t stop, uint64_t step):
-        if step > 0:
-            while i < stop:
-                yield affineCipher(&self.params, i)
-                i += step
-        else:
-            while i > stop:
-                yield affineCipher(&self.params, i)
-                i += step
 
-    def __getitem__(self, index):
-        if isinstance(index, slice):
-            start, stop, step = index.indices(self.params.domain)
-            return self.__slice(start, stop, step)
-        else:
-            return affineCipher(&self.params, index)
+    def __slice(self, start, stop, step):
+        cdef int64_t i, stop_, step_
 
-    def get(self, uint64_t i):
-        return affineCipher(&self.params, i)
-
-    def slice(self, uint64_t start, stop=None, step=None):
-        cdef uint64_t stop_, step_
         if step == 0:
             raise ValueError("slice step cannot be zero")
         step_ = step or 1
-        if stop is None:
-            stop_ = start
-            start = 0
+
+        i = 0 if start is None else start
+        stop_ = self.params.domain if stop is None else stop
+
+        if i < 0:
+            i += self.params.domain
+        if i < 0 or <uint64_t>i >= self.params.domain:
+            raise IndexError("index out of range")
+
+        if stop_ < 0:
+            stop_ += self.params.domain
+        if stop_ < 0 or <uint64_t>stop_ > self.params.domain:
+            raise IndexError("index out of range")
+
+        if step_ > 0:
+            while i < stop_:
+                yield affineCipher(&self.params, i)
+                i += step_
         else:
-            stop_ = stop
-        return self.__slice(start, stop_, step_)
+            while i > stop_:
+                yield affineCipher(&self.params, i)
+                i += step_
+
+    def __getitem__(self, item):
+        cdef int64_t i
+        if isinstance(item, slice):
+            return self.__slice(item.start, item.stop, item.step)
+        else:
+            i = item
+            if i < 0:
+                i += self.params.domain
+            if i < 0 or <uint64_t>i >= self.params.domain:
+                raise IndexError("index out of range")
+            return affineCipher(&self.params, i)
