@@ -30,49 +30,6 @@ __all__ = (
 
 
 PRIMES = (
-    1000000007,
-    1618033999,
-    2618033989,
-    4236067991,
-    6854101967,
-    11090169949,
-    17944271921,
-    29034441881,
-    46978713787,
-    76013155627,
-    122991869383,
-    199005025003,
-    321996894389,
-    521001919379,
-    842998813763,
-    1364000733157,
-    2206999546919,
-    3571000280047,
-    5777999826941,
-    9349000106981,
-    15126999933907,
-    24476000040857,
-    39602999974751,
-    64079000015753,
-    103681999990369,
-    167761000005971,
-    271442999996347,
-    439204000002289,
-    710646999998629,
-    1149851000000873,
-    1860497999999521,
-    3010349000000339,
-    4870846999999823,
-    7881196000000151,
-    12752042999999971,
-    20633239000000157,
-    33385282000000031,
-    54018521000000171,
-    87403803000000167,
-    141422324000000231,
-    228826127000000297,
-)
-PRIMES = (
     18446744073709551557,
     11400714819323197369,
     7046029254386352119,
@@ -199,7 +156,17 @@ def permutation(
     """
     Return a permutation for the given ``domain``, i.e.,
     a random shuffle of ``range(domain)``.
+    ``domain`` must be greater 0 and less than 2**63.
+    ``seed`` determines which permutation is returned.
+    A random ``seed`` is chosen if none is given.
+
+    You can give a different set of ``primes`` to choose from, though
+    the default set should work for most values of ``domain``,
+    and the selection process, including ``min_factor``,
+    is pretty robust (see :func:`select_primes` for details).
     """
+    if not domain > 0:
+        raise ValueError("domain must be > 0")
     if domain >= 2**63:
         raise ValueError("domain must be < 2**63")
     if seed is None:
@@ -223,8 +190,8 @@ def permutation(
 def local_shuffle(iterable: Iterable, chunk_size: int = 2**14) -> Generator[int]:
     """
     Retrieve chunks of the given ``chunk_size`` from ``iterable``,
-    and perform a true shuffle on them.
-    Then yield individual values from the shuffled chunks.
+    perform a true shuffle on them, and finally, yield individual
+    values from the shuffled chunks.
     """
     for batch in __batched(iterable, chunk_size):
         batch = list(batch)
