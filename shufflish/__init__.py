@@ -1,15 +1,16 @@
 from __future__ import annotations
 
-from typing import Generator, Iterable, Sequence
+from typing import Generator, Iterable, Sequence, Tuple
 from abc import ABC, abstractmethod
 
 import random
 import warnings
-from itertools import islice
+from math import isqrt
+from itertools import islice, combinations, chain
 try:
-    from itertools import batched as __batched
+    from itertools import batched
 except ImportError:
-    def __batched(iterable, n):
+    def batched(iterable, n):
         """
         Reimplementation of itertools.batched for Python < 3.12.
         """
@@ -81,6 +82,25 @@ PRIMES = (
     1715983033,
     1060535759,
     655447187,
+    405088639,
+    250358533,
+    154730089,
+    95628391,
+    59101633,
+    36526817,
+    22574809,
+    13951999,
+    8622811,
+    5329187,
+    3293621,
+    2035567,
+    1258039,
+    777479,
+    480527,
+    296983,
+    183527,
+    113437,
+    70099,
 )
 
 
@@ -147,11 +167,42 @@ def select_primes(domain: int, primes: Sequence[int], min_factor: float) -> list
     return selected
 
 
+NUM_COMBINATIONS={}
+
+
+def select_prime(
+    domain: int,
+    seed: int,
+    primes: Sequence[int]
+) -> Tuple[int, int]:
+    org_seed = seed
+    num_comb = None
+    if primes is PRIMES and domain in NUM_COMBINATIONS:
+        num_comb = NUM_COMBINATIONS[domain]
+        seed %= num_comb
+    eligible = (prime for prime in primes if domain % prime != 0)
+    seen = set()
+    ps = []
+    repetitions = 0
+    for p1, p2, p3 in combinations(chain((1, 1), eligible), 3):
+        p = p1 * p2 * p3 % domain
+        if p in seen:
+            repetitions += 1
+            continue
+        seen.add(p)
+        #print(num_comb, org_seed, p)
+        if num_comb is not None and len(ps) == seed:
+            return p, org_seed // num_comb
+        ps.append(p)
+    if primes is PRIMES:
+        NUM_COMBINATIONS[domain] = len(ps)
+    return ps[org_seed % len(ps)], org_seed // len(ps)
+
+
 def permutation(
     domain: int,
     seed: int | None = None,
     primes: Sequence[int] = PRIMES,
-    min_factor: float = 0.01
 ) -> AffineCipher:
     """
     Return a permutation for the given ``domain``, i.e.,
@@ -171,19 +222,20 @@ def permutation(
         raise ValueError("domain must be < 2**63")
     if seed is None:
         seed = random.randrange(2**64)
-    # Step 1: select prime number
-    selected = select_primes(domain, primes, min_factor)
-    n = len(selected)
-    prime = selected[seed % n] % domain
-    seed //= n
-    # Step 2: vary zig-zag direction
-    pre_offset = seed % 2
-    seed //= 2
-    # Step 2: select post offset
-    # domain // 7 is used so small seeds do not start at the beginning
-    # there is nothing magic to it, it's just a value I decided to use
-    post_offset = (domain // 7 + seed) % domain
-    #seed //= domain
+    org_seed = seed
+    # Step 1: Select prime number
+    prime, seed = select_prime(domain, seed, primes)
+    # Step 2: Select pre-offset
+    # This is applied to the index before multiplication with prime
+    # We add sqrt(domain) so small seeds do not have offset 0
+    sqrt_domain = isqrt(domain)
+    pre_offset = ((seed + sqrt_domain) * prime) % domain
+    seed //= domain
+    # Step 3: select post-offset
+    # This is applied to the result of the multiplication of index and prime
+    # We add sqrt(domain) so small seeds not have offset 0
+    post_offset = ((seed + sqrt_domain) * prime) % domain
+    #print(domain, org_seed, prime, pre_offset, post_offset)
     return AffineCipher(domain, prime, pre_offset, post_offset)
 
 
@@ -193,7 +245,7 @@ def local_shuffle(iterable: Iterable, chunk_size: int = 2**14) -> Generator[int]
     perform a true shuffle on them, and finally, yield individual
     values from the shuffled chunks.
     """
-    for batch in __batched(iterable, chunk_size):
+    for batch in batched(iterable, chunk_size):
         batch = list(batch)
         random.shuffle(batch)
         yield from batch

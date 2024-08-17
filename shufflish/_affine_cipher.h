@@ -6,7 +6,7 @@
 // uint128_t is directly supported by the compiler
 #if defined(UINT128_MAX)
 
-inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
     return (uint64_t)((uint128_t)a * (uint128_t)b % (uint128_t)N);
 }
 
@@ -62,14 +62,12 @@ static inline void fillAffineCipherParameters(
 
 // IMPORTANT: Unless i < 2^63 nothing works here!
 static inline uint64_t affineCipher(const struct affineCipherParameters * params, uint64_t i) {
-    uint64_t domain = params->domain;
-    i = (i + params->pre_offset) % domain;
-    if (i & 1) {
-        i /= 2;
-    } else {
-        i = domain - 1 - i / 2;
-    }
-    return (mul_mod(i, params->prime, domain) + params->post_offset) % domain;
+    return (
+        mul_mod(
+            i + params->pre_offset,
+            params->prime, params->domain
+        ) + params->post_offset
+    ) % params->domain;
 }
 
 #endif
