@@ -5,8 +5,8 @@ from abc import ABC, abstractmethod
 
 import random
 import warnings
-from math import isqrt
-from itertools import islice, combinations, chain
+from math import isqrt, comb, prod
+from itertools import islice, combinations, chain, product
 try:
     from itertools import batched
 except ImportError:
@@ -104,105 +104,103 @@ PRIMES = (
 )
 
 
-def select_primes(domain: int, primes: Sequence[int], min_factor: float) -> list[int]:
+def _modular_prime_combinations(domain, primes, k):
     """
-    Select the subset of unique values ``prime % domain`` from candiates
-    in ``primes`` that are a good fit for an affine cipher with the given
-    ``domain``.
-
-    .. warning::
-        Values in ``primes`` **must** be prime, or else nothing works.
-        This function **does not check** whether they are prime.
-
-    In more detail, the following steps are performed:
-
-    * Check co-prime, i.e., ``gcd(domain, prime) = 1``. For primes,
-      testing that ``prime`` is not a factor of ``domain`` is sufficient.
-    * Continue with ``prime % domain`` and check for uniqueness.
-      In modular arithmetic, multiplication with ``prime`` and
-      ``prime % domain`` produces the same result, with the added benefit
-      that we can remove values with the same congruence class.
-    * Check ``prime % domain / domain >= min_factor``. This ensures
-      ``prime % domain`` are not too small relative to ``domain``,
-      and avoids outputs of the affine cipher clumping together.
-
-    .. warning::
-        If ``min_factor`` is too high such that no primes are selected,
-        this function returns all values that satisfy the remaining
-        conditions instead.
+    Generate all ``k``-combinations of the given primes that are unique mod ``domain``.
+    Only considers primes that are co-prime with ``domain``.
     """
-    selected = []
-    eligible = []
+    primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
     seen = set()
-    for p in primes:
-        # need gcd(domain, prime) = 1, check that p is not factor of domain
-        if domain % p == 0:
-            continue
-        # the cipher uses modular arithmetic:
-        # (a * b) % c = ((a % c) * (b % c)) % c
-        # thus, we can take prime % domain and check for repetitions
-        p %= domain
-        # we don't want multiples of the same prime
+    # add k-1 ones to the beginning, so combinations are:
+    # 1, ..., p1     (k-1 ones)
+    # 1, ..., p2
+    # ...
+    # 1, ..., p1, p2 (k-2 ones)
+    # 1, ..., p1, p3
+    # ...
+    for p1, p2, p3 in combinations(chain((1,)*(k-1), primes), k):
+        p = p1 * p2 * p3 % domain
         if p in seen:
             continue
+        yield p
         seen.add(p)
-        eligible.append(p)
-        # avoid small jumps in domain
-        if p / domain < min_factor:
-            continue
-        selected.append(p)
-    # for the unlikely case that no prime passed above tests,
-    # we fall back to using all eligible primes
-    if not eligible:
-        raise ValueError(
-            f"Could not find any co-prime numbers for domain {domain}."
-            " Make sure values in primes are truly prime numbers."
-        )
-    elif not selected:
-        warnings.warn(
-            f"min_factor={min_factor} is too high and no primes were selected,"
-            " returning all eligible values instead."
-        )
-        selected = eligible
-    return selected
 
 
 NUM_COMBINATIONS={}
 
 
-def select_prime(
+def _select_prime(
     domain: int,
     seed: int,
-    primes: Sequence[int]
-) -> Tuple[int, int]:
-    org_seed = seed
+    primes: Sequence[int],
+    k: int,
+) -> int:
+    """
+    Returns the ``seed``-th unique k-combiations of the given ``primes``.
+    Only considers primes that are co-prime with ``domain``.
+    This can be quite slow.
+    """
+    gen = _modular_prime_combinations(domain, primes, k)
     num_comb = None
     if primes is PRIMES and domain in NUM_COMBINATIONS:
         num_comb = NUM_COMBINATIONS[domain]
-        seed %= num_comb
-    eligible = (prime for prime in primes if domain % prime != 0)
-    seen = set()
-    ps = []
-    repetitions = 0
-    for p1, p2, p3 in combinations(chain((1, 1), eligible), 3):
-        p = p1 * p2 * p3 % domain
-        if p in seen:
-            repetitions += 1
-            continue
-        seen.add(p)
-        #print(num_comb, org_seed, p)
-        if num_comb is not None and len(ps) == seed:
-            return p, org_seed // num_comb
-        ps.append(p)
+        for _ in islice(gen, (seed % num_comb)):
+            pass
+        return next(gen)
+    ps = list(gen)
     if primes is PRIMES:
         NUM_COMBINATIONS[domain] = len(ps)
-    return ps[org_seed % len(ps)], org_seed // len(ps)
+    return ps[seed % len(ps)]
+
+
+def _select_prime_with_repetition(
+    domain: int,
+    seed: int,
+    primes: Sequence[int],
+    k: int,
+    ) -> int:
+    """
+    Use combinatorial unranking to determine the ``seed``-th
+    ``k``-combination of the given ``primes``.
+    Return the product of this combination mod domain.
+    This is reasonably fast, but does not account for reptitions mod domain.
+    """
+    # add k-1 ones to the beginning, so combinations are:
+    # 1, ..., p1     (k-1 ones)
+    # 1, ..., p2
+    # ...
+    # 1, ..., p1, p2 (k-2 ones)
+    # 1, ..., p1, p3
+    # ...
+    primes = [1]*(k-1) + list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
+    np = len(primes)
+    seed %= comb(np, k)
+    combination = []
+
+    np -= 1
+    i = 0
+    while k > 0:
+        # assuming the ith prime is contained in the combination,
+        # calculate the number of length k-1 combinations with remaining primes
+        binom = comb(np - i, k - 1)
+        if seed < binom:
+            # if seed is less than binom, the ith element is in the combination
+            combination.append(primes[i])
+            k -= 1
+        else:
+            # remove binom combinations from seed
+            seed -= binom
+        i += 1
+
+    return prod(combination) % domain
 
 
 def permutation(
     domain: int,
     seed: int | None = None,
     primes: Sequence[int] = PRIMES,
+    allow_repetition=True,
+    num_primes=3,
 ) -> AffineCipher:
     """
     Return a permutation for the given ``domain``, i.e.,
@@ -211,10 +209,27 @@ def permutation(
     ``seed`` determines which permutation is returned.
     A random ``seed`` is chosen if none is given.
 
-    You can give a different set of ``primes`` to choose from, though
-    the default set should work for most values of ``domain``,
-    and the selection process, including ``min_factor``,
-    is pretty robust (see :func:`select_primes` for details).
+    You can give a different set of ``primes`` to choose from,
+    though the default set should work for most values of ``domain``,
+    and the selection process is pretty robust:
+
+    1. Remove primes that are not co-prime, i.e., ``gcd(domain, prime) = 1``.
+       For primes, testing that ``prime`` is not a factor of ``domain`` is sufficient.
+    2. Remove duplicates ``prime % domain``.
+       In modular arithmetic, multiplication with ``prime`` and
+       ``prime % domain`` produces the same result, so we use only one
+       prime from each congruence class to improve uniqueness of permutations.
+    3. Select the ``seed``-th combination of ``num_primes`` primes.
+       If ``allow_repetition=False``, repeated combinations are skipped.
+
+    .. note::
+        With the default setting ``allow_repetition=True``, there is a tiny
+        chance the same permutation is generated for seeds that are relatively
+        close together.
+        Empirically, we find that repetitions occur within ``domain / 2`` seeds.
+        If you cannot tolerate this, use ``allow_repetition=False``.
+        Currently this means combinations of primes are generated until the
+        ``seed``-th unique combination is found, which can take little while.
     """
     if not domain > 0:
         raise ValueError("domain must be > 0")
@@ -222,30 +237,32 @@ def permutation(
         raise ValueError("domain must be < 2**63")
     if seed is None:
         seed = random.randrange(2**64)
-    org_seed = seed
     # Step 1: Select prime number
-    prime, seed = select_prime(domain, seed, primes)
+    if allow_repetition:
+        prime = _select_prime_with_repetition(domain, seed, primes, num_primes)
+    else:
+        prime = _select_prime(domain, seed, primes, num_primes)
     # Step 2: Select pre-offset
     # This is applied to the index before multiplication with prime
     # We add sqrt(domain) so small seeds do not have offset 0
     sqrt_domain = isqrt(domain)
-    pre_offset = ((seed + sqrt_domain) * prime) % domain
-    seed //= domain
+    pre_offset = ((seed // 3 + sqrt_domain) * prime) % domain
     # Step 3: select post-offset
     # This is applied to the result of the multiplication of index and prime
     # We add sqrt(domain) so small seeds not have offset 0
-    post_offset = ((seed + sqrt_domain) * prime) % domain
-    #print(domain, org_seed, prime, pre_offset, post_offset)
+    post_offset = ((seed // 2 + sqrt_domain) * prime) % domain
     return AffineCipher(domain, prime, pre_offset, post_offset)
 
 
-def local_shuffle(iterable: Iterable, chunk_size: int = 2**14) -> Generator[int]:
+def local_shuffle(iterable: Iterable, chunk_size: int = 2**14, seed=None) -> Generator[int]:
     """
     Retrieve chunks of the given ``chunk_size`` from ``iterable``,
     perform a true shuffle on them, and finally, yield individual
     values from the shuffled chunks.
+    ``seed`` is used to seed the random generator for the shuffle operation.
     """
+    rand = random.Random(seed)
     for batch in batched(iterable, chunk_size):
         batch = list(batch)
-        random.shuffle(batch)
+        rand.shuffle(batch)
         yield from batch
