@@ -209,6 +209,17 @@ def permutation(
     ``seed`` determines which permutation is returned.
     A random ``seed`` is chosen if none is given.
 
+    The returned :py:class:`AffineCipher` is iterable, indexable,
+    and sliceable::
+
+        from shufflish import permutation
+        p = permutation(10)
+        for i in p:
+            print(i)
+        print(list(p))
+        print(list(p[3:8]))
+        print(p[3])
+
     You can give a different set of ``primes`` to choose from,
     though the default set should work for most values of ``domain``,
     and the selection process is pretty robust:
@@ -220,6 +231,7 @@ def permutation(
        ``prime % domain`` produces the same result, so we use only one
        prime from each congruence class to improve uniqueness of permutations.
     3. Select the ``seed``-th combination of ``num_primes`` primes.
+       Their product is used to
        If ``allow_repetition=False``, repeated combinations are skipped.
 
     .. note::
@@ -231,13 +243,13 @@ def permutation(
         Currently this means combinations of primes are generated until the
         ``seed``-th unique combination is found, which can take little while.
     """
-    if not domain > 0:
+    if domain <= 0:
         raise ValueError("domain must be > 0")
     if domain >= 2**63:
         raise ValueError("domain must be < 2**63")
     if seed is None:
         seed = random.randrange(2**64)
-    # Step 1: Select prime number
+    # Step 1: Select co-prime number
     if allow_repetition:
         prime = _select_prime_with_repetition(domain, seed, primes, num_primes)
     else:
