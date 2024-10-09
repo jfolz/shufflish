@@ -96,3 +96,28 @@ cdef class AffineCipher:
 
     def __repr__(self):
         return f"<AffineCipher domain={self.params.domain} prime={self.params.prime} pre={self.params.pre_offset} post={self.params.post_offset}>"
+
+    def __hash__(self):
+        return hash((
+            self.params.domain,
+            self.params.prime,
+            self.params.pre_offset,
+            self.params.post_offset,
+        ))
+
+    def parameters(self):
+        return (
+            self.params.domain,
+            self.params.prime,
+            self.params.pre_offset,
+            self.params.post_offset,
+        )
+
+    def __eq__(self, other):
+        if not isinstance(other, AffineCipher):
+            return False
+        cdef affineCipherParameters oparams = other.parameters()
+        return self.params.domain == oparams.domain \
+           and self.params.prime == oparams.prime \
+           and self.params.pre_offset == oparams.pre_offset \
+           and self.params.post_offset == oparams.post_offset
