@@ -116,8 +116,8 @@ cdef class AffineCipher:
     def __eq__(self, other):
         if not isinstance(other, AffineCipher):
             return False
-        cdef affineCipherParameters oparams = other.parameters()
-        return self.params.domain == oparams.domain \
-           and self.params.prime == oparams.prime \
-           and self.params.pre_offset == oparams.pre_offset \
-           and self.params.post_offset == oparams.post_offset
+        oparams = other.parameters()
+        return self.params.domain == oparams[0] \
+           and self.params.prime == oparams[1] \
+           and self.params.pre_offset == oparams[2] \
+           and self.params.post_offset == oparams[3]
