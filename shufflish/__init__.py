@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Generator, Iterable, Sequence, Tuple
 from abc import ABC, abstractmethod
 
+import array
 import random
 import warnings
 from math import isqrt, comb, prod
@@ -126,6 +127,88 @@ def _modular_prime_combinations(domain, primes, k):
         seen.add(p)
 
 
+def _modular_prime_combinations_with_repetition(domain, primes, k):
+    """
+    Generate all ``k``-combinations of the given primes mod ``domain``.
+    Only considers primes that are co-prime with ``domain``.
+    May repeat values.
+    """
+    primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
+    # add k-1 ones to the beginning, so combinations are:
+    # 1, ..., p1     (k-1 ones)
+    # 1, ..., p2
+    # ...
+    # 1, ..., p1, p2 (k-2 ones)
+    # 1, ..., p1, p3
+    # ...
+    for p1, p2, p3 in combinations(chain((1,)*(k-1), primes), k):
+        yield p1 * p2 * p3 % domain
+
+
+class Permutations:
+    """
+    Create many permutations for the given ``domain`` with fixed settings,
+    i.e., a random shuffle of ``range(domain)``.
+    ``domain`` must be greater 0 and less than 2**63.
+    A random ``seed`` is chosen if none is given.
+    The returned :py:class:`AffineCipher` is iterable, indexable, and sliceable::
+
+        from shufflish import Permutations
+        perms = Permutations(10)
+        p = perms.get()
+        for i in p:
+            print(i)
+        print(list(p))
+        print(list(p[3:8]))
+        print(p[3])
+
+    See the :py:func:`permutation` function for details on how this works.
+
+    .. note::
+        This class can be a good choice to create many permutations in the same domain.
+        It pre-calculates and stores all co-primes, so creating permutations is much
+        faster than the :py:func:`permutation` function.
+        Beware that, especially for larger than default values of ``num_primes``,
+        this can occupy a *lot* of memory.
+        The default settings use roughly 2.5 MiB.
+    """
+
+    def __init__(
+        self,
+        domain: int,
+        primes: Sequence[int] = PRIMES,
+        num_primes=3,
+        allow_repetition=False,
+    ):
+        if domain <= 0:
+            raise ValueError("domain must be > 0")
+        if domain >= 2**63:
+            raise ValueError("domain must be < 2**63")
+        self.domain = domain
+        if allow_repetition:
+            gen = _modular_prime_combinations_with_repetition(domain, primes, num_primes)
+        else:
+            gen = _modular_prime_combinations(domain, primes, num_primes)
+        self.coprimes = array.array("Q", gen)
+        # remember number of combinations for later
+        if not allow_repetition and primes is PRIMES:
+            NUM_COMBINATIONS[domain] = len(self.coprimes)
+
+    def get(self, seed=None) -> AffineCipher:
+        """
+        Get a permutation.
+        ``seed`` determines which permutation is returned.
+        A random ``seed`` is chosen if none is given.
+        """
+        if seed is None:
+            seed = random.randrange(2**64)
+        coprimes = self.coprimes
+        prime = coprimes[seed % len(coprimes)]
+        return _permutation(self.domain, seed, prime)
+
+    __getitem__ = get
+
+
 NUM_COMBINATIONS={}
 
 
@@ -199,8 +282,8 @@ def permutation(
     domain: int,
     seed: int | None = None,
     primes: Sequence[int] = PRIMES,
-    allow_repetition=True,
     num_primes=3,
+    allow_repetition=False,
 ) -> AffineCipher:
     """
     Return a permutation for the given ``domain``, i.e.,
@@ -209,8 +292,7 @@ def permutation(
     ``seed`` determines which permutation is returned.
     A random ``seed`` is chosen if none is given.
 
-    The returned :py:class:`AffineCipher` is iterable, indexable,
-    and sliceable::
+    The returned :py:class:`AffineCipher` is iterable, indexable, and sliceable::
 
         from shufflish import permutation
         p = permutation(10)
@@ -220,28 +302,30 @@ def permutation(
         print(list(p[3:8]))
         print(p[3])
 
+    Note the use of :py:type:`list` where iterators are returned.
+
     You can give a different set of ``primes`` to choose from,
     though the default set should work for most values of ``domain``,
     and the selection process is pretty robust:
 
     1. Remove primes that are not co-prime, i.e., ``gcd(domain, prime) = 1``.
-       For primes, testing that ``prime`` is not a factor of ``domain`` is sufficient.
+       Testing that ``prime`` is not a factor of ``domain`` is sufficient.
     2. Remove duplicates ``prime % domain``.
        In modular arithmetic, multiplication with ``prime`` and
        ``prime % domain`` produces the same result, so we use only one
        prime from each congruence class to improve uniqueness of permutations.
     3. Select the ``seed``-th combination of ``num_primes`` primes.
-       Their product is used to
-       If ``allow_repetition=False``, repeated combinations are skipped.
+       If ``allow_repetition=False`` (default), repeated combinations are skipped.
 
     .. note::
-        With the default setting ``allow_repetition=True``, there is a tiny
-        chance the same permutation is generated for seeds that are relatively
-        close together.
+        If you can affort a tiny chance of repeated permutations, you can use
+        ``allow_repetition=True`` to significantly speed up this function.
         Empirically, we find that repetitions occur within ``domain / 2`` seeds.
-        If you cannot tolerate this, use ``allow_repetition=False``.
-        Currently this means combinations of primes are generated until the
-        ``seed``-th unique combination is found, which can take little while.
+        If you need a lot of permutations for the same domain and cannot affort
+        repetitions, consider the :py:class:`Permutations` class.
+        It generates all co-primes ahead of time, trading memory for compute.
+        Beware that this can mean a lot of memory, especially for larger than
+        default values of ``num_primes``.
     """
     if domain <= 0:
         raise ValueError("domain must be > 0")
@@ -254,6 +338,10 @@ def permutation(
         prime = _select_prime_with_repetition(domain, seed, primes, num_primes)
     else:
         prime = _select_prime(domain, seed, primes, num_primes)
+    return _permutation(domain, seed, prime)
+
+
+def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
     # Step 2: Select pre-offset
     # This is applied to the index before multiplication with prime
     # We add sqrt(domain) so small seeds do not have offset 0
