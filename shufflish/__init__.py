@@ -112,14 +112,7 @@ def _modular_prime_combinations(domain, primes, k):
     """
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
     seen = set()
-    # add k-1 ones to the beginning, so combinations are:
-    # 1, ..., p1     (k-1 ones)
-    # 1, ..., p2
-    # ...
-    # 1, ..., p1, p2 (k-2 ones)
-    # 1, ..., p1, p3
-    # ...
-    for p1, p2, p3 in combinations(chain((1,)*(k-1), primes), k):
+    for p1, p2, p3 in combinations(primes, k):
         p = p1 * p2 * p3 % domain
         if p in seen:
             continue
@@ -134,14 +127,7 @@ def _modular_prime_combinations_with_repetition(domain, primes, k):
     May repeat values.
     """
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
-    # add k-1 ones to the beginning, so combinations are:
-    # 1, ..., p1     (k-1 ones)
-    # 1, ..., p2
-    # ...
-    # 1, ..., p1, p2 (k-2 ones)
-    # 1, ..., p1, p3
-    # ...
-    for p1, p2, p3 in combinations(chain((1,)*(k-1), primes), k):
+    for p1, p2, p3 in combinations(primes, k):
         yield p1 * p2 * p3 % domain
 
 
