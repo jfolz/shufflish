@@ -1823,6 +1823,32 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject
 #define __Pyx_PyObject_FastCall(func, args, nargs)  __Pyx_PyObject_FastCallDict(func, args, (size_t)(nargs), NULL)
 static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObject **args, size_t nargs, PyObject *kwargs);
 
+/* PyObjectFormatSimple.proto */
+#if CYTHON_COMPILING_IN_PYPY
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        PyObject_Format(s, f))
+#elif PY_MAJOR_VERSION < 3
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        likely(PyString_CheckExact(s)) ? PyUnicode_FromEncodedObject(s, NULL, "strict") :\
+        PyObject_Format(s, f))
+#elif CYTHON_USE_TYPE_SLOTS
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        likely(PyLong_CheckExact(s)) ? PyLong_Type.tp_repr(s) :\
+        likely(PyFloat_CheckExact(s)) ? PyFloat_Type.tp_repr(s) :\
+        PyObject_Format(s, f))
+#else
+    #define __Pyx_PyObject_FormatSimple(s, f) (\
+        likely(PyUnicode_CheckExact(s)) ? (Py_INCREF(s), s) :\
+        PyObject_Format(s, f))
+#endif
+
+/* JoinPyUnicode.proto */
+static PyObject* __Pyx_PyUnicode_Join(PyObject* value_tuple, Py_ssize_t value_count, Py_ssize_t result_ulength,
+                                      Py_UCS4 max_char);
+
 /* KeywordStringCheck.proto */
 static int __Pyx_CheckKeywordStrings(PyObject *kw, const char* function_name, int kw_allowed);
 
@@ -2125,12 +2151,15 @@ static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_TypeError;
 /* #### Code section: string_decls ### */
-static const char __pyx_k__3[] = "?";
+static const char __pyx_k__3[] = ">";
+static const char __pyx_k__4[] = "?";
 static const char __pyx_k_gc[] = "gc";
+static const char __pyx_k_pre[] = " pre=";
 static const char __pyx_k_args[] = "args";
 static const char __pyx_k_iter[] = "__iter__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
+static const char __pyx_k_post[] = " post=";
 static const char __pyx_k_send[] = "send";
 static const char __pyx_k_step[] = "step";
 static const char __pyx_k_stop[] = "stop";
@@ -2145,6 +2174,7 @@ static const char __pyx_k_domain[] = "domain";
 static const char __pyx_k_enable[] = "enable";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_disable[] = "disable";
+static const char __pyx_k_prime_2[] = " prime=";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
@@ -2163,6 +2193,7 @@ static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_index_out_of_range[] = "index out of range";
 static const char __pyx_k_AffineCipher___iter[] = "AffineCipher.__iter__";
 static const char __pyx_k_AffineCipher__slice[] = "_AffineCipher__slice";
+static const char __pyx_k_AffineCipher_domain[] = "<AffineCipher domain=";
 static const char __pyx_k_AffineCipher___slice[] = "AffineCipher.__slice";
 static const char __pyx_k_slice_step_cannot_be_zero[] = "slice step cannot be zero";
 static const char __pyx_k_Pickling_of_struct_members_such[] = "Pickling of struct members such as self.params must be explicitly requested with @auto_pickle(True)";
@@ -2171,8 +2202,9 @@ static int __pyx_pf_9shufflish_7_affine_12AffineCipher___init__(struct __pyx_obj
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_2__iter__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_stop, PyObject *__pyx_v_step); /* proto */
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_item); /* proto */
-static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_9shufflish_7_affine_AffineCipher(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct____iter__(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -2221,11 +2253,13 @@ typedef struct {
   PyObject *__pyx_n_s_AffineCipher___iter;
   PyObject *__pyx_n_s_AffineCipher___slice;
   PyObject *__pyx_n_s_AffineCipher__slice;
+  PyObject *__pyx_kp_u_AffineCipher_domain;
   PyObject *__pyx_n_s_IndexError;
   PyObject *__pyx_kp_s_Pickling_of_struct_members_such;
   PyObject *__pyx_n_s_TypeError;
   PyObject *__pyx_n_s_ValueError;
-  PyObject *__pyx_n_s__3;
+  PyObject *__pyx_kp_u__3;
+  PyObject *__pyx_n_s__4;
   PyObject *__pyx_n_s_args;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_close;
@@ -2239,9 +2273,12 @@ typedef struct {
   PyObject *__pyx_n_s_iter;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_name;
+  PyObject *__pyx_kp_u_post;
   PyObject *__pyx_n_s_post_offset;
+  PyObject *__pyx_kp_u_pre;
   PyObject *__pyx_n_s_pre_offset;
   PyObject *__pyx_n_s_prime;
+  PyObject *__pyx_kp_u_prime_2;
   PyObject *__pyx_n_s_pyx_state;
   PyObject *__pyx_n_s_range;
   PyObject *__pyx_n_s_reduce;
@@ -2313,11 +2350,13 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_AffineCipher___iter);
   Py_CLEAR(clear_module_state->__pyx_n_s_AffineCipher___slice);
   Py_CLEAR(clear_module_state->__pyx_n_s_AffineCipher__slice);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_AffineCipher_domain);
   Py_CLEAR(clear_module_state->__pyx_n_s_IndexError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Pickling_of_struct_members_such);
   Py_CLEAR(clear_module_state->__pyx_n_s_TypeError);
   Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
-  Py_CLEAR(clear_module_state->__pyx_n_s__3);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__3);
+  Py_CLEAR(clear_module_state->__pyx_n_s__4);
   Py_CLEAR(clear_module_state->__pyx_n_s_args);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_close);
@@ -2331,9 +2370,12 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_iter);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_post);
   Py_CLEAR(clear_module_state->__pyx_n_s_post_offset);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_pre);
   Py_CLEAR(clear_module_state->__pyx_n_s_pre_offset);
   Py_CLEAR(clear_module_state->__pyx_n_s_prime);
+  Py_CLEAR(clear_module_state->__pyx_kp_u_prime_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_pyx_state);
   Py_CLEAR(clear_module_state->__pyx_n_s_range);
   Py_CLEAR(clear_module_state->__pyx_n_s_reduce);
@@ -2383,11 +2425,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_AffineCipher___iter);
   Py_VISIT(traverse_module_state->__pyx_n_s_AffineCipher___slice);
   Py_VISIT(traverse_module_state->__pyx_n_s_AffineCipher__slice);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_AffineCipher_domain);
   Py_VISIT(traverse_module_state->__pyx_n_s_IndexError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Pickling_of_struct_members_such);
   Py_VISIT(traverse_module_state->__pyx_n_s_TypeError);
   Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
-  Py_VISIT(traverse_module_state->__pyx_n_s__3);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__3);
+  Py_VISIT(traverse_module_state->__pyx_n_s__4);
   Py_VISIT(traverse_module_state->__pyx_n_s_args);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_close);
@@ -2401,9 +2445,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_iter);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_post);
   Py_VISIT(traverse_module_state->__pyx_n_s_post_offset);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_pre);
   Py_VISIT(traverse_module_state->__pyx_n_s_pre_offset);
   Py_VISIT(traverse_module_state->__pyx_n_s_prime);
+  Py_VISIT(traverse_module_state->__pyx_kp_u_prime_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_pyx_state);
   Py_VISIT(traverse_module_state->__pyx_n_s_range);
   Py_VISIT(traverse_module_state->__pyx_n_s_reduce);
@@ -2469,11 +2516,13 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_AffineCipher___iter __pyx_mstate_global->__pyx_n_s_AffineCipher___iter
 #define __pyx_n_s_AffineCipher___slice __pyx_mstate_global->__pyx_n_s_AffineCipher___slice
 #define __pyx_n_s_AffineCipher__slice __pyx_mstate_global->__pyx_n_s_AffineCipher__slice
+#define __pyx_kp_u_AffineCipher_domain __pyx_mstate_global->__pyx_kp_u_AffineCipher_domain
 #define __pyx_n_s_IndexError __pyx_mstate_global->__pyx_n_s_IndexError
 #define __pyx_kp_s_Pickling_of_struct_members_such __pyx_mstate_global->__pyx_kp_s_Pickling_of_struct_members_such
 #define __pyx_n_s_TypeError __pyx_mstate_global->__pyx_n_s_TypeError
 #define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
-#define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
+#define __pyx_kp_u__3 __pyx_mstate_global->__pyx_kp_u__3
+#define __pyx_n_s__4 __pyx_mstate_global->__pyx_n_s__4
 #define __pyx_n_s_args __pyx_mstate_global->__pyx_n_s_args
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_close __pyx_mstate_global->__pyx_n_s_close
@@ -2487,9 +2536,12 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_iter __pyx_mstate_global->__pyx_n_s_iter
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
+#define __pyx_kp_u_post __pyx_mstate_global->__pyx_kp_u_post
 #define __pyx_n_s_post_offset __pyx_mstate_global->__pyx_n_s_post_offset
+#define __pyx_kp_u_pre __pyx_mstate_global->__pyx_kp_u_pre
 #define __pyx_n_s_pre_offset __pyx_mstate_global->__pyx_n_s_pre_offset
 #define __pyx_n_s_prime __pyx_mstate_global->__pyx_n_s_prime
+#define __pyx_kp_u_prime_2 __pyx_mstate_global->__pyx_kp_u_prime_2
 #define __pyx_n_s_pyx_state __pyx_mstate_global->__pyx_n_s_pyx_state
 #define __pyx_n_s_range __pyx_mstate_global->__pyx_n_s_range
 #define __pyx_n_s_reduce __pyx_mstate_global->__pyx_n_s_reduce
@@ -3261,14 +3313,129 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct
 
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_11__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__(PyObject *__pyx_v_self) {
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__repr__ (wrapper)", 0);
+  __pyx_kwvalues = __Pyx_KwValues_VARARGS(__pyx_args, __pyx_nargs);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  Py_ssize_t __pyx_t_2;
+  Py_UCS4 __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__repr__", 1);
+
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = PyTuple_New(9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = 0;
+  __pyx_t_3 = 127;
+  __Pyx_INCREF(__pyx_kp_u_AffineCipher_domain);
+  __pyx_t_2 += 21;
+  __Pyx_GIVEREF(__pyx_kp_u_AffineCipher_domain);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_AffineCipher_domain);
+  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
+  __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_5);
+  __pyx_t_5 = 0;
+  __Pyx_INCREF(__pyx_kp_u_prime_2);
+  __pyx_t_2 += 7;
+  __Pyx_GIVEREF(__pyx_kp_u_prime_2);
+  PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_prime_2);
+  __pyx_t_5 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
+  __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __Pyx_INCREF(__pyx_kp_u_pre);
+  __pyx_t_2 += 5;
+  __Pyx_GIVEREF(__pyx_kp_u_pre);
+  PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u_pre);
+  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
+  __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_1, 5, __pyx_t_5);
+  __pyx_t_5 = 0;
+  __Pyx_INCREF(__pyx_kp_u_post);
+  __pyx_t_2 += 6;
+  __Pyx_GIVEREF(__pyx_kp_u_post);
+  PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_post);
+  __pyx_t_5 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
+  __pyx_t_2 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_1, 7, __pyx_t_4);
+  __pyx_t_4 = 0;
+  __Pyx_INCREF(__pyx_kp_u__3);
+  __pyx_t_2 += 1;
+  __Pyx_GIVEREF(__pyx_kp_u__3);
+  PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u__3);
+  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 9, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = 0;
+  goto __pyx_L0;
+
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("shufflish._affine.AffineCipher.__repr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_13__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_11__reduce_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_13__reduce_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3293,14 +3460,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   if (unlikely(__pyx_nargs > 0)) {
     __Pyx_RaiseArgtupleInvalid("__reduce_cython__", 1, 0, 0, __pyx_nargs); return NULL;}
   if (unlikely(__pyx_kwds) && __Pyx_NumKwargs_FASTCALL(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__reduce_cython__", 0))) return NULL;
-  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_10__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self));
+  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_12__reduce_cython__(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self) {
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_12__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3323,14 +3490,14 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__reduce_cython__
 
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_13__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_15__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_13__setstate_cython__(PyObject *__pyx_v_self, 
+static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_15__setstate_cython__(PyObject *__pyx_v_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3404,7 +3571,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_12__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self), __pyx_v___pyx_state);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_14__setstate_cython__(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self), __pyx_v___pyx_state);
 
   /* function exit code */
   {
@@ -3417,7 +3584,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_12__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_14__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_lineno = 0;
@@ -3479,15 +3646,21 @@ static PyObject *__pyx_sq_item_9shufflish_7_affine_AffineCipher(PyObject *o, Py_
   return r;
 }
 
+static PyObject *__pyx_specialmethod___pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__(PyObject *self, CYTHON_UNUSED PyObject *arg) {
+  return __pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__(self);
+}
+
 static PyMethodDef __pyx_methods_9shufflish_7_affine_AffineCipher[] = {
   {"_AffineCipher__slice", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_12AffineCipher_6_AffineCipher__slice, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_12AffineCipher_11__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
-  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_12AffineCipher_13__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__repr__", (PyCFunction)__pyx_specialmethod___pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__, METH_NOARGS|METH_COEXIST, 0},
+  {"__reduce_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_12AffineCipher_13__reduce_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
+  {"__setstate_cython__", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9shufflish_7_affine_12AffineCipher_15__setstate_cython__, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 #if CYTHON_USE_TYPE_SPECS
 static PyType_Slot __pyx_type_9shufflish_7_affine_AffineCipher_slots[] = {
   {Py_tp_dealloc, (void *)__pyx_tp_dealloc_9shufflish_7_affine_AffineCipher},
+  {Py_tp_repr, (void *)__pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__},
   {Py_sq_item, (void *)__pyx_sq_item_9shufflish_7_affine_AffineCipher},
   {Py_mp_subscript, (void *)__pyx_pw_9shufflish_7_affine_12AffineCipher_9__getitem__},
   {Py_tp_doc, (void *)PyDoc_STR("\n    Produces indices from a permutation of ``range(domain)``.\n    You can iterate over all indices, get a range, or access randomly::\n\n        from shufflish import permutation\n        p = permutation(10)\n        for i in p:\n            print(i)\n        print(list(p))\n        print(list(p[3:8]))\n        print(p[3])\n\n    Importantly, there is no setup time, an instance occupies just 48 bytes,\n    and it is more than twice as fast as ``random.random()``.\n    ")},
@@ -3545,7 +3718,7 @@ static PyTypeObject __pyx_type_9shufflish_7_affine_AffineCipher = {
   #if PY_MAJOR_VERSION >= 3
   0, /*tp_as_async*/
   #endif
-  0, /*tp_repr*/
+  __pyx_pw_9shufflish_7_affine_12AffineCipher_11__repr__, /*tp_repr*/
   0, /*tp_as_number*/
   &__pyx_tp_as_sequence_AffineCipher, /*tp_as_sequence*/
   &__pyx_tp_as_mapping_AffineCipher, /*tp_as_mapping*/
@@ -3970,11 +4143,13 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_AffineCipher___iter, __pyx_k_AffineCipher___iter, sizeof(__pyx_k_AffineCipher___iter), 0, 0, 1, 1},
     {&__pyx_n_s_AffineCipher___slice, __pyx_k_AffineCipher___slice, sizeof(__pyx_k_AffineCipher___slice), 0, 0, 1, 1},
     {&__pyx_n_s_AffineCipher__slice, __pyx_k_AffineCipher__slice, sizeof(__pyx_k_AffineCipher__slice), 0, 0, 1, 1},
+    {&__pyx_kp_u_AffineCipher_domain, __pyx_k_AffineCipher_domain, sizeof(__pyx_k_AffineCipher_domain), 0, 1, 0, 0},
     {&__pyx_n_s_IndexError, __pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 0, 1, 1},
     {&__pyx_kp_s_Pickling_of_struct_members_such, __pyx_k_Pickling_of_struct_members_such, sizeof(__pyx_k_Pickling_of_struct_members_such), 0, 0, 1, 0},
     {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
     {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-    {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
+    {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
+    {&__pyx_n_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 1},
     {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
@@ -3988,9 +4163,12 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_iter, __pyx_k_iter, sizeof(__pyx_k_iter), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
+    {&__pyx_kp_u_post, __pyx_k_post, sizeof(__pyx_k_post), 0, 1, 0, 0},
     {&__pyx_n_s_post_offset, __pyx_k_post_offset, sizeof(__pyx_k_post_offset), 0, 0, 1, 1},
+    {&__pyx_kp_u_pre, __pyx_k_pre, sizeof(__pyx_k_pre), 0, 1, 0, 0},
     {&__pyx_n_s_pre_offset, __pyx_k_pre_offset, sizeof(__pyx_k_pre_offset), 0, 0, 1, 1},
     {&__pyx_n_s_prime, __pyx_k_prime, sizeof(__pyx_k_prime), 0, 0, 1, 1},
+    {&__pyx_kp_u_prime_2, __pyx_k_prime_2, sizeof(__pyx_k_prime_2), 0, 1, 0, 0},
     {&__pyx_n_s_pyx_state, __pyx_k_pyx_state, sizeof(__pyx_k_pyx_state), 0, 0, 1, 1},
     {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
     {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
@@ -5727,6 +5905,75 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_FastCallDict(PyObject *func, PyObj
     #endif
 }
 
+/* JoinPyUnicode */
+static PyObject* __Pyx_PyUnicode_Join(PyObject* value_tuple, Py_ssize_t value_count, Py_ssize_t result_ulength,
+                                      Py_UCS4 max_char) {
+#if CYTHON_USE_UNICODE_INTERNALS && CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    PyObject *result_uval;
+    int result_ukind, kind_shift;
+    Py_ssize_t i, char_pos;
+    void *result_udata;
+    CYTHON_MAYBE_UNUSED_VAR(max_char);
+#if CYTHON_PEP393_ENABLED
+    result_uval = PyUnicode_New(result_ulength, max_char);
+    if (unlikely(!result_uval)) return NULL;
+    result_ukind = (max_char <= 255) ? PyUnicode_1BYTE_KIND : (max_char <= 65535) ? PyUnicode_2BYTE_KIND : PyUnicode_4BYTE_KIND;
+    kind_shift = (result_ukind == PyUnicode_4BYTE_KIND) ? 2 : result_ukind - 1;
+    result_udata = PyUnicode_DATA(result_uval);
+#else
+    result_uval = PyUnicode_FromUnicode(NULL, result_ulength);
+    if (unlikely(!result_uval)) return NULL;
+    result_ukind = sizeof(Py_UNICODE);
+    kind_shift = (result_ukind == 4) ? 2 : result_ukind - 1;
+    result_udata = PyUnicode_AS_UNICODE(result_uval);
+#endif
+    assert(kind_shift == 2 || kind_shift == 1 || kind_shift == 0);
+    char_pos = 0;
+    for (i=0; i < value_count; i++) {
+        int ukind;
+        Py_ssize_t ulength;
+        void *udata;
+        PyObject *uval = PyTuple_GET_ITEM(value_tuple, i);
+        if (unlikely(__Pyx_PyUnicode_READY(uval)))
+            goto bad;
+        ulength = __Pyx_PyUnicode_GET_LENGTH(uval);
+        if (unlikely(!ulength))
+            continue;
+        if (unlikely((PY_SSIZE_T_MAX >> kind_shift) - ulength < char_pos))
+            goto overflow;
+        ukind = __Pyx_PyUnicode_KIND(uval);
+        udata = __Pyx_PyUnicode_DATA(uval);
+        if (!CYTHON_PEP393_ENABLED || ukind == result_ukind) {
+            memcpy((char *)result_udata + (char_pos << kind_shift), udata, (size_t) (ulength << kind_shift));
+        } else {
+            #if PY_VERSION_HEX >= 0x030d0000
+            if (unlikely(PyUnicode_CopyCharacters(result_uval, char_pos, uval, 0, ulength) < 0)) goto bad;
+            #elif CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030300F0 || defined(_PyUnicode_FastCopyCharacters)
+            _PyUnicode_FastCopyCharacters(result_uval, char_pos, uval, 0, ulength);
+            #else
+            Py_ssize_t j;
+            for (j=0; j < ulength; j++) {
+                Py_UCS4 uchar = __Pyx_PyUnicode_READ(ukind, udata, j);
+                __Pyx_PyUnicode_WRITE(result_ukind, result_udata, char_pos+j, uchar);
+            }
+            #endif
+        }
+        char_pos += ulength;
+    }
+    return result_uval;
+overflow:
+    PyErr_SetString(PyExc_OverflowError, "join() result is too long for a Python string");
+bad:
+    Py_DECREF(result_uval);
+    return NULL;
+#else
+    CYTHON_UNUSED_VAR(max_char);
+    CYTHON_UNUSED_VAR(result_ulength);
+    CYTHON_UNUSED_VAR(value_count);
+    return PyUnicode_Join(__pyx_empty_unicode, value_tuple);
+#endif
+}
+
 /* KeywordStringCheck */
 static int __Pyx_CheckKeywordStrings(
     PyObject *kw,
@@ -7384,7 +7631,7 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__3);
+        name = __Pyx_NewRef(__pyx_n_s__4);
     }
     return name;
 }

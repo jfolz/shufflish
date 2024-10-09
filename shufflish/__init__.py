@@ -1,3 +1,7 @@
+"""
+Shufflish is the answer whenever you need to *kind of* shuffle lists of
+integers.
+"""
 from __future__ import annotations
 
 from typing import Generator, Iterable, Sequence, Tuple
@@ -332,11 +336,11 @@ def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
     # This is applied to the index before multiplication with prime
     # We add sqrt(domain) so small seeds do not have offset 0
     sqrt_domain = isqrt(domain)
-    pre_offset = ((seed // 3 + sqrt_domain) * prime) % domain
+    pre_offset = (seed // 3 + sqrt_domain) % domain
     # Step 3: select post-offset
     # This is applied to the result of the multiplication of index and prime
     # We add sqrt(domain) so small seeds not have offset 0
-    post_offset = ((seed // 2 + sqrt_domain) * prime) % domain
+    post_offset = (seed // 2 + sqrt_domain) % domain
     return AffineCipher(domain, prime, pre_offset, post_offset)
 
 

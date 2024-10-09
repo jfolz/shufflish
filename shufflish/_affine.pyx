@@ -93,3 +93,6 @@ cdef class AffineCipher:
             if i < 0 or <uint64_t>i >= self.params.domain:
                 raise IndexError("index out of range")
             return affineCipher(&self.params, i)
+
+    def __repr__(self):
+        return f"<AffineCipher domain={self.params.domain} prime={self.params.prime} pre={self.params.pre_offset} post={self.params.post_offset}>"
