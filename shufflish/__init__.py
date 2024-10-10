@@ -355,18 +355,14 @@ def permutation(
 
 
 def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
-    # Step 2: Select pre-offset
-    # This is applied to the index before multiplication with prime
-    # We add sqrt(domain) so small seeds do not have offset 0
-    # mod domain later so we can use the raw value to calculate post_offset
+    # Step 2: select pre-offset, added to the index before multiplication with prime;
+    # add sqrt(domain) so small seeds do not have offset 0
     sqrt_domain = isqrt(domain)
-    pre_offset = seed + sqrt_domain
-    # Step 3: select post-offset
-    # This is applied to the result of the multiplication of index and prime
-    # Since post_offset >= prime is equivalent to rolling over the index,
-    # we restrict post_offset to mod prime
-    post_offset = pre_offset // prime % domain % prime
-    pre_offset %= domain
+    pre_offset = seed + sqrt_domain % domain
+    # Step 3: select post-offset, added after the multiplication;
+    # since post_offset >= prime is equivalent to rolling over the index,
+    # we restrict post_offset to mod prime to avoid collisions with pre_offset
+    post_offset = seed // prime % prime
     return AffineCipher(domain, prime, pre_offset, post_offset)
 
 
