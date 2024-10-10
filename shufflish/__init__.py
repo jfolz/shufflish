@@ -106,7 +106,38 @@ PRIMES = (
     18446744073709548809,
     18446744073709548703,
     18446744073709548599,
+    18446744073709548587,
+    18446744073709548557,
+    18446744073709548511,
+    18446744073709548503,
+    18446744073709548497,
+    18446744073709548481,
+    18446744073709548397,
+    18446744073709548391,
+    18446744073709548379,
+    18446744073709548353,
+    18446744073709548349,
+    18446744073709548287,
+    18446744073709548271,
+    18446744073709548239,
+    18446744073709548193,
+    18446744073709548119,
+    18446744073709548073,
+    18446744073709548053,
+    18446744073709547821,
+    18446744073709547797,
+    18446744073709547777,
+    18446744073709547731,
+    18446744073709547707,
+    18446744073709547669,
+    18446744073709547657,
+    18446744073709547537,
+    18446744073709547521,
+    18446744073709547489,
+    18446744073709547473,
+    18446744073709547471,
 )
+
 
 def _modular_prime_combinations(domain, primes, k):
     """
@@ -159,7 +190,7 @@ class Permutations:
         faster than the :py:func:`permutation` function.
         Beware that, especially for larger than default values of ``num_primes``,
         this can occupy a *lot* of memory.
-        The default settings use roughly 2.5 MiB.
+        The default settings use roughly 1.3 MiB.
     """
 
     def __init__(
@@ -329,12 +360,12 @@ def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
     # We add sqrt(domain) so small seeds do not have offset 0
     # mod domain later so we can use the raw value to calculate post_offset
     sqrt_domain = isqrt(domain)
-    pre_offset = seed // 5 + sqrt_domain
+    pre_offset = seed + sqrt_domain
     # Step 3: select post-offset
     # This is applied to the result of the multiplication of index and prime
     # Since post_offset >= prime is equivalent to rolling over the index,
     # we restrict post_offset to mod prime
-    post_offset = pre_offset // prime % prime
+    post_offset = pre_offset // prime % domain % prime
     pre_offset %= domain
     return AffineCipher(domain, prime, pre_offset, post_offset)
 
