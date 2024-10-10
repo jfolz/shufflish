@@ -167,10 +167,9 @@ def _modular_prime_combinations_with_repetition(domain, primes, k):
 
 class Permutations:
     """
-    Create many permutations for the given ``domain`` with fixed settings,
-    i.e., a random shuffle of ``range(domain)``.
+    Create many permutations for the given ``domain``, i.e., a random shuffle
+    of ``range(domain)``, with fixed settings.
     ``domain`` must be greater 0 and less than 2**63.
-    A random ``seed`` is chosen if none is given.
     The returned :py:class:`AffineCipher` is iterable, indexable, and sliceable::
 
         from shufflish import Permutations
