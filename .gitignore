@@ -1,8 +1,12 @@
 /build
 /dist
 /scratch
-__pycache__
+/wheelhouse
+/doc/build
+/doc/source/README.md
 /shufflish/_version.py
+__pycache__
+.mypy_cache
 *.egg-info
 *.so
 *.html
