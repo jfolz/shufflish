@@ -27,10 +27,8 @@ author = "Joachim Folz"
 
 extensions = [
     'sphinx.ext.autodoc',
-    #'sphinx.ext.autosectionlabel',
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
-    "sphinx.ext.napoleon",
     "myst_parser",
 ]
 
@@ -102,5 +100,18 @@ def shorten_long_defaults(app, what, name, obj, options, signature, return_annot
     return signature, return_annotation
 
 
+def change_readme_links(path_from: Path, path_to: Path):
+    with path_from.open() as f:
+        content = f.read()
+    content, _ = re.subn(r"\[`(.+)`\]\(https://shufflish.readthedocs.io.+#\1\)", r"[](\1)", content)
+    content, _ = re.subn(r"\[(.+)\]\(https://shufflish.readthedocs.io.+#(.+)\)", r"[\1](\2)", content)
+    with path_to.open("wt", encoding="utf-8") as f:
+        f.write(content)
+
+
 def setup(app):
     app.connect('autodoc-process-signature', shorten_long_defaults)
+    change_readme_links(
+        REPO_ROOT / "README.md",
+        DOC_SOURCE / "README.md",
+    )

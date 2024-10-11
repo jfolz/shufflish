@@ -3,9 +3,19 @@ name = "shufflish"
 description = "For when you kinda need to shuffle enormous lists."
 readme = "README.md"
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Other Audience",
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
@@ -13,6 +23,7 @@ authors = [{ name = "Joachim Folz", email = "joachim.folz@dfki.de" }]
 keywords = [
     "shuffle",
     "shuffling",
+    "permutation",
     "random",
     "rng",
     "affine",
@@ -22,9 +33,9 @@ keywords = [
 dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://github.com/jfolz/shuffling/blob/master/README.md"
-Source = "https://gitlab.com/jfolz/shuffling"
-Tracker = "https://gitlab.com/jfolz/shuffling/issues"
+Documentation = "https://github.com/jfolz/shufflish/blob/master/README.md"
+Source = "https://github.com/jfolz/shufflish"
+Tracker = "https://github.com/jfolz/shufflish/issues"
 
 [build-system]
 requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0.0", "setuptools_scm"]

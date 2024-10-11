@@ -1,10 +1,15 @@
-# shufflish
+# Shufflish
 
-Shufflish is the answer whenever you need to _kind of_ shuffle ranges of integers,
-especially when there are so many of them that fitting all into memory is annoying
-or even infeasible.
+Shufflish is the answer whenever you need to _kind of_ shuffle ranges of many
+integers, especially when there are so many of them that fitting all into
+memory is annoying or even infeasible.
 
-For when you need to kind of shuffle something, but not quite.
+The way this works is through an affine cipher.
+It maps an index `i` to `i * prime % domain`, where `domain` is the size of the
+range of integers.
+If we select `prime` to be comprime with `domain`, then this function is
+bijective, i.e., for every output in the desired range, there is exactly one
+input from the same range that maps to it.
 
 
 # naive
