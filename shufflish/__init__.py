@@ -263,10 +263,11 @@ def permutation(
        If ``allow_repetition=False`` (default), repeated combinations are skipped.
 
     .. note::
-        If you can affort a tiny chance of repeated permutations, you can use
+        If you can afford a tiny chance of repeated permutations, you can use
         ``allow_repetition=True`` to significantly speed up this function.
-        Empirically, we find that the first repetition occurs after ``domain`` seeds.
-        If you need a lot of permutations for the same domain and cannot affort
+        Empirically, we find that the first repetition occurs at earliest after
+        ``domain`` seeds.
+        If you need a lot of permutations for the same domain and cannot afford
         repetitions, consider the :class:`Permutations` class, which generates
         all coprimes ahead of time.
     """
