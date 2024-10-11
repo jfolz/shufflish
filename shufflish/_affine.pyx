@@ -23,6 +23,7 @@ cdef class AffineCipher:
     """
     AffineCipher(domain: int, prime: int, pre_offset: int, post_offset: int)
 
+    The base class returned by :func:`permutation` and :class:`Permutations`.
     Produces indices from a permutation of ``range(domain)``.
     You can iterate over all indices, get a range, or access randomly::
 
