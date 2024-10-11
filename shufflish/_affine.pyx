@@ -29,8 +29,10 @@ cdef class AffineCipher:
 
         from shufflish import AffineCipher
         p = AffineCipher(10, 7, 6, 3)
+
         for i in p:
             print(i)
+
         print(list(p))
         print(list(p[3:8]))
         print(p[3])

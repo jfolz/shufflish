@@ -33,9 +33,11 @@ keywords = [
 dynamic = ["version"]
 
 [project.urls]
-Documentation = "https://github.com/jfolz/shufflish/blob/master/README.md"
-Source = "https://github.com/jfolz/shufflish"
-Tracker = "https://github.com/jfolz/shufflish/issues"
+Homepage = "https://github.com/jfolz/shufflish"
+Documentation = "https://shufflish.readthedocs.io/stable/"
+Repository = "https://github.com/jfolz/shufflish"
+Issues = "https://github.com/jfolz/shufflish/issues"
+Changelog = "https://github.com/jfolz/shufflish/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0.0", "setuptools_scm"]

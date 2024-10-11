@@ -55,9 +55,9 @@ static inline void fillAffineCipherParameters(
     uint64_t post_offset
 ) {
     params->domain = domain;
-    params->prime = prime % domain;
-    params->pre_offset = pre_offset % domain;
-    params->post_offset = post_offset % domain;
+    params->prime = prime;
+    params->pre_offset = pre_offset;
+    params->post_offset = post_offset;
 }
 
 // IMPORTANT: Unless i < 2^63 nothing works here!

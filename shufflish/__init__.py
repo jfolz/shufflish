@@ -20,6 +20,7 @@ except ImportError:
         iterator = iter(iterable)
         while batch := tuple(islice(iterator, n)):
             yield batch
+from weakref import WeakValueDictionary
 
 from ._version import __version__, __version_tuple__
 from ._affine import AffineCipher
@@ -98,18 +99,23 @@ def _modular_prime_combinations_with_repetition(domain, primes, k):
         yield p1 * p2 * p3 % domain
 
 
+_COPRIME_CACHE = WeakValueDictionary()
+
+
 class Permutations:
     """
     Create many permutations for the given ``domain``, i.e., a random shuffle
     of ``range(domain)``, with fixed settings.
-    ``domain`` must be greater 0 and less than 2**63.
+    ``domain`` must be greater 0 and less than 2^63.
     The returned :class:`AffineCipher` is iterable, indexable, and sliceable::
 
         from shufflish import Permutations
         perms = Permutations(10)
         p = perms.get()
+
         for i in p:
             print(i)
+
         print(list(p))
         print(list(p[3:8]))
         print(p[3])
@@ -128,20 +134,32 @@ class Permutations:
     def __init__(
         self,
         domain: int,
-        primes: Sequence[int] = PRIMES,
         num_primes=3,
         allow_repetition=False,
+        primes: Sequence[int] = PRIMES,
     ):
         if domain <= 0:
             raise ValueError("domain must be > 0")
         if domain >= 2**63:
             raise ValueError("domain must be < 2**63")
         self.domain = domain
-        if allow_repetition:
-            gen = _modular_prime_combinations_with_repetition(domain, primes, num_primes)
-        else:
-            gen = _modular_prime_combinations(domain, primes, num_primes)
-        self.coprimes = array.array("Q", gen)
+        # use ID of primes to avoid hashing large sequences,
+        # and support unhasheable types like list
+        cache_key = domain, id(primes), num_primes
+        self.coprimes = _COPRIME_CACHE.get(cache_key)
+        if self.coprimes is None:
+            if allow_repetition:
+                gen = _modular_prime_combinations_with_repetition(domain, primes, num_primes)
+            else:
+                gen = _modular_prime_combinations(domain, primes, num_primes)
+            # this step can take a little while; if another thread has added
+            # the same coprimes into the cache since we last checked,
+            # we should drop our array and use the cached object instead
+            coprimes = array.array("Q", gen)
+            self.coprimes = _COPRIME_CACHE.get(cache_key)
+            if self.coprimes is None:
+                _COPRIME_CACHE[cache_key] = coprimes
+                self.coprimes = coprimes
         # remember number of combinations for later
         if not allow_repetition and primes is PRIMES:
             NUM_COMBINATIONS[domain] = len(self.coprimes)
@@ -226,14 +244,14 @@ def _select_prime_with_repetition(
 def permutation(
     domain: int,
     seed: int | None = None,
-    primes: Sequence[int] = PRIMES,
     num_primes=3,
     allow_repetition=False,
+    primes: Sequence[int] = PRIMES,
 ) -> AffineCipher:
     """
     Return a permutation for the given ``domain``, i.e.,
     a random shuffle of ``range(domain)``.
-    ``domain`` must be greater 0 and less than 2**63.
+    ``domain`` must be greater 0 and less than 2^63.
     ``seed`` determines which permutation is returned.
     A random ``seed`` is chosen if none is given.
 
@@ -241,13 +259,16 @@ def permutation(
 
         from shufflish import permutation
         p = permutation(10)
+
         for i in p:
             print(i)
+
         print(list(p))
         print(list(p[3:8]))
         print(p[3])
 
-    Note the use of :type:`list` where iterators are returned.
+    Note the use of :class:`list`.
+    Where multiple values can be returned, iterators are used to conserve memory.
 
     You can give a different set of ``primes`` to choose from,
     though the default set should work for most values of ``domain``,
@@ -287,15 +308,11 @@ def permutation(
 
 def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
     # Step 2: select pre-offset, added to the index before multiplication with prime;
-    # add sqrt(domain) so small seeds do not have offset 0
-    sqrt_domain = isqrt(domain)
-    pre_offset = seed + sqrt_domain
+    # use sqrt(domain) so index 0 does not map to output 0
+    pre_offset = isqrt(domain)
     # Step 3: select post-offset, added after the multiplication;
-    post_offset = seed // domain
-    # post_offset > prime is equivalent to incrementing pre_offset,
-    # so we increment pre_offset further avoid early collisions
-    pre_offset += post_offset // prime
-    return AffineCipher(domain, prime, pre_offset % domain, post_offset % domain)
+    post_offset = seed % 2**63
+    return AffineCipher(domain, prime, pre_offset, post_offset)
 
 
 def local_shuffle(iterable: Iterable, chunk_size: int = 2**14, seed=None) -> Generator[int]:
