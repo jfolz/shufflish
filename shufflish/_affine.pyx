@@ -21,6 +21,8 @@ from ._affine_cipher cimport *
 
 cdef class AffineCipher:
     """
+    AffineCipher(domain: int, prime: int, pre_offset: int, post_offset: int)
+
     Produces indices from a permutation of ``range(domain)``.
     You can iterate over all indices, get a range, or access randomly::
 
@@ -32,7 +34,15 @@ cdef class AffineCipher:
         print(list(p[3:8]))
         print(p[3])
 
-    Importantly, there is no setup time, an instance occupies just 48 bytes,
+    Internally, it maps an index ``i`` to
+    ``((i + pre_offset) * prime + post_offset) % domain``.
+    This produces a permutation of ``range(domain)`` if the following are true:
+
+    * ``prime`` and ``domain`` are coprime, i.e., ``gcd(domain, prime) = 1``
+    * ``prime, pre_offset, post_offset < domain``
+    * ``0 < domain < 2**63`` to avoid division by zero and overflows.
+
+    The advantage is that there is no setup time, an instance occupies just 48 bytes,
     and it runs 20 times faster than :func:`random.shuffle` and twice as fast
     as :func:`numpy.random.shuffle`.
     It is also ten times faster than :func:`random.randrange`, which obviously
