@@ -1,5 +1,9 @@
 # shufflish
 
+Shufflish is the answer whenever you need to _kind of_ shuffle ranges of integers,
+especially when there are so many of them that fitting all into memory is annoying
+or even infeasible.
+
 For when you need to kind of shuffle something, but not quite.
 
 

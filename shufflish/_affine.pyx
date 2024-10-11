@@ -24,8 +24,8 @@ cdef class AffineCipher:
     Produces indices from a permutation of ``range(domain)``.
     You can iterate over all indices, get a range, or access randomly::
 
-        from shufflish import permutation
-        p = permutation(10)
+        from shufflish import AffineCipher
+        p = AffineCipher(10, 7, 6, 3)
         for i in p:
             print(i)
         print(list(p))
@@ -33,7 +33,10 @@ cdef class AffineCipher:
         print(p[3])
 
     Importantly, there is no setup time, an instance occupies just 48 bytes,
-    and it is more than twice as fast as ``random.random()``.
+    and it runs 20 times faster than :func:`random.shuffle` and twice as fast
+    as :func:`numpy.random.shuffle`.
+    It is also ten times faster than :func:`random.randrange`, which obviously
+    does not produce a permutation.
     """
 
     cdef affineCipherParameters params

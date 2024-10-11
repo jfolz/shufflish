@@ -1,7 +1,3 @@
-"""
-Shufflish is the answer whenever you need to *kind of* shuffle lists of
-integers.
-"""
 from __future__ import annotations
 
 from typing import Generator, Iterable, Sequence, Tuple
@@ -36,113 +32,50 @@ __all__ = (
 
 
 PRIMES = (
-    18446744073709551557,
-    18446744073709551533,
-    18446744073709551521,
-    18446744073709551437,
-    18446744073709551427,
-    18446744073709551359,
-    18446744073709551337,
-    18446744073709551293,
-    18446744073709551263,
-    18446744073709551253,
-    18446744073709551191,
-    18446744073709551163,
-    18446744073709551113,
-    18446744073709550873,
-    18446744073709550791,
-    18446744073709550773,
-    18446744073709550771,
-    18446744073709550719,
-    18446744073709550717,
-    18446744073709550681,
-    18446744073709550671,
-    18446744073709550593,
-    18446744073709550591,
-    18446744073709550539,
-    18446744073709550537,
-    18446744073709550381,
-    18446744073709550341,
-    18446744073709550293,
-    18446744073709550237,
-    18446744073709550147,
-    18446744073709550141,
-    18446744073709550129,
-    18446744073709550111,
-    18446744073709550099,
-    18446744073709550047,
-    18446744073709550033,
-    18446744073709550009,
-    18446744073709549951,
-    18446744073709549861,
-    18446744073709549817,
-    18446744073709549811,
-    18446744073709549777,
-    18446744073709549757,
-    18446744073709549733,
-    18446744073709549667,
-    18446744073709549621,
-    18446744073709549613,
-    18446744073709549583,
-    18446744073709549571,
-    18446744073709549519,
-    18446744073709549483,
-    18446744073709549441,
-    18446744073709549363,
-    18446744073709549331,
-    18446744073709549327,
-    18446744073709549307,
-    18446744073709549237,
-    18446744073709549153,
-    18446744073709549123,
-    18446744073709549067,
-    18446744073709549061,
-    18446744073709549019,
-    18446744073709548983,
-    18446744073709548899,
-    18446744073709548887,
-    18446744073709548859,
-    18446744073709548847,
-    18446744073709548809,
-    18446744073709548703,
-    18446744073709548599,
-    18446744073709548587,
-    18446744073709548557,
-    18446744073709548511,
-    18446744073709548503,
-    18446744073709548497,
-    18446744073709548481,
-    18446744073709548397,
-    18446744073709548391,
-    18446744073709548379,
-    18446744073709548353,
-    18446744073709548349,
-    18446744073709548287,
-    18446744073709548271,
-    18446744073709548239,
-    18446744073709548193,
-    18446744073709548119,
-    18446744073709548073,
-    18446744073709548053,
-    18446744073709547821,
-    18446744073709547797,
-    18446744073709547777,
-    18446744073709547731,
-    18446744073709547707,
-    18446744073709547669,
-    18446744073709547657,
-    18446744073709547537,
-    18446744073709547521,
-    18446744073709547489,
-    18446744073709547473,
+    18446744073709551557, 18446744073709551533, 18446744073709551521,
+    18446744073709551437, 18446744073709551427, 18446744073709551359,
+    18446744073709551337, 18446744073709551293, 18446744073709551263,
+    18446744073709551253, 18446744073709551191, 18446744073709551163,
+    18446744073709551113, 18446744073709550873, 18446744073709550791,
+    18446744073709550773, 18446744073709550771, 18446744073709550719,
+    18446744073709550717, 18446744073709550681, 18446744073709550671,
+    18446744073709550593, 18446744073709550591, 18446744073709550539,
+    18446744073709550537, 18446744073709550381, 18446744073709550341,
+    18446744073709550293, 18446744073709550237, 18446744073709550147,
+    18446744073709550141, 18446744073709550129, 18446744073709550111,
+    18446744073709550099, 18446744073709550047, 18446744073709550033,
+    18446744073709550009, 18446744073709549951, 18446744073709549861,
+    18446744073709549817, 18446744073709549811, 18446744073709549777,
+    18446744073709549757, 18446744073709549733, 18446744073709549667,
+    18446744073709549621, 18446744073709549613, 18446744073709549583,
+    18446744073709549571, 18446744073709549519, 18446744073709549483,
+    18446744073709549441, 18446744073709549363, 18446744073709549331,
+    18446744073709549327, 18446744073709549307, 18446744073709549237,
+    18446744073709549153, 18446744073709549123, 18446744073709549067,
+    18446744073709549061, 18446744073709549019, 18446744073709548983,
+    18446744073709548899, 18446744073709548887, 18446744073709548859,
+    18446744073709548847, 18446744073709548809, 18446744073709548703,
+    18446744073709548599, 18446744073709548587, 18446744073709548557,
+    18446744073709548511, 18446744073709548503, 18446744073709548497,
+    18446744073709548481, 18446744073709548397, 18446744073709548391,
+    18446744073709548379, 18446744073709548353, 18446744073709548349,
+    18446744073709548287, 18446744073709548271, 18446744073709548239,
+    18446744073709548193, 18446744073709548119, 18446744073709548073,
+    18446744073709548053, 18446744073709547821, 18446744073709547797,
+    18446744073709547777, 18446744073709547731, 18446744073709547707,
+    18446744073709547669, 18446744073709547657, 18446744073709547537,
+    18446744073709547521, 18446744073709547489, 18446744073709547473,
     18446744073709547471,
 )
+"""
+The default set of primes used by :func:`permutation` and :class:`Permutations`.
+"""
 
 
 def _modular_prime_combinations(domain, primes, k):
     """
     Generate all ``k``-combinations of the given primes that are unique mod ``domain``.
-    Only considers primes that are co-prime with ``domain``.
+    Only considers primes that are coprime with ``domain``.
     """
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
     seen = set()
@@ -157,7 +90,7 @@ def _modular_prime_combinations(domain, primes, k):
 def _modular_prime_combinations_with_repetition(domain, primes, k):
     """
     Generate all ``k``-combinations of the given primes mod ``domain``.
-    Only considers primes that are co-prime with ``domain``.
+    Only considers primes that are coprime with ``domain``.
     May repeat values.
     """
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
@@ -170,7 +103,7 @@ class Permutations:
     Create many permutations for the given ``domain``, i.e., a random shuffle
     of ``range(domain)``, with fixed settings.
     ``domain`` must be greater 0 and less than 2**63.
-    The returned :py:class:`AffineCipher` is iterable, indexable, and sliceable::
+    The returned :class:`AffineCipher` is iterable, indexable, and sliceable::
 
         from shufflish import Permutations
         perms = Permutations(10)
@@ -181,12 +114,12 @@ class Permutations:
         print(list(p[3:8]))
         print(p[3])
 
-    See the :py:func:`permutation` function for details on how this works.
+    See the :func:`permutation` function for details on how this works.
 
     .. note::
         This class can be a good choice to create many permutations in the same domain.
-        It pre-calculates and stores all co-primes, so creating permutations is much
-        faster than the :py:func:`permutation` function.
+        It pre-calculates and stores all coprimes, so creating permutations is much
+        faster than the :func:`permutation` function.
         Beware that, especially for larger than default values of ``num_primes``,
         this can occupy a *lot* of memory.
         The default settings use roughly 1.3 MiB.
@@ -239,7 +172,7 @@ def _select_prime(
 ) -> int:
     """
     Returns the ``seed``-th unique k-combiations of the given ``primes``.
-    Only considers primes that are co-prime with ``domain``.
+    Only considers primes that are coprime with ``domain``.
     This can be quite slow.
     """
     gen = _modular_prime_combinations(domain, primes, k)
@@ -304,7 +237,7 @@ def permutation(
     ``seed`` determines which permutation is returned.
     A random ``seed`` is chosen if none is given.
 
-    The returned :py:class:`AffineCipher` is iterable, indexable, and sliceable::
+    The returned :class:`AffineCipher` is iterable, indexable, and sliceable::
 
         from shufflish import permutation
         p = permutation(10)
@@ -314,13 +247,13 @@ def permutation(
         print(list(p[3:8]))
         print(p[3])
 
-    Note the use of :py:type:`list` where iterators are returned.
+    Note the use of :type:`list` where iterators are returned.
 
     You can give a different set of ``primes`` to choose from,
     though the default set should work for most values of ``domain``,
     and the selection process is pretty robust:
 
-    1. Remove primes that are not co-prime, i.e., ``gcd(domain, prime) = 1``.
+    1. Remove primes that are not coprime, i.e., ``gcd(domain, prime) = 1``.
        Testing that ``prime`` is not a factor of ``domain`` is sufficient.
     2. Remove duplicates ``prime % domain``.
        In modular arithmetic, multiplication with ``prime`` and
@@ -334,8 +267,8 @@ def permutation(
         ``allow_repetition=True`` to significantly speed up this function.
         Empirically, we find that the first repetition occurs after ``domain`` seeds.
         If you need a lot of permutations for the same domain and cannot affort
-        repetitions, consider the :py:class:`Permutations` class, which generates
-        all co-primes ahead of time.
+        repetitions, consider the :class:`Permutations` class, which generates
+        all coprimes ahead of time.
     """
     if domain <= 0:
         raise ValueError("domain must be > 0")
@@ -343,7 +276,7 @@ def permutation(
         raise ValueError("domain must be < 2**63")
     if seed is None:
         seed = random.randrange(2**64)
-    # Step 1: Select co-prime number
+    # Step 1: Select coprime number
     if allow_repetition:
         prime = _select_prime_with_repetition(domain, seed, primes, num_primes)
     else:
