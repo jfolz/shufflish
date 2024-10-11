@@ -332,12 +332,10 @@ def permutation(
     .. note::
         If you can affort a tiny chance of repeated permutations, you can use
         ``allow_repetition=True`` to significantly speed up this function.
-        Empirically, we find that repetitions occur within ``domain / 2`` seeds.
+        Empirically, we find that the first repetition occurs after ``domain`` seeds.
         If you need a lot of permutations for the same domain and cannot affort
-        repetitions, consider the :py:class:`Permutations` class.
-        It generates all co-primes ahead of time, trading memory for compute.
-        Beware that this can mean a lot of memory, especially for larger than
-        default values of ``num_primes``.
+        repetitions, consider the :py:class:`Permutations` class, which generates
+        all co-primes ahead of time.
     """
     if domain <= 0:
         raise ValueError("domain must be > 0")
@@ -357,12 +355,13 @@ def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
     # Step 2: select pre-offset, added to the index before multiplication with prime;
     # add sqrt(domain) so small seeds do not have offset 0
     sqrt_domain = isqrt(domain)
-    pre_offset = seed + sqrt_domain % domain
+    pre_offset = seed + sqrt_domain
     # Step 3: select post-offset, added after the multiplication;
-    # since post_offset >= prime is equivalent to rolling over the index,
-    # we restrict post_offset to mod prime to avoid collisions with pre_offset
-    post_offset = seed // prime % prime
-    return AffineCipher(domain, prime, pre_offset, post_offset)
+    post_offset = seed // domain
+    # post_offset > prime is equivalent to incrementing pre_offset,
+    # so we increment pre_offset further avoid early collisions
+    pre_offset += post_offset // prime
+    return AffineCipher(domain, prime, pre_offset % domain, post_offset % domain)
 
 
 def local_shuffle(iterable: Iterable, chunk_size: int = 2**14, seed=None) -> Generator[int]:
