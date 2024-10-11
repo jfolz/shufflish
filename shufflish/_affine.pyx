@@ -106,6 +106,10 @@ cdef class AffineCipher:
         ))
 
     def parameters(self):
+        """
+        Returns the affine parameters as tuple
+        ``(domain, prime, pre_offset, post_offset)``.
+        """
         return (
             self.params.domain,
             self.params.prime,
