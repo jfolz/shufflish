@@ -15,7 +15,7 @@
 
 
 import cython
-from cpython.slice cimport PySlice_GetIndices
+from cpython.slice cimport PySlice_Unpack, PySlice_AdjustIndices
 from libc.stdint cimport *
 from ._affine_cipher cimport *
 
@@ -72,15 +72,8 @@ cdef class AffineCipher:
 
     def __slice(self, object slice):
         cdef Py_ssize_t i, stop, step
-        if PySlice_GetIndices(slice, self.params.domain, &i, &stop, &step) != 0:
-            raise IndexError("index out of range")
-
-        if i < 0 \
-        or i >= <Py_ssize_t>self.params.domain \
-        or (step > 0 and stop < 0) \
-        or stop > <Py_ssize_t>self.params.domain:
-            raise IndexError("index out of range")
-
+        PySlice_Unpack(slice, &i, &stop, &step)
+        PySlice_AdjustIndices(<Py_ssize_t>self.params.domain, &i, &stop, step)
         if step > 0:
             while i < stop:
                 yield affineCipher(&self.params, i)

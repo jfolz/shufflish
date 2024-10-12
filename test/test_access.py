@@ -11,6 +11,20 @@ def test_item():
         assert t[i] == p[i]
 
 
+def test_item_out_of_bounds_low():
+    domain = 10
+    p = permutation(domain)
+    with pytest.raises(IndexError):
+        p[-domain-1]
+
+
+def test_item_out_of_bounds_high():
+    domain = 10
+    p = permutation(domain)
+    with pytest.raises(IndexError):
+        p[domain]
+
+
 def test_slice():
     domain = 10
     p = permutation(domain)
@@ -45,15 +59,20 @@ def test_slice_negative_step():
         assert t[::step] == tuple(p[::step]), step
 
 
-def test_slice_out_of_range_low():
-    with pytest.raises(IndexError):
-        domain = 10
-        p = permutation(domain)
-        tuple(p[-domain-1:])
+def test_slice_out_of_bounds_empty():
+    domain = 10
+    p = permutation(domain)
+    t = tuple(p)
+    assert tuple(p[domain:]) == t[domain:]
+    assert tuple(p[:-domain-1]) == t[:-domain-1]
+
+def test_slice_out_of_bounds_low():
+    domain = 10
+    p = permutation(domain)
+    assert tuple(p[-domain-1:]) == tuple(p)
 
 
-def test_slice_out_of_range_high():
-    with pytest.raises(IndexError):
-        domain = 10
-        p = permutation(domain)
-        tuple(p[:domain+1])
+def test_slice_out_of_bounds_high():
+    domain = 10
+    p = permutation(domain)
+    assert tuple(p[:domain+1]) == tuple(p)
