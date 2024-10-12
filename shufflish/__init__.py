@@ -80,7 +80,8 @@ def _modular_prime_combinations(domain, primes, k):
     """
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
     seen = set()
-    for p1, p2, p3 in combinations(primes, k):
+    ones = (1,) * (k-1)
+    for p1, p2, p3 in combinations(chain(ones, primes), k):
         p = p1 * p2 * p3 % domain
         if p in seen:
             continue
@@ -94,8 +95,9 @@ def _modular_prime_combinations_with_repetition(domain, primes, k):
     Only considers primes that are coprime with ``domain``.
     May repeat values.
     """
+    ones = (1,) * (k-1)
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
-    for p1, p2, p3 in combinations(primes, k):
+    for p1, p2, p3 in combinations(chain(ones, primes), k):
         yield p1 * p2 * p3 % domain
 
 
@@ -211,14 +213,15 @@ def _select_prime_with_repetition(
     seed: int,
     primes: Sequence[int],
     k: int,
-    ) -> int:
+) -> int:
     """
     Use combinatorial unranking to determine the ``seed``-th
     ``k``-combination of the given ``primes``.
     Return the product of this combination mod domain.
     This is reasonably fast, but does not account for reptitions mod domain.
     """
-    primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
+    ones = (1,) * (k-1)
+    primes = list(chain(ones, dict.fromkeys(p % domain for p in primes if domain % p != 0)))
     np = len(primes)
     seed %= comb(np, k)
     combination = []
