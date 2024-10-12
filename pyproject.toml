@@ -54,5 +54,5 @@ namespaces = false
 [tool.cibuildwheel]
 build-verbosity = 1
 build-frontend = "build"
-test-requires = "pytest>=5.3.2"
-test-command = "pytest {project}/test -vv"
+test-requires = ["pytest>=5.3.2", "pytest-cov"]
+test-command = "pytest --cov=shufflish {project}/test -vv"

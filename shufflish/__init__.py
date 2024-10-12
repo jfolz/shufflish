@@ -147,7 +147,7 @@ class Permutations:
         self.domain = domain
         # use ID of primes to avoid hashing large sequences,
         # and support unhasheable types like list
-        cache_key = domain, id(primes), num_primes
+        cache_key = domain, id(primes), num_primes, allow_repetition
         self.coprimes = _COPRIME_CACHE.get(cache_key)
         if self.coprimes is None:
             if allow_repetition:

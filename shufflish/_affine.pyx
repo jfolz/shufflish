@@ -15,6 +15,7 @@
 
 
 import cython
+from cpython.slice cimport PySlice_GetIndices
 from libc.stdint cimport *
 from ._affine_cipher cimport *
 
@@ -69,39 +70,30 @@ cdef class AffineCipher:
             yield affineCipher(&self.params, i)
 
 
-    def __slice(self, start, stop, step):
-        cdef int64_t i, stop_, step_
-
-        if step == 0:
-            raise ValueError("slice step cannot be zero")
-        step_ = step or 1
-
-        i = 0 if start is None else start
-        stop_ = self.params.domain if stop is None else stop
-
-        if i < 0:
-            i += self.params.domain
-        if i < 0 or <uint64_t>i >= self.params.domain:
+    def __slice(self, object slice):
+        cdef Py_ssize_t i, stop, step
+        if PySlice_GetIndices(slice, self.params.domain, &i, &stop, &step) != 0:
             raise IndexError("index out of range")
 
-        if stop_ < 0:
-            stop_ += self.params.domain
-        if stop_ < 0 or <uint64_t>stop_ > self.params.domain:
+        if i < 0 \
+        or i >= <Py_ssize_t>self.params.domain \
+        or (step > 0 and stop < 0) \
+        or stop > <Py_ssize_t>self.params.domain:
             raise IndexError("index out of range")
 
-        if step_ > 0:
-            while i < stop_:
+        if step > 0:
+            while i < stop:
                 yield affineCipher(&self.params, i)
-                i += step_
+                i += step
         else:
-            while i > stop_:
+            while i > stop:
                 yield affineCipher(&self.params, i)
-                i += step_
+                i += step
 
     def __getitem__(self, item):
         cdef int64_t i
         if isinstance(item, slice):
-            return self.__slice(item.start, item.stop, item.step)
+            return self.__slice(item)
         else:
             i = item
             if i < 0:
@@ -136,8 +128,9 @@ cdef class AffineCipher:
     def __eq__(self, other):
         if not isinstance(other, AffineCipher):
             return False
-        oparams = other.parameters()
-        return self.params.domain == oparams[0] \
-           and self.params.prime == oparams[1] \
-           and self.params.pre_offset == oparams[2] \
-           and self.params.post_offset == oparams[3]
+        cdef AffineCipher other_ = other
+        cdef affineCipherParameters oparams = other_.params
+        return self.params.domain == oparams.domain \
+           and self.params.prime == oparams.prime \
+           and self.params.pre_offset == oparams.pre_offset \
+           and self.params.post_offset == oparams.post_offset

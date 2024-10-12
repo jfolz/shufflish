@@ -1523,13 +1523,11 @@ struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____iter__ {
 
 struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice {
   PyObject_HEAD
-  int64_t __pyx_v_i;
+  Py_ssize_t __pyx_v_i;
   struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self;
-  PyObject *__pyx_v_start;
-  PyObject *__pyx_v_step;
-  int64_t __pyx_v_step_;
-  PyObject *__pyx_v_stop;
-  int64_t __pyx_v_stop_;
+  PyObject *__pyx_v_slice;
+  Py_ssize_t __pyx_v_step;
+  Py_ssize_t __pyx_v_stop;
 };
 
 /* #### Code section: utility_code_proto ### */
@@ -1766,9 +1764,6 @@ static int __Pyx_GetException(PyObject **type, PyObject **value, PyObject **tb);
 /* pep479.proto */
 static void __Pyx_Generator_Replace_StopIteration(int in_async_gen);
 
-/* PyIntCompare.proto */
-static CYTHON_INLINE int __Pyx_PyInt_BoolEqObjC(PyObject *op1, PyObject *op2, long intval, long inplace);
-
 /* PyObjectCall.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
@@ -1852,27 +1847,8 @@ static PyObject* __Pyx_PyUnicode_Join(PyObject* value_tuple, Py_ssize_t value_co
 /* KeywordStringCheck.proto */
 static int __Pyx_CheckKeywordStrings(PyObject *kw, const char* function_name, int kw_allowed);
 
-/* GetItemInt.proto */
-#define __Pyx_GetItemInt(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Fast(o, (Py_ssize_t)i, is_list, wraparound, boundscheck) :\
-    (is_list ? (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL) :\
-               __Pyx_GetItemInt_Generic(o, to_py_func(i))))
-#define __Pyx_GetItemInt_List(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_List_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "list index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-#define __Pyx_GetItemInt_Tuple(o, i, type, is_signed, to_py_func, is_list, wraparound, boundscheck)\
-    (__Pyx_fits_Py_ssize_t(i, type, is_signed) ?\
-    __Pyx_GetItemInt_Tuple_Fast(o, (Py_ssize_t)i, wraparound, boundscheck) :\
-    (PyErr_SetString(PyExc_IndexError, "tuple index out of range"), (PyObject*)NULL))
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              int wraparound, int boundscheck);
-static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j);
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i,
-                                                     int is_list, int wraparound, int boundscheck);
+/* ExtTypeTest.proto */
+static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type);
 
 /* IncludeStructmemberH.proto */
 #include <structmember.h>
@@ -1986,9 +1962,6 @@ static CYTHON_INLINE uint64_t __Pyx_PyInt_As_uint64_t(PyObject *);
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint64_t(uint64_t value);
 
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
-
 /* CIntFromPy.proto */
 static CYTHON_INLINE int64_t __Pyx_PyInt_As_int64_t(PyObject *);
 
@@ -2004,6 +1977,9 @@ typedef const char *__Pyx_TypeName;
 #define __Pyx_PyType_GetName(tp) ((tp)->tp_name)
 #define __Pyx_DECREF_TypeName(obj)
 #endif
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
@@ -2155,6 +2131,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from "cython" */
 
+/* Module declarations from "cpython.slice" */
+
 /* Module declarations from "libc.stdint" */
 
 /* Module declarations from "shufflish._affine_cipher" */
@@ -2169,12 +2147,11 @@ int __pyx_module_is_main_shufflish___affine = 0;
 /* Implementation of "shufflish._affine" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_range;
-static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_IndexError;
 static PyObject *__pyx_builtin_TypeError;
 /* #### Code section: string_decls ### */
-static const char __pyx_k__3[] = ">";
-static const char __pyx_k__4[] = "?";
+static const char __pyx_k__2[] = ">";
+static const char __pyx_k__3[] = "?";
 static const char __pyx_k_gc[] = "gc";
 static const char __pyx_k_pre[] = " pre=";
 static const char __pyx_k_args[] = "args";
@@ -2183,20 +2160,18 @@ static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_post[] = " post=";
 static const char __pyx_k_send[] = "send";
-static const char __pyx_k_step[] = "step";
-static const char __pyx_k_stop[] = "stop";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_close[] = "close";
 static const char __pyx_k_prime[] = "prime";
 static const char __pyx_k_range[] = "range";
-static const char __pyx_k_slice[] = "__slice";
-static const char __pyx_k_start[] = "start";
+static const char __pyx_k_slice[] = "slice";
 static const char __pyx_k_throw[] = "throw";
 static const char __pyx_k_domain[] = "domain";
 static const char __pyx_k_enable[] = "enable";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_prime_2[] = " prime=";
+static const char __pyx_k_slice_2[] = "__slice";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
@@ -2204,8 +2179,6 @@ static const char __pyx_k_isenabled[] = "isenabled";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_IndexError[] = "IndexError";
-static const char __pyx_k_ValueError[] = "ValueError";
-static const char __pyx_k_parameters[] = "parameters";
 static const char __pyx_k_pre_offset[] = "pre_offset";
 static const char __pyx_k_post_offset[] = "post_offset";
 static const char __pyx_k_AffineCipher[] = "AffineCipher";
@@ -2218,12 +2191,11 @@ static const char __pyx_k_AffineCipher___iter[] = "AffineCipher.__iter__";
 static const char __pyx_k_AffineCipher__slice[] = "_AffineCipher__slice";
 static const char __pyx_k_AffineCipher_domain[] = "<AffineCipher domain=";
 static const char __pyx_k_AffineCipher___slice[] = "AffineCipher.__slice";
-static const char __pyx_k_slice_step_cannot_be_zero[] = "slice step cannot be zero";
 static const char __pyx_k_Pickling_of_struct_members_such[] = "Pickling of struct members such as self.params must be explicitly requested with @auto_pickle(True)";
 /* #### Code section: decls ### */
 static int __pyx_pf_9shufflish_7_affine_12AffineCipher___init__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, uint64_t __pyx_v_domain, uint64_t __pyx_v_prime, uint64_t __pyx_v_pre_offset, uint64_t __pyx_v_post_offset); /* proto */
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_2__iter__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_stop, PyObject *__pyx_v_step); /* proto */
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_slice); /* proto */
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_item); /* proto */
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
 static Py_hash_t __pyx_pf_9shufflish_7_affine_12AffineCipher_12__hash__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self); /* proto */
@@ -2268,6 +2240,8 @@ typedef struct {
   #if CYTHON_USE_MODULE_STATE
   #endif
   #if CYTHON_USE_MODULE_STATE
+  #endif
+  #if CYTHON_USE_MODULE_STATE
   PyObject *__pyx_type_9shufflish_7_affine_AffineCipher;
   PyObject *__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter__;
   PyObject *__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice;
@@ -2283,9 +2257,8 @@ typedef struct {
   PyObject *__pyx_n_s_IndexError;
   PyObject *__pyx_kp_s_Pickling_of_struct_members_such;
   PyObject *__pyx_n_s_TypeError;
-  PyObject *__pyx_n_s_ValueError;
-  PyObject *__pyx_kp_u__3;
-  PyObject *__pyx_n_s__4;
+  PyObject *__pyx_kp_u__2;
+  PyObject *__pyx_n_s__3;
   PyObject *__pyx_n_s_args;
   PyObject *__pyx_n_s_cline_in_traceback;
   PyObject *__pyx_n_s_close;
@@ -2299,7 +2272,6 @@ typedef struct {
   PyObject *__pyx_n_s_iter;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_name;
-  PyObject *__pyx_n_s_parameters;
   PyObject *__pyx_kp_u_post;
   PyObject *__pyx_n_s_post_offset;
   PyObject *__pyx_kp_u_pre;
@@ -2316,15 +2288,10 @@ typedef struct {
   PyObject *__pyx_n_s_setstate_cython;
   PyObject *__pyx_n_s_shufflish__affine;
   PyObject *__pyx_n_s_slice;
-  PyObject *__pyx_kp_u_slice_step_cannot_be_zero;
-  PyObject *__pyx_n_s_start;
-  PyObject *__pyx_n_s_step;
-  PyObject *__pyx_n_s_stop;
+  PyObject *__pyx_n_s_slice_2;
   PyObject *__pyx_n_s_test;
   PyObject *__pyx_n_s_throw;
-  PyObject *__pyx_int_0;
   PyObject *__pyx_tuple_;
-  PyObject *__pyx_tuple__2;
 } __pyx_mstate;
 
 #if CYTHON_USE_MODULE_STATE
@@ -2381,9 +2348,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_IndexError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Pickling_of_struct_members_such);
   Py_CLEAR(clear_module_state->__pyx_n_s_TypeError);
-  Py_CLEAR(clear_module_state->__pyx_n_s_ValueError);
-  Py_CLEAR(clear_module_state->__pyx_kp_u__3);
-  Py_CLEAR(clear_module_state->__pyx_n_s__4);
+  Py_CLEAR(clear_module_state->__pyx_kp_u__2);
+  Py_CLEAR(clear_module_state->__pyx_n_s__3);
   Py_CLEAR(clear_module_state->__pyx_n_s_args);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
   Py_CLEAR(clear_module_state->__pyx_n_s_close);
@@ -2397,7 +2363,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_iter);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_name);
-  Py_CLEAR(clear_module_state->__pyx_n_s_parameters);
   Py_CLEAR(clear_module_state->__pyx_kp_u_post);
   Py_CLEAR(clear_module_state->__pyx_n_s_post_offset);
   Py_CLEAR(clear_module_state->__pyx_kp_u_pre);
@@ -2414,15 +2379,10 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_setstate_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_shufflish__affine);
   Py_CLEAR(clear_module_state->__pyx_n_s_slice);
-  Py_CLEAR(clear_module_state->__pyx_kp_u_slice_step_cannot_be_zero);
-  Py_CLEAR(clear_module_state->__pyx_n_s_start);
-  Py_CLEAR(clear_module_state->__pyx_n_s_step);
-  Py_CLEAR(clear_module_state->__pyx_n_s_stop);
+  Py_CLEAR(clear_module_state->__pyx_n_s_slice_2);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
   Py_CLEAR(clear_module_state->__pyx_n_s_throw);
-  Py_CLEAR(clear_module_state->__pyx_int_0);
   Py_CLEAR(clear_module_state->__pyx_tuple_);
-  Py_CLEAR(clear_module_state->__pyx_tuple__2);
   return 0;
 }
 #endif
@@ -2457,9 +2417,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_IndexError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Pickling_of_struct_members_such);
   Py_VISIT(traverse_module_state->__pyx_n_s_TypeError);
-  Py_VISIT(traverse_module_state->__pyx_n_s_ValueError);
-  Py_VISIT(traverse_module_state->__pyx_kp_u__3);
-  Py_VISIT(traverse_module_state->__pyx_n_s__4);
+  Py_VISIT(traverse_module_state->__pyx_kp_u__2);
+  Py_VISIT(traverse_module_state->__pyx_n_s__3);
   Py_VISIT(traverse_module_state->__pyx_n_s_args);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
   Py_VISIT(traverse_module_state->__pyx_n_s_close);
@@ -2473,7 +2432,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_iter);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_name);
-  Py_VISIT(traverse_module_state->__pyx_n_s_parameters);
   Py_VISIT(traverse_module_state->__pyx_kp_u_post);
   Py_VISIT(traverse_module_state->__pyx_n_s_post_offset);
   Py_VISIT(traverse_module_state->__pyx_kp_u_pre);
@@ -2490,15 +2448,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_setstate_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_shufflish__affine);
   Py_VISIT(traverse_module_state->__pyx_n_s_slice);
-  Py_VISIT(traverse_module_state->__pyx_kp_u_slice_step_cannot_be_zero);
-  Py_VISIT(traverse_module_state->__pyx_n_s_start);
-  Py_VISIT(traverse_module_state->__pyx_n_s_step);
-  Py_VISIT(traverse_module_state->__pyx_n_s_stop);
+  Py_VISIT(traverse_module_state->__pyx_n_s_slice_2);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
   Py_VISIT(traverse_module_state->__pyx_n_s_throw);
-  Py_VISIT(traverse_module_state->__pyx_int_0);
   Py_VISIT(traverse_module_state->__pyx_tuple_);
-  Py_VISIT(traverse_module_state->__pyx_tuple__2);
   return 0;
 }
 #endif
@@ -2534,6 +2487,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #if CYTHON_USE_MODULE_STATE
 #endif
 #if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
 #define __pyx_type_9shufflish_7_affine_AffineCipher __pyx_mstate_global->__pyx_type_9shufflish_7_affine_AffineCipher
 #define __pyx_type_9shufflish_7_affine___pyx_scope_struct____iter__ __pyx_mstate_global->__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter__
 #define __pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice __pyx_mstate_global->__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice
@@ -2549,9 +2504,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_IndexError __pyx_mstate_global->__pyx_n_s_IndexError
 #define __pyx_kp_s_Pickling_of_struct_members_such __pyx_mstate_global->__pyx_kp_s_Pickling_of_struct_members_such
 #define __pyx_n_s_TypeError __pyx_mstate_global->__pyx_n_s_TypeError
-#define __pyx_n_s_ValueError __pyx_mstate_global->__pyx_n_s_ValueError
-#define __pyx_kp_u__3 __pyx_mstate_global->__pyx_kp_u__3
-#define __pyx_n_s__4 __pyx_mstate_global->__pyx_n_s__4
+#define __pyx_kp_u__2 __pyx_mstate_global->__pyx_kp_u__2
+#define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
 #define __pyx_n_s_args __pyx_mstate_global->__pyx_n_s_args
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
 #define __pyx_n_s_close __pyx_mstate_global->__pyx_n_s_close
@@ -2565,7 +2519,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_iter __pyx_mstate_global->__pyx_n_s_iter
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_name __pyx_mstate_global->__pyx_n_s_name
-#define __pyx_n_s_parameters __pyx_mstate_global->__pyx_n_s_parameters
 #define __pyx_kp_u_post __pyx_mstate_global->__pyx_kp_u_post
 #define __pyx_n_s_post_offset __pyx_mstate_global->__pyx_n_s_post_offset
 #define __pyx_kp_u_pre __pyx_mstate_global->__pyx_kp_u_pre
@@ -2582,15 +2535,10 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_setstate_cython __pyx_mstate_global->__pyx_n_s_setstate_cython
 #define __pyx_n_s_shufflish__affine __pyx_mstate_global->__pyx_n_s_shufflish__affine
 #define __pyx_n_s_slice __pyx_mstate_global->__pyx_n_s_slice
-#define __pyx_kp_u_slice_step_cannot_be_zero __pyx_mstate_global->__pyx_kp_u_slice_step_cannot_be_zero
-#define __pyx_n_s_start __pyx_mstate_global->__pyx_n_s_start
-#define __pyx_n_s_step __pyx_mstate_global->__pyx_n_s_step
-#define __pyx_n_s_stop __pyx_mstate_global->__pyx_n_s_stop
+#define __pyx_n_s_slice_2 __pyx_mstate_global->__pyx_n_s_slice_2
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
 #define __pyx_n_s_throw __pyx_mstate_global->__pyx_n_s_throw
-#define __pyx_int_0 __pyx_mstate_global->__pyx_int_0
 #define __pyx_tuple_ __pyx_mstate_global->__pyx_tuple_
-#define __pyx_tuple__2 __pyx_mstate_global->__pyx_tuple__2
 /* #### Code section: module_code ### */
 
 
@@ -2639,7 +2587,7 @@ static int __pyx_pw_9shufflish_7_affine_12AffineCipher_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
@@ -2647,9 +2595,9 @@ static int __pyx_pw_9shufflish_7_affine_12AffineCipher_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[1]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 1); __PYX_ERR(0, 57, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 1); __PYX_ERR(0, 58, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -2657,9 +2605,9 @@ static int __pyx_pw_9shufflish_7_affine_12AffineCipher_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[2]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 2); __PYX_ERR(0, 57, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 2); __PYX_ERR(0, 58, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -2667,14 +2615,14 @@ static int __pyx_pw_9shufflish_7_affine_12AffineCipher_1__init__(PyObject *__pyx
           (void)__Pyx_Arg_NewRef_VARARGS(values[3]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 58, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 3); __PYX_ERR(0, 57, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, 3); __PYX_ERR(0, 58, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 57, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__init__") < 0)) __PYX_ERR(0, 58, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
@@ -2684,14 +2632,14 @@ static int __pyx_pw_9shufflish_7_affine_12AffineCipher_1__init__(PyObject *__pyx
       values[2] = __Pyx_Arg_VARARGS(__pyx_args, 2);
       values[3] = __Pyx_Arg_VARARGS(__pyx_args, 3);
     }
-    __pyx_v_domain = __Pyx_PyInt_As_uint64_t(values[0]); if (unlikely((__pyx_v_domain == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L3_error)
-    __pyx_v_prime = __Pyx_PyInt_As_uint64_t(values[1]); if (unlikely((__pyx_v_prime == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
-    __pyx_v_pre_offset = __Pyx_PyInt_As_uint64_t(values[2]); if (unlikely((__pyx_v_pre_offset == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
-    __pyx_v_post_offset = __Pyx_PyInt_As_uint64_t(values[3]); if (unlikely((__pyx_v_post_offset == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L3_error)
+    __pyx_v_domain = __Pyx_PyInt_As_uint64_t(values[0]); if (unlikely((__pyx_v_domain == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 60, __pyx_L3_error)
+    __pyx_v_prime = __Pyx_PyInt_As_uint64_t(values[1]); if (unlikely((__pyx_v_prime == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L3_error)
+    __pyx_v_pre_offset = __Pyx_PyInt_As_uint64_t(values[2]); if (unlikely((__pyx_v_pre_offset == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 62, __pyx_L3_error)
+    __pyx_v_post_offset = __Pyx_PyInt_As_uint64_t(values[3]); if (unlikely((__pyx_v_post_offset == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 63, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 57, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 58, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2758,7 +2706,7 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_2__iter__(struct __
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct____iter__ *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 66, __pyx_L1_error)
+    __PYX_ERR(0, 67, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -2766,7 +2714,7 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_2__iter__(struct __
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_12AffineCipher_4generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_AffineCipher___iter, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_12AffineCipher_4generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_iter, __pyx_n_s_AffineCipher___iter, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -2803,14 +2751,14 @@ static PyObject *__pyx_gb_9shufflish_7_affine_12AffineCipher_4generator(__pyx_Co
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 67, __pyx_L1_error)
 
   __pyx_t_1 = __pyx_cur_scope->__pyx_v_self->params.domain;
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_cur_scope->__pyx_v_i = __pyx_t_3;
 
-    __pyx_t_4 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_cur_scope->__pyx_v_self->params), __pyx_cur_scope->__pyx_v_i)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_cur_scope->__pyx_v_self->params), __pyx_cur_scope->__pyx_v_i)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 70, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_r = __pyx_t_4;
     __pyx_t_4 = 0;
@@ -2827,7 +2775,7 @@ static PyObject *__pyx_gb_9shufflish_7_affine_12AffineCipher_4generator(__pyx_Co
     __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 69, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 70, __pyx_L1_error)
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
@@ -2867,14 +2815,12 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  PyObject *__pyx_v_start = 0;
-  PyObject *__pyx_v_stop = 0;
-  PyObject *__pyx_v_step = 0;
+  PyObject *__pyx_v_slice = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[3] = {0,0,0};
+  PyObject* values[1] = {0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -2890,14 +2836,10 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_start,&__pyx_n_s_stop,&__pyx_n_s_step,0};
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_slice,0};
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
-        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
-        CYTHON_FALLTHROUGH;
-        case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
-        CYTHON_FALLTHROUGH;
         case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
         CYTHON_FALLTHROUGH;
         case  0: break;
@@ -2906,51 +2848,27 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       kw_args = __Pyx_NumKwargs_FASTCALL(__pyx_kwds);
       switch (__pyx_nargs) {
         case  0:
-        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_start)) != 0)) {
+        if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_slice)) != 0)) {
           (void)__Pyx_Arg_NewRef_FASTCALL(values[0]);
           kw_args--;
         }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
-        CYTHON_FALLTHROUGH;
-        case  1:
-        if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_stop)) != 0)) {
-          (void)__Pyx_Arg_NewRef_FASTCALL(values[1]);
-          kw_args--;
-        }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("_AffineCipher__slice", 1, 3, 3, 1); __PYX_ERR(0, 72, __pyx_L3_error)
-        }
-        CYTHON_FALLTHROUGH;
-        case  2:
-        if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_step)) != 0)) {
-          (void)__Pyx_Arg_NewRef_FASTCALL(values[2]);
-          kw_args--;
-        }
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L3_error)
-        else {
-          __Pyx_RaiseArgtupleInvalid("_AffineCipher__slice", 1, 3, 3, 2); __PYX_ERR(0, 72, __pyx_L3_error)
-        }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_AffineCipher__slice") < 0)) __PYX_ERR(0, 72, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "_AffineCipher__slice") < 0)) __PYX_ERR(0, 73, __pyx_L3_error)
       }
-    } else if (unlikely(__pyx_nargs != 3)) {
+    } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
-      values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
-      values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
     }
-    __pyx_v_start = values[0];
-    __pyx_v_stop = values[1];
-    __pyx_v_step = values[2];
+    __pyx_v_slice = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_AffineCipher__slice", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 72, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_AffineCipher__slice", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 73, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2964,7 +2882,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self), __pyx_v_start, __pyx_v_stop, __pyx_v_step);
+  __pyx_r = __pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_v_self), __pyx_v_slice);
 
   /* function exit code */
   {
@@ -2977,7 +2895,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_start, PyObject *__pyx_v_stop, PyObject *__pyx_v_step) {
+static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_slice) {
   struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice *__pyx_cur_scope;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -2989,24 +2907,18 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_5__slice(struct __p
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 72, __pyx_L1_error)
+    __PYX_ERR(0, 73, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
   __pyx_cur_scope->__pyx_v_self = __pyx_v_self;
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
-  __pyx_cur_scope->__pyx_v_start = __pyx_v_start;
-  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_start);
-  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_start);
-  __pyx_cur_scope->__pyx_v_stop = __pyx_v_stop;
-  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_stop);
-  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_stop);
-  __pyx_cur_scope->__pyx_v_step = __pyx_v_step;
-  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_step);
-  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_step);
+  __pyx_cur_scope->__pyx_v_slice = __pyx_v_slice;
+  __Pyx_INCREF(__pyx_cur_scope->__pyx_v_slice);
+  __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_slice);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_12AffineCipher_7generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_slice, __pyx_n_s_AffineCipher___slice, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_9shufflish_7_affine_12AffineCipher_7generator1, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_slice_2, __pyx_n_s_AffineCipher___slice, __pyx_n_s_shufflish__affine); if (unlikely(!gen)) __PYX_ERR(0, 73, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3027,10 +2939,9 @@ static PyObject *__pyx_gb_9shufflish_7_affine_12AffineCipher_7generator1(__pyx_C
   struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice *__pyx_cur_scope = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice *)__pyx_generator->closure);
   PyObject *__pyx_r = NULL;
   int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  int64_t __pyx_t_3;
-  int64_t __pyx_t_4;
-  int __pyx_t_5;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3038,155 +2949,116 @@ static PyObject *__pyx_gb_9shufflish_7_affine_12AffineCipher_7generator1(__pyx_C
   __Pyx_RefNannySetupContext("__slice", 0);
   switch (__pyx_generator->resume_label) {
     case 0: goto __pyx_L3_first_run;
-    case 1: goto __pyx_L18_resume_from_yield;
-    case 2: goto __pyx_L21_resume_from_yield;
+    case 1: goto __pyx_L14_resume_from_yield;
+    case 2: goto __pyx_L17_resume_from_yield;
     default: /* CPython raises the right error here */
     __Pyx_RefNannyFinishContext();
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 73, __pyx_L1_error)
 
-  __pyx_t_1 = (__Pyx_PyInt_BoolEqObjC(__pyx_cur_scope->__pyx_v_step, __pyx_int_0, 0, 0)); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 75, __pyx_L1_error)
-  if (unlikely(__pyx_t_1)) {
+  __pyx_t_1 = PySlice_GetIndices(__pyx_cur_scope->__pyx_v_slice, __pyx_cur_scope->__pyx_v_self->params.domain, (&__pyx_cur_scope->__pyx_v_i), (&__pyx_cur_scope->__pyx_v_stop), (&__pyx_cur_scope->__pyx_v_step)); if (unlikely(__pyx_t_1 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (unlikely(__pyx_t_2)) {
 
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __PYX_ERR(0, 76, __pyx_L1_error)
 
   }
 
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_step); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 77, __pyx_L1_error)
-  if (!__pyx_t_1) {
+  __pyx_t_4 = (__pyx_cur_scope->__pyx_v_i < 0);
+  if (!__pyx_t_4) {
   } else {
-    __pyx_t_4 = __Pyx_PyInt_As_int64_t(__pyx_cur_scope->__pyx_v_step); if (unlikely((__pyx_t_4 == ((int64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
-    __pyx_t_3 = __pyx_t_4;
-    goto __pyx_L5_bool_binop_done;
+    __pyx_t_2 = __pyx_t_4;
+    goto __pyx_L6_bool_binop_done;
   }
-  __pyx_t_3 = 1;
-  __pyx_L5_bool_binop_done:;
-  __pyx_cur_scope->__pyx_v_step_ = __pyx_t_3;
 
-  __pyx_t_1 = (__pyx_cur_scope->__pyx_v_start == Py_None);
-  if (__pyx_t_1) {
-    __pyx_t_3 = 0;
+  __pyx_t_4 = (__pyx_cur_scope->__pyx_v_i >= ((Py_ssize_t)__pyx_cur_scope->__pyx_v_self->params.domain));
+  if (!__pyx_t_4) {
   } else {
-    __pyx_t_4 = __Pyx_PyInt_As_int64_t(__pyx_cur_scope->__pyx_v_start); if (unlikely((__pyx_t_4 == ((int64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 79, __pyx_L1_error)
-    __pyx_t_3 = __pyx_t_4;
+    __pyx_t_2 = __pyx_t_4;
+    goto __pyx_L6_bool_binop_done;
   }
-  __pyx_cur_scope->__pyx_v_i = __pyx_t_3;
 
-  __pyx_t_1 = (__pyx_cur_scope->__pyx_v_stop == Py_None);
-  if (__pyx_t_1) {
-    __pyx_t_3 = __pyx_cur_scope->__pyx_v_self->params.domain;
+  __pyx_t_4 = (__pyx_cur_scope->__pyx_v_step > 0);
+  if (!__pyx_t_4) {
+    goto __pyx_L9_next_or;
   } else {
-    __pyx_t_4 = __Pyx_PyInt_As_int64_t(__pyx_cur_scope->__pyx_v_stop); if (unlikely((__pyx_t_4 == ((int64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 80, __pyx_L1_error)
-    __pyx_t_3 = __pyx_t_4;
   }
-  __pyx_cur_scope->__pyx_v_stop_ = __pyx_t_3;
-
-  __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i < 0);
-  if (__pyx_t_1) {
-
-    __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_self->params.domain);
-
-  }
-
-  __pyx_t_5 = (__pyx_cur_scope->__pyx_v_i < 0);
-  if (!__pyx_t_5) {
+  __pyx_t_4 = (__pyx_cur_scope->__pyx_v_stop < 0);
+  if (!__pyx_t_4) {
   } else {
-    __pyx_t_1 = __pyx_t_5;
-    goto __pyx_L9_bool_binop_done;
+    __pyx_t_2 = __pyx_t_4;
+    goto __pyx_L6_bool_binop_done;
   }
-  __pyx_t_5 = (((uint64_t)__pyx_cur_scope->__pyx_v_i) >= __pyx_cur_scope->__pyx_v_self->params.domain);
-  __pyx_t_1 = __pyx_t_5;
-  __pyx_L9_bool_binop_done:;
-  if (unlikely(__pyx_t_1)) {
+  __pyx_L9_next_or:;
 
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_4 = (__pyx_cur_scope->__pyx_v_stop > ((Py_ssize_t)__pyx_cur_scope->__pyx_v_self->params.domain));
+  __pyx_t_2 = __pyx_t_4;
+  __pyx_L6_bool_binop_done:;
 
-  }
+  if (unlikely(__pyx_t_2)) {
 
-  __pyx_t_1 = (__pyx_cur_scope->__pyx_v_stop_ < 0);
-  if (__pyx_t_1) {
-
-    __pyx_cur_scope->__pyx_v_stop_ = (__pyx_cur_scope->__pyx_v_stop_ + __pyx_cur_scope->__pyx_v_self->params.domain);
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 82, __pyx_L1_error)
 
   }
 
-  __pyx_t_5 = (__pyx_cur_scope->__pyx_v_stop_ < 0);
-  if (!__pyx_t_5) {
-  } else {
-    __pyx_t_1 = __pyx_t_5;
-    goto __pyx_L13_bool_binop_done;
-  }
-  __pyx_t_5 = (((uint64_t)__pyx_cur_scope->__pyx_v_stop_) > __pyx_cur_scope->__pyx_v_self->params.domain);
-  __pyx_t_1 = __pyx_t_5;
-  __pyx_L13_bool_binop_done:;
-  if (unlikely(__pyx_t_1)) {
-
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 90, __pyx_L1_error)
-
-  }
-
-  __pyx_t_1 = (__pyx_cur_scope->__pyx_v_step_ > 0);
-  if (__pyx_t_1) {
+  __pyx_t_2 = (__pyx_cur_scope->__pyx_v_step > 0);
+  if (__pyx_t_2) {
 
     while (1) {
-      __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i < __pyx_cur_scope->__pyx_v_stop_);
-      if (!__pyx_t_1) break;
+      __pyx_t_2 = (__pyx_cur_scope->__pyx_v_i < __pyx_cur_scope->__pyx_v_stop);
+      if (!__pyx_t_2) break;
 
-      __pyx_t_2 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_cur_scope->__pyx_v_self->params), __pyx_cur_scope->__pyx_v_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_r = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __pyx_t_3 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_cur_scope->__pyx_v_self->params), __pyx_cur_scope->__pyx_v_i)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_r = __pyx_t_3;
+      __pyx_t_3 = 0;
       __Pyx_XGIVEREF(__pyx_r);
       __Pyx_RefNannyFinishContext();
       __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
       /* return from generator, yielding value */
       __pyx_generator->resume_label = 1;
       return __pyx_r;
-      __pyx_L18_resume_from_yield:;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 94, __pyx_L1_error)
+      __pyx_L14_resume_from_yield:;
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 86, __pyx_L1_error)
 
-      __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step_);
+      __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step);
     }
 
-    goto __pyx_L15;
+    goto __pyx_L11;
   }
 
   /*else*/ {
     while (1) {
-      __pyx_t_1 = (__pyx_cur_scope->__pyx_v_i > __pyx_cur_scope->__pyx_v_stop_);
-      if (!__pyx_t_1) break;
+      __pyx_t_2 = (__pyx_cur_scope->__pyx_v_i > __pyx_cur_scope->__pyx_v_stop);
+      if (!__pyx_t_2) break;
 
-      __pyx_t_2 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_cur_scope->__pyx_v_self->params), __pyx_cur_scope->__pyx_v_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_r = __pyx_t_2;
-      __pyx_t_2 = 0;
+      __pyx_t_3 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_cur_scope->__pyx_v_self->params), __pyx_cur_scope->__pyx_v_i)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_r = __pyx_t_3;
+      __pyx_t_3 = 0;
       __Pyx_XGIVEREF(__pyx_r);
       __Pyx_RefNannyFinishContext();
       __Pyx_Coroutine_ResetAndClearException(__pyx_generator);
       /* return from generator, yielding value */
       __pyx_generator->resume_label = 2;
       return __pyx_r;
-      __pyx_L21_resume_from_yield:;
-      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_L17_resume_from_yield:;
+      if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-      __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step_);
+      __pyx_cur_scope->__pyx_v_i = (__pyx_cur_scope->__pyx_v_i + __pyx_cur_scope->__pyx_v_step);
     }
   }
-  __pyx_L15:;
+  __pyx_L11:;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
 
@@ -3195,7 +3067,7 @@ static PyObject *__pyx_gb_9shufflish_7_affine_12AffineCipher_7generator1(__pyx_C
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_Generator_Replace_StopIteration(0);
-  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("__slice", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_r); __pyx_r = 0;
@@ -3232,12 +3104,9 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
   PyObject *__pyx_t_4 = NULL;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  PyObject *__pyx_t_7 = NULL;
-  unsigned int __pyx_t_8;
-  int64_t __pyx_t_9;
-  int __pyx_t_10;
+  unsigned int __pyx_t_5;
+  int64_t __pyx_t_6;
+  int __pyx_t_7;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3247,36 +3116,27 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct
   if (__pyx_t_1) {
 
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_AffineCipher__slice); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_AffineCipher__slice); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_item, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_item, __pyx_n_s_stop); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 104, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_item, __pyx_n_s_step); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 104, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = NULL;
-    __pyx_t_8 = 0;
+    __pyx_t_4 = NULL;
+    __pyx_t_5 = 0;
     #if CYTHON_UNPACK_METHODS
     if (likely(PyMethod_Check(__pyx_t_3))) {
-      __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_3);
-      if (likely(__pyx_t_7)) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-        __Pyx_INCREF(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_4);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_3, function);
-        __pyx_t_8 = 1;
+        __pyx_t_5 = 1;
       }
     }
     #endif
     {
-      PyObject *__pyx_callargs[4] = {__pyx_t_7, __pyx_t_4, __pyx_t_5, __pyx_t_6};
-      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_8, 3+__pyx_t_8);
-      __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+      PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_v_item};
+      __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
@@ -3287,8 +3147,8 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct
   }
 
   /*else*/ {
-    __pyx_t_9 = __Pyx_PyInt_As_int64_t(__pyx_v_item); if (unlikely((__pyx_t_9 == ((int64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L1_error)
-    __pyx_v_i = __pyx_t_9;
+    __pyx_t_6 = __Pyx_PyInt_As_int64_t(__pyx_v_item); if (unlikely((__pyx_t_6 == ((int64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_v_i = __pyx_t_6;
 
     __pyx_t_1 = (__pyx_v_i < 0);
     if (__pyx_t_1) {
@@ -3297,27 +3157,27 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct
 
     }
 
-    __pyx_t_10 = (__pyx_v_i < 0);
-    if (!__pyx_t_10) {
+    __pyx_t_7 = (__pyx_v_i < 0);
+    if (!__pyx_t_7) {
     } else {
-      __pyx_t_1 = __pyx_t_10;
+      __pyx_t_1 = __pyx_t_7;
       goto __pyx_L6_bool_binop_done;
     }
-    __pyx_t_10 = (((uint64_t)__pyx_v_i) >= __pyx_v_self->params.domain);
-    __pyx_t_1 = __pyx_t_10;
+    __pyx_t_7 = (((uint64_t)__pyx_v_i) >= __pyx_v_self->params.domain);
+    __pyx_t_1 = __pyx_t_7;
     __pyx_L6_bool_binop_done:;
     if (unlikely(__pyx_t_1)) {
 
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_IndexError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 110, __pyx_L1_error)
+      __PYX_ERR(0, 102, __pyx_L1_error)
 
     }
 
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_2 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_v_self->params), __pyx_v_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_uint64_t(affineCipher((&__pyx_v_self->params), __pyx_v_i)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = 0;
@@ -3330,9 +3190,6 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_8__getitem__(struct
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("shufflish._affine.AffineCipher.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3371,7 +3228,7 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct _
   __Pyx_RefNannySetupContext("__repr__", 1);
 
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyTuple_New(9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = 0;
   __pyx_t_3 = 127;
@@ -3379,9 +3236,9 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct _
   __pyx_t_2 += 21;
   __Pyx_GIVEREF(__pyx_kp_u_AffineCipher_domain);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_AffineCipher_domain);
-  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -3393,9 +3250,9 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct _
   __pyx_t_2 += 7;
   __Pyx_GIVEREF(__pyx_kp_u_prime_2);
   PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_kp_u_prime_2);
-  __pyx_t_5 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -3407,9 +3264,9 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct _
   __pyx_t_2 += 5;
   __Pyx_GIVEREF(__pyx_kp_u_pre);
   PyTuple_SET_ITEM(__pyx_t_1, 4, __pyx_kp_u_pre);
-  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_4, __pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5) : __pyx_t_3;
@@ -3421,9 +3278,9 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct _
   __pyx_t_2 += 6;
   __Pyx_GIVEREF(__pyx_kp_u_post);
   PyTuple_SET_ITEM(__pyx_t_1, 6, __pyx_kp_u_post);
-  __pyx_t_5 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_FormatSimple(__pyx_t_5, __pyx_empty_unicode); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_3 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) > __pyx_t_3) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_4) : __pyx_t_3;
@@ -3431,11 +3288,11 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_10__repr__(struct _
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_1, 7, __pyx_t_4);
   __pyx_t_4 = 0;
-  __Pyx_INCREF(__pyx_kp_u__3);
+  __Pyx_INCREF(__pyx_kp_u__2);
   __pyx_t_2 += 1;
-  __Pyx_GIVEREF(__pyx_kp_u__3);
-  PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u__3);
-  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 9, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+  __Pyx_GIVEREF(__pyx_kp_u__2);
+  PyTuple_SET_ITEM(__pyx_t_1, 8, __pyx_kp_u__2);
+  __pyx_t_4 = __Pyx_PyUnicode_Join(__pyx_t_1, 9, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_4;
@@ -3486,34 +3343,34 @@ static Py_hash_t __pyx_pf_9shufflish_7_affine_12AffineCipher_12__hash__(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__hash__", 1);
 
-  __pyx_t_1 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  __pyx_t_2 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  __pyx_t_3 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_3)) __PYX_ERR(0, 118, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
 
-  __pyx_t_6 = PyObject_Hash(__pyx_t_5); if (unlikely(__pyx_t_6 == ((Py_hash_t)-1))) __PYX_ERR(0, 117, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Hash(__pyx_t_5); if (unlikely(__pyx_t_6 == ((Py_hash_t)-1))) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
@@ -3591,28 +3448,28 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_14parameters(struct
 
   __Pyx_XDECREF(__pyx_r);
 
-  __pyx_t_1 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  __pyx_t_2 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  __pyx_t_3 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2)) __PYX_ERR(0, 122, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_3)) __PYX_ERR(0, 122, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_4)) __PYX_ERR(0, 130, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
@@ -3654,16 +3511,15 @@ static PyObject *__pyx_pw_9shufflish_7_affine_12AffineCipher_17__eq__(PyObject *
 }
 
 static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_16__eq__(struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_self, PyObject *__pyx_v_other) {
-  PyObject *__pyx_v_oparams = NULL;
+  struct __pyx_obj_9shufflish_7_affine_AffineCipher *__pyx_v_other_ = 0;
+  struct affineCipherParameters __pyx_v_oparams;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   int __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
+  struct affineCipherParameters __pyx_t_4;
   PyObject *__pyx_t_5 = NULL;
-  unsigned int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -3680,97 +3536,53 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_16__eq__(struct __p
 
   }
 
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_parameters); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = NULL;
-  __pyx_t_6 = 0;
-  #if CYTHON_UNPACK_METHODS
-  if (likely(PyMethod_Check(__pyx_t_4))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-      __Pyx_INCREF(__pyx_t_5);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_4, function);
-      __pyx_t_6 = 1;
-    }
-  }
-  #endif
-  {
-    PyObject *__pyx_callargs[2] = {__pyx_t_5, NULL};
-    __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
-    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  }
-  __pyx_v_oparams = __pyx_t_3;
+  if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_9shufflish_7_affine_AffineCipher))))) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_3 = __pyx_v_other;
+  __Pyx_INCREF(__pyx_t_3);
+  __pyx_v_other_ = ((struct __pyx_obj_9shufflish_7_affine_AffineCipher *)__pyx_t_3);
   __pyx_t_3 = 0;
+
+  __pyx_t_4 = __pyx_v_other_->params;
+  __pyx_v_oparams = __pyx_t_4;
 
   __Pyx_XDECREF(__pyx_r);
 
-  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.domain); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_oparams, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_v_self->params.domain == __pyx_v_oparams.domain);
   if (__pyx_t_2) {
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else {
-    __Pyx_INCREF(__pyx_t_7);
-    __pyx_t_3 = __pyx_t_7;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+    __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L4_bool_binop_done;
   }
 
-  __pyx_t_7 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.prime); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 141, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_oparams, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 141, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 141, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_v_self->params.prime == __pyx_v_oparams.prime);
   if (__pyx_t_2) {
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else {
-    __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_3 = __pyx_t_4;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L4_bool_binop_done;
   }
 
-  __pyx_t_4 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.pre_offset); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_oparams, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 142, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_2 < 0))) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_v_self->params.pre_offset == __pyx_v_oparams.pre_offset);
   if (__pyx_t_2) {
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   } else {
-    __Pyx_INCREF(__pyx_t_7);
-    __pyx_t_3 = __pyx_t_7;
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L4_bool_binop_done;
   }
 
-  __pyx_t_7 = __Pyx_PyInt_From_uint64_t(__pyx_v_self->params.post_offset); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 143, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_oparams, 3, long, 1, __Pyx_PyInt_From_long, 0, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = (__pyx_v_self->params.post_offset == __pyx_v_oparams.post_offset);
+  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_t_5, Py_EQ); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_INCREF(__pyx_t_4);
-  __pyx_t_3 = __pyx_t_4;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_3 = __pyx_t_5;
+  __pyx_t_5 = 0;
   __pyx_L4_bool_binop_done:;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
@@ -3780,13 +3592,11 @@ static PyObject *__pyx_pf_9shufflish_7_affine_12AffineCipher_16__eq__(struct __p
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_7);
   __Pyx_AddTraceback("shufflish._affine.AffineCipher.__eq__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_oparams);
+  __Pyx_XDECREF((PyObject *)__pyx_v_other_);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -4377,9 +4187,7 @@ static void __pyx_tp_dealloc_9shufflish_7_affine___pyx_scope_struct_1__AffineCip
   #endif
   PyObject_GC_UnTrack(o);
   Py_CLEAR(p->__pyx_v_self);
-  Py_CLEAR(p->__pyx_v_start);
-  Py_CLEAR(p->__pyx_v_step);
-  Py_CLEAR(p->__pyx_v_stop);
+  Py_CLEAR(p->__pyx_v_slice);
   #if CYTHON_USE_FREELISTS
   if (((int)(__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice < 8) & (int)(Py_TYPE(o)->tp_basicsize == sizeof(struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice)))) {
     __pyx_freelist_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice[__pyx_freecount_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice++] = ((struct __pyx_obj_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice *)o);
@@ -4403,14 +4211,8 @@ static int __pyx_tp_traverse_9shufflish_7_affine___pyx_scope_struct_1__AffineCip
   if (p->__pyx_v_self) {
     e = (*v)(((PyObject *)p->__pyx_v_self), a); if (e) return e;
   }
-  if (p->__pyx_v_start) {
-    e = (*v)(p->__pyx_v_start, a); if (e) return e;
-  }
-  if (p->__pyx_v_step) {
-    e = (*v)(p->__pyx_v_step, a); if (e) return e;
-  }
-  if (p->__pyx_v_stop) {
-    e = (*v)(p->__pyx_v_stop, a); if (e) return e;
+  if (p->__pyx_v_slice) {
+    e = (*v)(p->__pyx_v_slice, a); if (e) return e;
   }
   return 0;
 }
@@ -4539,9 +4341,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_IndexError, __pyx_k_IndexError, sizeof(__pyx_k_IndexError), 0, 0, 1, 1},
     {&__pyx_kp_s_Pickling_of_struct_members_such, __pyx_k_Pickling_of_struct_members_such, sizeof(__pyx_k_Pickling_of_struct_members_such), 0, 0, 1, 0},
     {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
-    {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
-    {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
-    {&__pyx_n_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 1},
+    {&__pyx_kp_u__2, __pyx_k__2, sizeof(__pyx_k__2), 0, 1, 0, 0},
+    {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
     {&__pyx_n_s_args, __pyx_k_args, sizeof(__pyx_k_args), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
     {&__pyx_n_s_close, __pyx_k_close, sizeof(__pyx_k_close), 0, 0, 1, 1},
@@ -4555,7 +4356,6 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_iter, __pyx_k_iter, sizeof(__pyx_k_iter), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-    {&__pyx_n_s_parameters, __pyx_k_parameters, sizeof(__pyx_k_parameters), 0, 0, 1, 1},
     {&__pyx_kp_u_post, __pyx_k_post, sizeof(__pyx_k_post), 0, 1, 0, 0},
     {&__pyx_n_s_post_offset, __pyx_k_post_offset, sizeof(__pyx_k_post_offset), 0, 0, 1, 1},
     {&__pyx_kp_u_pre, __pyx_k_pre, sizeof(__pyx_k_pre), 0, 1, 0, 0},
@@ -4572,10 +4372,7 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
     {&__pyx_n_s_shufflish__affine, __pyx_k_shufflish__affine, sizeof(__pyx_k_shufflish__affine), 0, 0, 1, 1},
     {&__pyx_n_s_slice, __pyx_k_slice, sizeof(__pyx_k_slice), 0, 0, 1, 1},
-    {&__pyx_kp_u_slice_step_cannot_be_zero, __pyx_k_slice_step_cannot_be_zero, sizeof(__pyx_k_slice_step_cannot_be_zero), 0, 1, 0, 0},
-    {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
-    {&__pyx_n_s_step, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
-    {&__pyx_n_s_stop, __pyx_k_stop, sizeof(__pyx_k_stop), 0, 0, 1, 1},
+    {&__pyx_n_s_slice_2, __pyx_k_slice_2, sizeof(__pyx_k_slice_2), 0, 0, 1, 1},
     {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
     {&__pyx_n_s_throw, __pyx_k_throw, sizeof(__pyx_k_throw), 0, 0, 1, 1},
     {0, 0, 0, 0, 0, 0, 0}
@@ -4584,9 +4381,8 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
 }
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 68, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 76, __pyx_L1_error)
-  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 76, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -4598,13 +4394,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_slice_step_cannot_be_zero); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_index_out_of_range); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_u_index_out_of_range); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 85, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__2);
-  __Pyx_GIVEREF(__pyx_tuple__2);
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4615,7 +4407,6 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
 
 static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   if (__Pyx_CreateStringTabAndInitStrings() < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4667,15 +4458,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_7_affine_AffineCipher = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_AffineCipher_spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine_AffineCipher)) __PYX_ERR(0, 22, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_AffineCipher_spec, __pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine_AffineCipher = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine_AffineCipher_spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine_AffineCipher)) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine_AffineCipher_spec, __pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   #else
   __pyx_ptype_9shufflish_7_affine_AffineCipher = &__pyx_type_9shufflish_7_affine_AffineCipher;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_9shufflish_7_affine_AffineCipher->tp_print = 0;
@@ -4685,20 +4476,20 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_9shufflish_7_affine_AffineCipher->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AffineCipher, (PyObject *) __pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AffineCipher, (PyObject *) __pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 22, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_9shufflish_7_affine_AffineCipher) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__)) __PYX_ERR(0, 66, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter___spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__ = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter___spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__)) __PYX_ERR(0, 67, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter___spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   #else
   __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__ = &__pyx_type_9shufflish_7_affine___pyx_scope_struct____iter__;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_9shufflish_7_affine___pyx_scope_struct____iter__->tp_print = 0;
@@ -4709,15 +4500,15 @@ static int __Pyx_modinit_type_init_code(void) {
   }
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice_spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice)) __PYX_ERR(0, 72, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice_spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice_spec, NULL); if (unlikely(!__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice)) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice_spec, __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
   #else
   __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice = &__pyx_type_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_9shufflish_7_affine___pyx_scope_struct_1__AffineCipher__slice->tp_print = 0;
@@ -5814,78 +5605,6 @@ static void __Pyx_Generator_Replace_StopIteration(int in_async_gen) {
         "generator raised StopIteration");
 }
 
-/* PyIntCompare */
-static CYTHON_INLINE int __Pyx_PyInt_BoolEqObjC(PyObject *op1, PyObject *op2, long intval, long inplace) {
-    CYTHON_MAYBE_UNUSED_VAR(intval);
-    CYTHON_UNUSED_VAR(inplace);
-    if (op1 == op2) {
-        return 1;
-    }
-    #if PY_MAJOR_VERSION < 3
-    if (likely(PyInt_CheckExact(op1))) {
-        const long b = intval;
-        long a = PyInt_AS_LONG(op1);
-        return (a == b);
-    }
-    #endif
-    #if CYTHON_USE_PYLONG_INTERNALS
-    if (likely(PyLong_CheckExact(op1))) {
-        int unequal;
-        unsigned long uintval;
-        Py_ssize_t size = __Pyx_PyLong_DigitCount(op1);
-        const digit* digits = __Pyx_PyLong_Digits(op1);
-        if (intval == 0) {
-            return (__Pyx_PyLong_IsZero(op1) == 1);
-        } else if (intval < 0) {
-            if (__Pyx_PyLong_IsNonNeg(op1))
-                return 0;
-            intval = -intval;
-        } else {
-            if (__Pyx_PyLong_IsNeg(op1))
-                return 0;
-        }
-        uintval = (unsigned long) intval;
-#if PyLong_SHIFT * 4 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 4)) {
-            unequal = (size != 5) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[3] != ((uintval >> (3 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[4] != ((uintval >> (4 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-#if PyLong_SHIFT * 3 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 3)) {
-            unequal = (size != 4) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[3] != ((uintval >> (3 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-#if PyLong_SHIFT * 2 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 2)) {
-            unequal = (size != 3) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-#if PyLong_SHIFT * 1 < SIZEOF_LONG*8
-        if (uintval >> (PyLong_SHIFT * 1)) {
-            unequal = (size != 2) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
-                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
-        } else
-#endif
-            unequal = (size != 1) || (((unsigned long) digits[0]) != (uintval & (unsigned long) PyLong_MASK));
-        return (unequal == 0);
-    }
-    #endif
-    if (PyFloat_CheckExact(op1)) {
-        const long b = intval;
-#if CYTHON_COMPILING_IN_LIMITED_API
-        double a = __pyx_PyFloat_AsDouble(op1);
-#else
-        double a = PyFloat_AS_DOUBLE(op1);
-#endif
-        return ((double)a == (double)b);
-    }
-    return __Pyx_PyObject_IsTrueAndDecref(
-        PyObject_RichCompare(op1, op2, Py_EQ));
-}
-
 /* PyObjectCall */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
@@ -6441,99 +6160,24 @@ invalid_keyword:
     return 0;
 }
 
-/* GetItemInt */
-static PyObject *__Pyx_GetItemInt_Generic(PyObject *o, PyObject* j) {
-    PyObject *r;
-    if (unlikely(!j)) return NULL;
-    r = PyObject_GetItem(o, j);
-    Py_DECREF(j);
-    return r;
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_List_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    Py_ssize_t wrapped_i = i;
-    if (wraparound & unlikely(i < 0)) {
-        wrapped_i += PyList_GET_SIZE(o);
+/* ExtTypeTest */
+static CYTHON_INLINE int __Pyx_TypeTest(PyObject *obj, PyTypeObject *type) {
+    __Pyx_TypeName obj_type_name;
+    __Pyx_TypeName type_name;
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
     }
-    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyList_GET_SIZE(o)))) {
-        PyObject *r = PyList_GET_ITEM(o, wrapped_i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Tuple_Fast(PyObject *o, Py_ssize_t i,
-                                                              CYTHON_NCP_UNUSED int wraparound,
-                                                              CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    Py_ssize_t wrapped_i = i;
-    if (wraparound & unlikely(i < 0)) {
-        wrapped_i += PyTuple_GET_SIZE(o);
-    }
-    if ((!boundscheck) || likely(__Pyx_is_valid_index(wrapped_i, PyTuple_GET_SIZE(o)))) {
-        PyObject *r = PyTuple_GET_ITEM(o, wrapped_i);
-        Py_INCREF(r);
-        return r;
-    }
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
-#else
-    return PySequence_GetItem(o, i);
-#endif
-}
-static CYTHON_INLINE PyObject *__Pyx_GetItemInt_Fast(PyObject *o, Py_ssize_t i, int is_list,
-                                                     CYTHON_NCP_UNUSED int wraparound,
-                                                     CYTHON_NCP_UNUSED int boundscheck) {
-#if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS && CYTHON_USE_TYPE_SLOTS
-    if (is_list || PyList_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyList_GET_SIZE(o);
-        if ((!boundscheck) || (likely(__Pyx_is_valid_index(n, PyList_GET_SIZE(o))))) {
-            PyObject *r = PyList_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    }
-    else if (PyTuple_CheckExact(o)) {
-        Py_ssize_t n = ((!wraparound) | likely(i >= 0)) ? i : i + PyTuple_GET_SIZE(o);
-        if ((!boundscheck) || likely(__Pyx_is_valid_index(n, PyTuple_GET_SIZE(o)))) {
-            PyObject *r = PyTuple_GET_ITEM(o, n);
-            Py_INCREF(r);
-            return r;
-        }
-    } else {
-        PyMappingMethods *mm = Py_TYPE(o)->tp_as_mapping;
-        PySequenceMethods *sm = Py_TYPE(o)->tp_as_sequence;
-        if (mm && mm->mp_subscript) {
-            PyObject *r, *key = PyInt_FromSsize_t(i);
-            if (unlikely(!key)) return NULL;
-            r = mm->mp_subscript(o, key);
-            Py_DECREF(key);
-            return r;
-        }
-        if (likely(sm && sm->sq_item)) {
-            if (wraparound && unlikely(i < 0) && likely(sm->sq_length)) {
-                Py_ssize_t l = sm->sq_length(o);
-                if (likely(l >= 0)) {
-                    i += l;
-                } else {
-                    if (!PyErr_ExceptionMatches(PyExc_OverflowError))
-                        return NULL;
-                    PyErr_Clear();
-                }
-            }
-            return sm->sq_item(o, i);
-        }
-    }
-#else
-    if (is_list || !PyMapping_Check(o)) {
-        return PySequence_GetItem(o, i);
-    }
-#endif
-    return __Pyx_GetItemInt_Generic(o, PyInt_FromSsize_t(i));
+    if (likely(__Pyx_TypeCheck(obj, type)))
+        return 1;
+    obj_type_name = __Pyx_PyType_GetName(Py_TYPE(obj));
+    type_name = __Pyx_PyType_GetName(type);
+    PyErr_Format(PyExc_TypeError,
+                 "Cannot convert " __Pyx_FMT_TYPENAME " to " __Pyx_FMT_TYPENAME,
+                 obj_type_name, type_name);
+    __Pyx_DECREF_TypeName(obj_type_name);
+    __Pyx_DECREF_TypeName(type_name);
+    return 0;
 }
 
 /* FixUpExtensionType */
@@ -7771,77 +7415,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint64_t(uint64_t value) {
     }
 }
 
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const long neg_one = (long) -1, const_zero = (long) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(long) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL;
-        PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(long));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        arg_tuple = PyTuple_Pack(2, py_bytes, order_str);
-        if (!arg_tuple) goto limited_bad;
-        if (!is_unsigned) {
-            kwds = PyDict_New();
-            if (!kwds) goto limited_bad;
-            if (PyDict_SetItemString(kwds, "signed", __Pyx_NewRef(Py_True))) goto limited_bad;
-        }
-        result = PyObject_Call(from_bytes, arg_tuple, kwds);
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(arg_tuple);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
 /* CIntFromPy */
 static CYTHON_INLINE int64_t __Pyx_PyInt_As_int64_t(PyObject *x) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -8119,11 +7692,82 @@ __Pyx_PyType_GetName(PyTypeObject* tp)
     if (unlikely(name == NULL) || unlikely(!PyUnicode_Check(name))) {
         PyErr_Clear();
         Py_XDECREF(name);
-        name = __Pyx_NewRef(__pyx_n_s__4);
+        name = __Pyx_NewRef(__pyx_n_s__3);
     }
     return name;
 }
 #endif
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const long neg_one = (long) -1, const_zero = (long) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL;
+        PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(long));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        arg_tuple = PyTuple_Pack(2, py_bytes, order_str);
+        if (!arg_tuple) goto limited_bad;
+        if (!is_unsigned) {
+            kwds = PyDict_New();
+            if (!kwds) goto limited_bad;
+            if (PyDict_SetItemString(kwds, "signed", __Pyx_NewRef(Py_True))) goto limited_bad;
+        }
+        result = PyObject_Call(from_bytes, arg_tuple, kwds);
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(arg_tuple);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
 
 /* CIntFromPy */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *x) {
