@@ -120,3 +120,23 @@ function can then determine the correct combination of primes much faster
 (using combinatorial unraking), with the caveat that there is now a small chance
 that permutations are repeated early.
 Empirically, we find that repetitions occur at the earliest after ``domain`` seeds.
+
+
+
+## Project status
+
+Shufflish is currently in **alpha**.
+You can expect permutations to be correct and complete, but updates may
+change which permutation is generated for a given set of parameters.
+For instance, the algorithm that determine the affine cipher parameters
+based on the seed may change, e.g., to reduce collisions.
+Once the project reaches a stable state, we guarantee that it will always
+produce.
+Though unlikely, the API may also change if it proves annoying to use.
+
+
+
+## Acknowledgements
+
+Shufflish is supported by the [Albatross](https://albatross.dfki.de) and
+[SustainML](https://sustainml.eu/) projects.
