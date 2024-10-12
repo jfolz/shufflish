@@ -27,7 +27,7 @@ We use an [affine cipher](https://en.wikipedia.org/wiki/Affine_cipher)
 to generate different permutations of a domain.
 It maps an index `i` to `(i * prime + offset) % domain`,
 where `domain` is the size of the range of integers.
-If we select `prime` to be comprime with `domain`, then this function is
+If we select `prime` to be coprime with `domain`, then this function is
 bijective, i.e., for every output in the desired range, there exists exactly
 one input from the same range that maps to it.
 
@@ -56,7 +56,7 @@ instance.
 The most important parameters are the ``domain`` that sets the range of integers,
 and an optional ``seed`` value.
 If no seed is provided, a random value is chosen instead.
-Based on the seed, ``num_primes`` (default 3) values are chosen from a list ``primes``
+Based on the seed, ``num_primes`` (default 3) values are chosen from a list of ``primes``
 ([default](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.PRIMES)
 are the 100 largest primes less than 2^64).
 
@@ -85,7 +85,7 @@ Where multiple values can be returned, iterators are used to conserve memory.
 
 One performance caveat is that the
 [permutation()](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.permutation)
-function is needs to determine the correct coprime value for the seed.
+function needs to determine the correct coprime value for the seed.
 By default, it uses a combination of ``num_primes=3`` primes
 and skips repetitions mod ``domain``.
 As you can imagine, this can take a little while.
@@ -94,7 +94,7 @@ consider using the
 [Permutations](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.Permutations)
 class instead.
 It computes and stores all valid coprimes upon initialization,
-which makes getting permutations effectively instantenous.
+which makes getting permutations effectively instantaneous.
 Note that the coprimes array can use up to 1.3 MiB of memory with the default
 settings, though it will be shared between instances with identical parameters.
 
@@ -128,11 +128,11 @@ Empirically, we find that repetitions occur at the earliest after ``domain`` see
 Shufflish is currently in **alpha**.
 You can expect permutations to be correct and complete, but updates may
 change which permutation is generated for a given set of parameters.
-For instance, the algorithm that determine the affine cipher parameters
+For instance, the algorithm that determines the affine cipher's parameters
 based on the seed may change, e.g., to reduce collisions.
-Once the project reaches a stable state, we guarantee that it will always
-produce.
 Though unlikely, the API may also change if it proves annoying to use.
+Once the project reaches a stable state, we will guarantee API stability and
+that a set of parameters always produces the same permutation.
 
 
 
