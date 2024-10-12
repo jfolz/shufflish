@@ -4,6 +4,7 @@
 /doc/source/README.md
 /htmlcov
 /scratch
+/shufflish/_affine.c
 /shufflish/_version.py
 /wheelhouse
 __pycache__
