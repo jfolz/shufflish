@@ -52,6 +52,7 @@ include = ["shufflish", "shufflish.*"]
 namespaces = false
 
 [tool.cibuildwheel]
+skip = "*i686* *win32* *universal2*"
 build-verbosity = 1
 build-frontend = "build"
 test-requires = ["pytest>=5.3.2", "pytest-cov"]
