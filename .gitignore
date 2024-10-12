@@ -1,11 +1,13 @@
 /build
 /dist
-/scratch
-/wheelhouse
 /doc/build
 /doc/source/README.md
+/htmlcov
+/scratch
 /shufflish/_version.py
+/wheelhouse
 __pycache__
+.coverage
 .mypy_cache
 .pytest_cache
 *.egg-info
