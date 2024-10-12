@@ -4,7 +4,7 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build_wheels:
-    name: Build wheels on ${{ matrix.os }} ${{ matrix.arch }}
+    name: Build wheels on ${{ matrix.os }} ${{ matrix.arch }} ${{ matrix.build }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -18,6 +18,9 @@ jobs:
             arch: x86_64
           - os: windows-2019
             arch: aarch64
+          - os: ubuntu-latest
+            arch: aarch64
+            build: ""
         include:
           - os: ubuntu-latest
             arch: aarch64
