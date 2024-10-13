@@ -9,17 +9,18 @@ def _is_complete(p, domain):
     assert len(set(p)) == domain, (p, domain)
 
 
-def test_permutations_class():
+def test_permutations_function():
     for domain in (1, 2, 3, 5, 7, 10, 11, 13, 100):
         for seed in range(domain):
             _is_complete(permutation(domain, seed), domain)
 
 
-def test_permutation_function():
+def test_permutation_class():
     for domain in (1, 2, 3, 5, 7, 10, 11, 13, 100):
         perms = Permutations(domain)
+        print(perms.coprimes)
         assert len(perms.coprimes) > 0, domain
-        for seed in range(domain):
+        for seed in range(domain * len(perms.coprimes)):
             _is_complete(perms.get(seed), domain)
 
 

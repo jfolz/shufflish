@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Fixed
 - Very large seeds no longer cause integer overflow
+- 0 is no longer selected as coprime for domain=1
 
 
 ## [0.0.2] - 2024-10-12

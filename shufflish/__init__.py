@@ -79,6 +79,9 @@ def _modular_prime_combinations(domain, primes, k):
     Generate all ``k``-combinations of the given primes that are unique mod ``domain``.
     Only considers primes that are coprime with ``domain``.
     """
+    if domain == 1:
+        yield 1
+        return
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
     seen = set()
     ones = (1,) * (k-1)
@@ -96,6 +99,9 @@ def _modular_prime_combinations_with_repetition(domain, primes, k):
     Only considers primes that are coprime with ``domain``.
     May repeat values.
     """
+    if domain == 1:
+        yield 1
+        return
     ones = (1,) * (k-1)
     primes = list(dict.fromkeys(p % domain for p in primes if domain % p != 0))
     for p1, p2, p3 in combinations(chain(ones, primes), k):
@@ -196,6 +202,8 @@ def _select_prime(
     Only considers primes that are coprime with ``domain``.
     This can be quite slow.
     """
+    if domain == 1:
+        return 1
     gen = _modular_prime_combinations(domain, primes, k)
     num_comb = None
     if primes is PRIMES and domain in NUM_COMBINATIONS:
@@ -221,6 +229,8 @@ def _select_prime_with_repetition(
     Return the product of this combination mod domain.
     This is reasonably fast, but does not account for reptitions mod domain.
     """
+    if domain == 1:
+        return 1
     ones = (1,) * (k-1)
     primes = list(chain(ones, dict.fromkeys(p % domain for p in primes if domain % p != 0)))
     np = len(primes)
@@ -302,7 +312,6 @@ def permutation(
         raise ValueError("domain must be < 2**63")
     if seed is None:
         seed = random.randrange(2**64)
-    # Step 1: Select coprime number
     if allow_repetition:
         prime = _select_prime_with_repetition(domain, seed, primes, num_primes)
     else:
