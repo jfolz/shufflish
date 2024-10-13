@@ -70,6 +70,7 @@ PRIMES = (
 )
 """
 The default set of primes used by :func:`permutation` and :class:`Permutations`.
+They are the 100 largest primes that can be represented by a 64bit unsigned integer.
 """
 
 
@@ -310,11 +311,19 @@ def permutation(
 
 
 def _permutation(domain: int, seed: int, prime: int) -> AffineCipher:
-    # Step 2: select pre-offset, added to the index before multiplication with prime;
-    # use sqrt(domain) so index 0 does not map to output 0
-    pre_offset = isqrt(domain)
-    # Step 3: select post-offset, added after the multiplication;
-    post_offset = seed % 2**63
+    """
+    Here we select a pre-offset, added to the index before multiplication
+    with prime, and a post-offset, added after the multiplication.
+    Theoretically, a post-offset would be sufficient, as adding ``prime``
+    after the multiplication is equivalent to adding 1 to the index.
+    However, this would limit us to just ``UINT64MAX // prime`` different seeds.
+    Instead, we use ``seed % prime`` as post-offset and add ``seed // prime``
+    to the index to restore the full range of possible seeds.
+    Finally, we add sqrt(domain) to the pre-offset so index 0 does not map
+    to output 0.
+    """
+    pre_offset = (seed // prime + isqrt(domain)) % domain
+    post_offset = seed % prime
     return AffineCipher(domain, prime, pre_offset, post_offset)
 
 
