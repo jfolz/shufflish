@@ -44,8 +44,7 @@ def test_repetition_function():
     domain = 1234
     num_primes = 3
     coprimes = tuple(_modular_prime_combinations_with_repetition(domain, PRIMES, num_primes))
-    print(len(coprimes))
-    for i in range(domain):
+    for i in range(min(domain, len(coprimes))):
         p = permutation(domain, i, num_primes=num_primes, allow_repetition=True)
         assert p.parameters()[1] == coprimes[i], i
 
@@ -58,18 +57,45 @@ def test_unranking():
         assert _select_prime_with_repetition(domain, i, PRIMES, num_primes) == coprimes[i], i
 
 
-def test_random_seed():
+def test_random_seed_function():
+    domain = 1234
+    all_perms = [permutation(domain) for _ in range(100)]
+    assert len(set(all_perms)) <= len(all_perms)
+
+
+def test_random_seed_function_repetition():
+    domain = 1234
+    all_perms = [permutation(domain, allow_repetition=True) for _ in range(100)]
+    assert len(set(all_perms)) <= len(all_perms)
+
+
+def test_random_seed_class():
     domain = 1234
     perms = Permutations(1234)
     all_perms = [perms.get() for _ in range(100)]
     assert len(set(all_perms)) <= len(all_perms)
 
 
+def test_random_seed_class_repetition():
+    domain = 1234
+    perms = Permutations(1234, allow_repetition=True)
+    all_perms = [perms.get() for _ in range(100)]
+    assert len(set(all_perms)) <= len(all_perms)
+
+
 def test_function_class():
     domain = 103
-    perms = Permutations(domain)
+    perms = Permutations(domain, allow_repetition=True)
     p1 = perms.get(1234)
-    p2 = permutation(domain, 1234)
+    p2 = permutation(domain, 1234, allow_repetition=True)
+    assert p1 == p2
+
+
+def test_function_class_repetition():
+    domain = 103
+    perms = Permutations(domain, allow_repetition=True)
+    p1 = perms.get(1234)
+    p2 = permutation(domain, 1234, allow_repetition=True)
     assert p1 == p2
 
 

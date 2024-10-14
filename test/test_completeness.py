@@ -15,12 +15,25 @@ def test_permutations_function():
             _is_complete(permutation(domain, seed), domain)
 
 
+def test_permutations_function_repetition():
+    for domain in (1, 2, 3, 5, 7, 10, 11, 13, 100):
+        for seed in range(domain):
+            _is_complete(permutation(domain, seed, allow_repetition=True), domain)
+
+
 def test_permutation_class():
     for domain in (1, 2, 3, 5, 7, 10, 11, 13, 100):
         perms = Permutations(domain)
-        print(perms.coprimes)
         assert len(perms.coprimes) > 0, domain
-        for seed in range(domain * len(perms.coprimes)):
+        for seed in range(2*domain):
+            _is_complete(perms.get(seed), domain)
+
+
+def test_permutation_class_repetition():
+    for domain in (1, 2, 3, 5, 7, 10, 11, 13, 100):
+        perms = Permutations(domain, allow_repetition=True)
+        assert len(perms.coprimes) > 0, domain
+        for seed in range(2*domain):
             _is_complete(perms.get(seed), domain)
 
 
@@ -28,3 +41,9 @@ def test_large_domain():
     domain = 123456
     for seed in (0, 1, 123455, 123456):
         _is_complete(permutation(domain, seed), domain)
+
+
+def test_large_domain_repetition():
+    domain = 123456
+    for seed in (0, 1, 123455, 123456):
+        _is_complete(permutation(domain, seed, allow_repetition=True), domain)
