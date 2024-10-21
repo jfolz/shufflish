@@ -20,6 +20,23 @@ from libc.stdint cimport *
 from ._affine_cipher cimport *
 
 
+cdef int64_t mod_inverse(int64_t prime, int64_t domain) noexcept:
+    """
+    Return the multiplicative inverse prime modulo domain,
+    assuming prime and domain are coprime.
+    """
+    cdef int64_t iprime, x, n
+    iprime = 1
+    x = 0
+    n = domain
+    while prime > 1:
+        iprime, x = x, iprime - (prime // n) * x
+        prime, n = n, prime % n
+    while iprime < 0:
+        iprime += domain
+    return iprime
+
+
 cdef class AffineCipher:
     """
     AffineCipher(domain: int, prime: int, pre_offset: int, post_offset: int)
@@ -127,3 +144,14 @@ cdef class AffineCipher:
            and self.params.prime == oparams.prime \
            and self.params.pre_offset == oparams.pre_offset \
            and self.params.post_offset == oparams.post_offset
+
+    def invert(self) -> AffineCipher:
+        """
+        Returns the inverse of this affine cipher, i.e.,
+        if ``p`` is an :class:`AffineCipher` and ``ip = p.invert()``,
+        then ``ip[p[x]] = x`` for all valid inputs ``x``.
+        """
+        cdef uint64_t iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
+        cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
+        cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
+        return AffineCipher(self.params.domain, iprime, ipre_offset, ipost_offset)

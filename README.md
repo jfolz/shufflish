@@ -80,6 +80,31 @@ Also note the strategic use of
 Where multiple values can be returned, iterators are used to conserve memory.
 
 
+## Advanced usage
+
+Affine ciphers are invertible (they would be bad ciphers if they were not).
+You can use
+[AffineCipher.invert](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.AffineCipher.invert)
+to obtain the inverse chipher.
+
+```Python
+from shufflish import permutation
+p = permutation(10, 42)
+ip = p.invert()
+
+for i in range(10):
+    assert ip[p[i]] == i
+```
+
+The extended euclidean algorithm is used to obtain the multiplicative inverse.
+It has a complexity of _O(log(N))_ and in practice takes about 4-8 times as
+long as getting one values from the cipher.
+Yes, that means it is still considerably faster than
+[random.randrange()](https://docs.python.org/3/library/random.html#random.randrange),
+but maybe slow enough that you would want to store the inverse cipher if you
+use it multiple times.
+
+
 
 ## Creating many permutations
 

@@ -31,3 +31,23 @@ def test_parameters():
     params = 1, 2, 3, 4
     p = AffineCipher(1, 2, 3, 4)
     assert p.parameters() == params
+
+
+def test_invert_small_domain():
+    for domain in range(1, 100):
+        perms = Permutations(domain)
+        for coprime in perms.coprimes:
+            p = AffineCipher(domain, coprime, 0, 0)
+            ip = p.invert()
+            for i in range(domain):
+                assert ip[p[i]] == i
+
+
+def test_invert_large_domain():
+    domain = 2**63-1
+    perms = Permutations(domain)
+    for coprime in perms.coprimes:
+        p = AffineCipher(domain, coprime, 0, 0)
+        ip = p.invert()
+        for i in (0, domain // 2, domain-1):
+            assert ip[p[i]] == i
