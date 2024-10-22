@@ -40,7 +40,7 @@ Issues = "https://github.com/jfolz/shufflish/issues"
 Changelog = "https://github.com/jfolz/shufflish/blob/main/CHANGELOG.md"
 
 [build-system]
-requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0.0", "setuptools_scm"]
+requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]

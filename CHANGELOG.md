@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 ### Added
 - AffineCipher.invert method to obtain the inverse cipher
+### Changed
+- Depend on cython~=3.0
 
 
 ## [0.0.3] - 2024-10-14

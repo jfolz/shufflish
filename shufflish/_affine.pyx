@@ -123,6 +123,16 @@ cdef class AffineCipher:
             self.params.post_offset,
         ))
 
+    def __eq__(self, other):
+        if not isinstance(other, AffineCipher):
+            return False
+        cdef AffineCipher other_ = other
+        cdef affineCipherParameters oparams = other_.params
+        return self.params.domain == oparams.domain \
+           and self.params.prime == oparams.prime \
+           and self.params.pre_offset == oparams.pre_offset \
+           and self.params.post_offset == oparams.post_offset
+
     def parameters(self):
         """
         Returns the affine parameters as tuple
@@ -134,16 +144,6 @@ cdef class AffineCipher:
             self.params.pre_offset,
             self.params.post_offset,
         )
-
-    def __eq__(self, other):
-        if not isinstance(other, AffineCipher):
-            return False
-        cdef AffineCipher other_ = other
-        cdef affineCipherParameters oparams = other_.params
-        return self.params.domain == oparams.domain \
-           and self.params.prime == oparams.prime \
-           and self.params.pre_offset == oparams.pre_offset \
-           and self.params.post_offset == oparams.post_offset
 
     def invert(self) -> AffineCipher:
         """
