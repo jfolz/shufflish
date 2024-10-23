@@ -63,7 +63,7 @@ cdef class AffineCipher:
     * ``prime, pre_offset, post_offset < domain``
     * ``0 < domain < 2**63`` to avoid division by zero and overflows.
 
-    The advantage is that there is no setup time, an instance occupies just 48 bytes,
+    The advantage is that there is no setup time, an instance occupies just 72 bytes,
     and it runs 20 times faster than :func:`random.shuffle` and twice as fast
     as :func:`numpy.random.shuffle`.
     It is also ten times faster than :func:`random.randrange`, which obviously
@@ -71,6 +71,7 @@ cdef class AffineCipher:
     """
 
     cdef affineCipherParameters params
+    cdef Py_ssize_t start, stop, step
 
     def __init__(
         self,
@@ -80,40 +81,67 @@ cdef class AffineCipher:
         uint64_t post_offset,
     ):
         fillAffineCipherParameters(&self.params, domain, prime, pre_offset, post_offset)
+        self.start = 0
+        self.stop = <Py_ssize_t>domain
+        self.step = 1
 
     def __iter__(self):
-        cdef uint64_t i
-        for i in range(self.params.domain):
-            yield affineCipher(&self.params, i)
-
-
-    def __slice(self, object slice):
-        cdef Py_ssize_t i, stop, step
-        PySlice_Unpack(slice, &i, &stop, &step)
-        PySlice_AdjustIndices(<Py_ssize_t>self.params.domain, &i, &stop, step)
-        if step > 0:
-            while i < stop:
+        cdef Py_ssize_t i = self.start
+        if self.step > 0:
+            while i < self.stop:
                 yield affineCipher(&self.params, i)
-                i += step
+                i += self.step
         else:
-            while i > stop:
+            while i > self.stop:
                 yield affineCipher(&self.params, i)
-                i += step
+                i += self.step
 
     def __getitem__(self, item):
-        cdef int64_t i
+        cdef Py_ssize_t i, start, stop, step, n
+        cdef AffineCipher ac
         if isinstance(item, slice):
-            return self.__slice(item)
+            PySlice_Unpack(item, &start, &stop, &step)
+            step *= self.step
+            # since determining start is relatively easy, we could technically
+            # avoid calling this function, but to quote the code:
+            #     "this is harder to get right than you might think"
+            n = PySlice_AdjustIndices(self.stop - self.start, &start, &stop, step)
+            # set the stopping point such that subsequent slicing operations
+            # behave the same as tuple et al.
+            # Example 1:
+            #     (0,1,2,3,4,5)[::2] == (0,2,4), so stop should be 5
+            #     After adjust n=3, start=0, stop=6, step=2.
+            #     We calculate stop = 0 + 2 * (3-1) + 1 = 5
+            # Example 2:
+            #     (0,1,2,3,4,5)[::-2] == (5,3,1), so stop should be 0
+            #     After adjust n=3, start=5, stop=-1, step=-2.
+            #     We calculate stop = 5 + (-2) * (3-1) - 1 = 0
+            #
+            # n-1 because n would overshoot index by (step-1):
+            # (0,1,2,3,4,5)[::3] == (0, 3) -> n * step = 2 * 3 = 6
+            # actual stop should be 4
+            #
+            # (step > 0) - (step < 0) calculates sign(step)
+            # this adds 1 if step>0, because stop == first excluded index and
+            # subtracts 1 if step<0 instead, because we're going backwards
+            stop = start + (n-1) * step + (step > 0) - (step < 0)
+            ac = AffineCipher.__new__(AffineCipher)
+            ac.params = self.params
+            ac.start = start + self.start
+            ac.stop = stop + self.start
+            ac.step = step
+            return ac
         else:
             i = item
+            i *= self.step
             if i < 0:
-                i += self.params.domain
-            if i < 0 or <uint64_t>i >= self.params.domain:
+                i += self.stop - self.start
+            if i < 0 or i >= self.stop - self.start:
                 raise IndexError("index out of range")
-            return affineCipher(&self.params, i)
+            return affineCipher(&self.params, i + self.start)
 
     def __repr__(self):
-        return f"<AffineCipher domain={self.params.domain} prime={self.params.prime} pre={self.params.pre_offset} post={self.params.post_offset}>"
+        return f"<AffineCipher domain={self.params.domain} prime={self.params.prime} pre={self.params.pre_offset} post={self.params.post_offset} slice=({self.start},{self.stop},{self.step})>"
 
     def __hash__(self):
         return hash((
@@ -121,6 +149,9 @@ cdef class AffineCipher:
             self.params.prime,
             self.params.pre_offset,
             self.params.post_offset,
+            self.start,
+            self.stop,
+            self.step,
         ))
 
     def __eq__(self, other):
@@ -128,10 +159,23 @@ cdef class AffineCipher:
             return False
         cdef AffineCipher other_ = other
         cdef affineCipherParameters oparams = other_.params
-        return self.params.domain == oparams.domain \
+        cdef int eq = self.params.domain == oparams.domain \
            and self.params.prime == oparams.prime \
            and self.params.pre_offset == oparams.pre_offset \
-           and self.params.post_offset == oparams.post_offset
+           and self.params.post_offset == oparams.post_offset \
+           and self.start == other_.start \
+           and self.stop == other_.stop \
+           and self.step == other_.step
+        return eq != 0
+
+    def __len__(self):
+        if self.step < 0:
+            if self.stop < self.start:
+                return (self.start - self.stop - 1) / -self.step + 1
+        else:
+            if self.start < self.stop:
+                return (self.stop - self.start - 1) / self.step + 1
+        return 0
 
     def parameters(self):
         """

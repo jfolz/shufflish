@@ -6,7 +6,7 @@ Think Billions, Trillions, ... of integers, where you have to question
 whether they all fit into memory.
 
 The key advantages of shufflish are virtually no setup time, a permutation
-occupies just 48 bytes, and yet it can be randomly accessed like an array.
+occupies just 72 bytes, and yet it can be randomly accessed like an array.
 When shuffling 100M integers, it is 25 times faster than
 [random.shuffle()](https://docs.python.org/3/library/random.html#random.shuffle),
 three times faster than
