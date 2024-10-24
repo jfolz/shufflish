@@ -164,3 +164,26 @@ def test_slice_of_slice_negative_step():
             tt = t[:end:step1]
             for step2 in range(-1, -domain, -1):
                 assert tt[::step2] == tuple(pp[::step2]), (end, step1, step2)
+
+
+def test_contains():
+    domain = 10
+    p = permutation(domain)
+    for v in range(domain):
+        assert v in p
+
+
+def test_slice_contains():
+    domain = 10
+    p = permutation(domain)
+    t = tuple(p)
+    for start in range(domain):
+        for stop in range(1,domain+1):
+            for step in range(1, domain):
+                tt = t[start:stop:step]
+                pp = p[start:stop:step]
+                for v in tt:
+                    assert v in pp, (t, tt)
+                for v in range(domain):
+                    if v not in tt:
+                        assert v not in pp, (v, tt, t[start:stop])

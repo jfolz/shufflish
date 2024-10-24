@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AffineCipher.invert method to obtain the inverse cipher
 - Return slices as new AffineCipher instances
 - Implement __len__ for AffineCipher
+- Implement __contains__ for AffineCipher, including slices
 ### Changed
 - Depend on cython~=3.0
 

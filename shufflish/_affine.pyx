@@ -185,6 +185,32 @@ cdef class AffineCipher:
                 return (self.stop - self.start - 1) / self.step + 1
         return 0
 
+    def __contains__(self, item):
+        cdef affineCipherParameters params
+        cdef uint64_t v
+        cdef Py_ssize_t i
+        if not isinstance(item, int) or item < 0:
+            return False
+        v = item
+
+        # determine index i for value v
+        if self.iprime == 0:
+            self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
+        cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
+        cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
+        fillAffineCipherParameters(&params, self.params.domain, self.iprime, ipre_offset, ipost_offset)
+        # result must be >= 0 and < domain < 2^63
+        i = (<Py_ssize_t> affineCipher(&params, v))
+
+        # contains test
+        if self.start < self.stop:
+            if i >= self.start and i < self.stop and (i - self.start) % self.step == 0:
+                return True
+        elif self.stop > self.start:
+            if i > self.stop and i <= self.start and (i - self.start) % self.step == 0:
+                return True
+        return False
+
     def parameters(self):
         """
         Returns the affine parameters as tuple
