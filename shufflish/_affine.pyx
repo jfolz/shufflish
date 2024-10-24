@@ -200,7 +200,6 @@ cdef class AffineCipher:
         return 0
 
     def __contains__(self, item):
-        cdef affineCipherParameters params
         if not isinstance(item, int) or item < 0:
             return False
         cdef uint64_t v = item
@@ -210,6 +209,7 @@ cdef class AffineCipher:
             self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
         cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
         cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
+        cdef affineCipherParameters params
         fillAffineCipherParameters(&params, self.params.domain, self.iprime, ipre_offset, ipost_offset)
         # result must be >= 0 and < domain < 2^63
         cdef Py_ssize_t i = <Py_ssize_t> affineCipher(&params, v)
