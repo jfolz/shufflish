@@ -152,6 +152,7 @@ cdef class AffineCipher:
             ac.start = start + self.start
             ac.stop = stop + self.start
             ac.step = step
+            ac.iprime = self.iprime
             return ac
         else:
             i = item
