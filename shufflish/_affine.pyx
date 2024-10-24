@@ -68,6 +68,12 @@ cdef class AffineCipher:
     as :func:`numpy.random.shuffle`.
     It is also ten times faster than :func:`random.randrange`, which obviously
     does not produce a permutation.
+
+    .. warning::
+        This class only performs numerical overflow checks during initialization.
+        If you choose to create instances yourself instead of through the
+        :func:`permutation` function or :class:`Permutations` class,
+        you need to ensure that the parameters fulfill the outlined properties.
     """
 
     cdef affineCipherParameters params
@@ -81,13 +87,21 @@ cdef class AffineCipher:
         Py_ssize_t pre_offset,
         Py_ssize_t post_offset,
     ):
-        cdef uint64_t domain_, prime_, pre_offset_, post_offset_
-        with cython.overflowcheck(True):
-            domain_ = domain
-            prime_ = prime
-            pre_offset_ = pre_offset
-            post_offset_ = post_offset
-        fillAffineCipherParameters(&self.params, domain_, prime_, pre_offset_, post_offset_)
+        if domain <= 0:
+            raise ValueError("domain must be > 0")
+        if prime <= 0:
+            raise ValueError("prime must be > 0")
+        if pre_offset < 0:
+            raise ValueError("pre_offset must be >= 0")
+        if post_offset < 0:
+            raise ValueError("post_offset must be >= 0")
+        fillAffineCipherParameters(
+            &self.params,
+            <uint64_t> domain,
+            <uint64_t> prime,
+            <uint64_t> pre_offset,
+            <uint64_t> post_offset,
+        )
         self.start = 0
         self.stop = domain
         self.step = 1

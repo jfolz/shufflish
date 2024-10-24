@@ -13,13 +13,23 @@ from shufflish import (
 )
 
 
+def test_negative_domain_function():
+    with pytest.raises(ValueError, match='domain must be > 0'):
+        permutation(-1)
+
+
+def test_negative_domain_class():
+    with pytest.raises(ValueError, match='domain must be > 0'):
+        Permutations(-1)
+
+
 def test_zero_domain_function():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='domain must be > 0'):
         permutation(0)
 
 
 def test_zero_domain_class():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='domain must be > 0'):
         Permutations(0)
 
 
@@ -31,6 +41,26 @@ def test_too_large_domain_function():
 def test_too_large_domain_class():
     with pytest.raises(ValueError):
         Permutations(2**63)
+
+
+def test_zero_prime():
+    with pytest.raises(ValueError):
+        AffineCipher(1, 0, 0, 0)
+
+
+def test_negative_prime():
+    with pytest.raises(ValueError):
+        AffineCipher(1, -1, 0, 0)
+
+
+def test_negative_pre_offset():
+    with pytest.raises(ValueError):
+        AffineCipher(1, 1, -1, 0)
+
+
+def test_negative_post_offset():
+    with pytest.raises(ValueError):
+        AffineCipher(1, 1, 0, -1)
 
 
 def test_repetition_class():

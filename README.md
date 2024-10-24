@@ -96,10 +96,12 @@ for i in range(10):
     assert ip[p[i]] == i
 ```
 
-The extended euclidean algorithm is used to obtain the multiplicative inverse.
+The extended Euclidean algorithm is used to obtain the multiplicative inverse.
 It has a complexity of _O(log(N))_ and in practice takes about 4-8 times as
 long as getting one value from the cipher when first called.
-The inverse is cached inside the `AffineCipher` instance,
+The inverse is cached inside the
+[AffineCipher](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.AffineCipher)
+instance,
 so subsequent calls will be very fast.
 Even the first call is still considerably faster than
 [random.randrange()](https://docs.python.org/3/library/random.html#random.randrange),
