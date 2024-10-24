@@ -34,32 +34,32 @@ def test_zero_domain_class():
 
 
 def test_too_large_domain_function():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=r'domain must be < 2\*\*63'):
         permutation(2**63)
 
 
 def test_too_large_domain_class():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=r'domain must be < 2\*\*63'):
         Permutations(2**63)
 
 
 def test_zero_prime():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='prime must be > 0'):
         AffineCipher(1, 0, 0, 0)
 
 
 def test_negative_prime():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='prime must be > 0'):
         AffineCipher(1, -1, 0, 0)
 
 
 def test_negative_pre_offset():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='pre_offset must be >= 0'):
         AffineCipher(1, 1, -1, 0)
 
 
 def test_negative_post_offset():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='post_offset must be >= 0'):
         AffineCipher(1, 1, 0, -1)
 
 

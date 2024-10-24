@@ -14,14 +14,14 @@ def test_item():
 def test_item_out_of_bounds_low():
     domain = 10
     p = permutation(domain)
-    with pytest.raises(IndexError):
+    with pytest.raises(IndexError, match='index out of range'):
         p[-domain-1]
 
 
 def test_item_out_of_bounds_high():
     domain = 10
     p = permutation(domain)
-    with pytest.raises(IndexError):
+    with pytest.raises(IndexError, match='index out of range'):
         p[domain]
 
 
