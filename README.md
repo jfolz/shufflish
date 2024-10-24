@@ -6,7 +6,7 @@ Think Billions, Trillions, ... of integers, where you have to question
 whether they all fit into memory.
 
 The key advantages of shufflish are virtually no setup time, a permutation
-occupies just 72 bytes, and yet it can be randomly accessed like an array.
+occupies just 80 bytes, and yet it can be randomly accessed like an array.
 When shuffling 100M integers, it is 25 times faster than
 [random.shuffle()](https://docs.python.org/3/library/random.html#random.shuffle),
 three times faster than
@@ -98,11 +98,12 @@ for i in range(10):
 
 The extended euclidean algorithm is used to obtain the multiplicative inverse.
 It has a complexity of _O(log(N))_ and in practice takes about 4-8 times as
-long as getting one values from the cipher.
-Yes, that means it is still considerably faster than
+long as getting one value from the cipher when first called.
+The inverse is cached inside the `AffineCipher` instance,
+so subsequent calls will be very fast.
+Even the first call is still considerably faster than
 [random.randrange()](https://docs.python.org/3/library/random.html#random.randrange),
-but maybe slow enough that you would want to store the inverse cipher if you
-use it multiple times.
+so it is probably not worth worrying about.
 
 
 

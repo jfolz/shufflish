@@ -20,7 +20,7 @@ from libc.stdint cimport *
 from ._affine_cipher cimport *
 
 
-cdef int64_t mod_inverse(int64_t prime, int64_t domain) noexcept:
+cdef inline int64_t mod_inverse(int64_t prime, int64_t domain) noexcept:
     """
     Return the multiplicative inverse prime modulo domain,
     assuming prime and domain are coprime.
@@ -63,7 +63,7 @@ cdef class AffineCipher:
     * ``prime, pre_offset, post_offset < domain``
     * ``0 < domain < 2**63`` to avoid division by zero and overflows.
 
-    The advantage is that there is no setup time, an instance occupies just 72 bytes,
+    The advantage is that there is no setup time, an instance occupies just 80 bytes,
     and it runs 20 times faster than :func:`random.shuffle` and twice as fast
     as :func:`numpy.random.shuffle`.
     It is also ten times faster than :func:`random.randrange`, which obviously
@@ -72,18 +72,26 @@ cdef class AffineCipher:
 
     cdef affineCipherParameters params
     cdef Py_ssize_t start, stop, step
+    cdef uint64_t iprime
 
     def __init__(
         self,
-        uint64_t domain,
-        uint64_t prime,
-        uint64_t pre_offset,
-        uint64_t post_offset,
+        Py_ssize_t domain,
+        Py_ssize_t prime,
+        Py_ssize_t pre_offset,
+        Py_ssize_t post_offset,
     ):
-        fillAffineCipherParameters(&self.params, domain, prime, pre_offset, post_offset)
+        cdef uint64_t domain_, prime_, pre_offset_, post_offset_
+        with cython.overflowcheck(True):
+            domain_ = domain
+            prime_ = prime
+            pre_offset_ = pre_offset
+            post_offset_ = post_offset
+        fillAffineCipherParameters(&self.params, domain_, prime_, pre_offset_, post_offset_)
         self.start = 0
-        self.stop = <Py_ssize_t>domain
+        self.stop = domain
         self.step = 1
+        self.iprime = 0
 
     def __iter__(self):
         cdef Py_ssize_t i = self.start
@@ -195,7 +203,8 @@ cdef class AffineCipher:
         if ``p`` is an :class:`AffineCipher` and ``ip = p.invert()``,
         then ``ip[p[x]] = x`` for all valid inputs ``x``.
         """
-        cdef uint64_t iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
+        if self.iprime == 0:
+            self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
         cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
         cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
-        return AffineCipher(self.params.domain, iprime, ipre_offset, ipost_offset)
+        return AffineCipher(self.params.domain, self.iprime, ipre_offset, ipost_offset)
