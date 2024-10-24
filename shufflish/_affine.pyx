@@ -200,7 +200,7 @@ cdef class AffineCipher:
         cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
         fillAffineCipherParameters(&params, self.params.domain, self.iprime, ipre_offset, ipost_offset)
         # result must be >= 0 and < domain < 2^63
-        i = (<Py_ssize_t> affineCipher(&params, v))
+        i = <Py_ssize_t> affineCipher(&params, v)
 
         # contains test
         if self.start < self.stop:
