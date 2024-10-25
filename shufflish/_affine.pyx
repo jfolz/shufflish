@@ -297,7 +297,7 @@ cdef class AffineCipher:
     def expand(self) -> AffineCipher:
         """
         Return a new cipher with the same parameters, but slice extents are
-        reset to their initial values ``(0, domain, 1)``.
+        set to their initial values ``(0, domain, 1)``.
         """
         cdef AffineCipher ac = AffineCipher.__new__(AffineCipher)
         ac.params = self.params
