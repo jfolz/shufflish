@@ -11,6 +11,7 @@ API reference
     .. automethod:: invert() -> shufflish.AffineCipher
     .. automethod:: is_slice(self) -> bool
     .. automethod:: parameters() -> tuple[domain, prime, pre_offset, post_offset]
+    .. automethod:: unslice(self) -> shufflish.AffineCipher
 
 .. autofunction:: shufflish.local_shuffle
 

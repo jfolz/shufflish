@@ -257,15 +257,18 @@ cdef class AffineCipher:
         if ``p`` is an :class:`AffineCipher` and ``ip = p.invert()``,
         then ``ip[p[x]] = x`` for all valid inputs ``x``.
 
-        .. warning::
-            Inversion swaps the meaning of index and value, i.e.,
-            if ``p[x]=v`` then ``ip[v]=x``.
-            Since ``ip[p[x]] = x``, inverting ``p[a:b]`` should produce
-            ``range(a,b)``.
-            We believe this does not make much sense, so this method ignores the
-            current start/stop/step values and thus ``p[:10].invert()`` produces
-            the same result as ``p.invert()``.
+        .. note::
+            Slices cannot be inverted currently.
+            Use :meth:`AffineCipher.unslice` to obtain the full permutation first.
         """
+        # for now, slices cannot be inverted
+        # domain is originally a Py_ssize_t in __init__
+        if self.start > 0 \
+        or self.stop < <Py_ssize_t> self.params.domain \
+        or self.step != 1:
+            raise RuntimeError(
+                'cannot invert a slice, use unslice() to obtain the full permutation'
+            )
         if self.iprime == 0:
             self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
         cdef AffineCipher ac = AffineCipher.__new__(AffineCipher)
@@ -290,3 +293,17 @@ cdef class AffineCipher:
             or self.stop < <Py_ssize_t> self.params.domain \
             or self.step != 1
         return ret != 0
+
+    def unslice(self) -> AffineCipher:
+        """
+        Return this cipher with slice extents reset to ``(0, domain, 1)``,
+        i.e., the full permutation.
+        """
+        cdef AffineCipher ac = AffineCipher.__new__(AffineCipher)
+        ac.params = self.params
+        ac.start = 0
+        # domain is originally a Py_ssize_t in __init__
+        ac.stop = <Py_ssize_t> self.params.domain
+        ac.step = 1
+        ac.iprime = self.iprime
+        return ac
