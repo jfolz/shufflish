@@ -259,7 +259,7 @@ cdef class AffineCipher:
 
         .. note::
             Slices cannot be inverted currently.
-            Use :meth:`AffineCipher.unslice` to obtain the full permutation first.
+            Use :meth:`AffineCipher.expand` to obtain the full permutation first.
         """
         # for now, slices cannot be inverted
         # domain is originally a Py_ssize_t in __init__
@@ -267,7 +267,7 @@ cdef class AffineCipher:
         or self.stop < <Py_ssize_t> self.params.domain \
         or self.step != 1:
             raise RuntimeError(
-                'cannot invert a slice, use unslice() to obtain the full permutation'
+                'cannot invert a slice, use expand() to obtain the full permutation'
             )
         if self.iprime == 0:
             self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
@@ -285,8 +285,8 @@ cdef class AffineCipher:
 
     def is_slice(self) -> bool:
         """
-        Returns ``True`` if this cipher represents a slice of the
-        full permutation and ``False`` otherwise.
+        Returns ``True`` if this cipher represents a slice,
+        and ``False`` if it covers the full permutation.
         """
         # domain is originally a Py_ssize_t in __init__
         cdef int ret = self.start > 0 \
@@ -294,10 +294,10 @@ cdef class AffineCipher:
             or self.step != 1
         return ret != 0
 
-    def unslice(self) -> AffineCipher:
+    def expand(self) -> AffineCipher:
         """
-        Return this cipher with slice extents reset to ``(0, domain, 1)``,
-        i.e., the full permutation.
+        Return a new cipher with the same parameters, but slice extents are
+        reset to their initial values ``(0, domain, 1)``.
         """
         cdef AffineCipher ac = AffineCipher.__new__(AffineCipher)
         ac.params = self.params

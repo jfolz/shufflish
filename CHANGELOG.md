@@ -11,10 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New methods implemented for AffineCipher
   - __len__
   - __contains__
+  - expand: returns the full permutation instead of a slice
   - extents: return (start, stop, step) of the slice
   - invert: create an inverse cipher
   - is_slice: returns True if the instance is a slice
-  - unslice: returns the full permutation instead of a slice
 ### Changed
 - Depend on cython~=3.0
 
