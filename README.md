@@ -96,10 +96,17 @@ for i in range(10):
     assert ip[p[i]] == i
 ```
 
-The extended Euclidean algorithm is used to obtain the multiplicative inverse.
-It has a complexity of _O(log(N))_ and in practice takes about 4-8 times as
-long as getting one value from the cipher when first called.
-The inverse is cached inside the
+Note that, while you can invert a slice of a chipher, this effectively swaps
+the meaning of index and value, i.e., if p[x]=v then ip[v]=x.
+Since slice start/stop/step lose their meaning after inversion,
+[AffineCipher.invert](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.AffineCipher.invert)
+ignores them and thus ``p[:10].invert()`` produces the same result as ``p.invert()``.
+
+The extended Euclidean algorithm is used to obtain the multiplicative inverse,
+which has a complexity of _O(log(N))_.
+In practice this takes anywhere from 4 to 10 times as long as getting one
+value from the cipher when first called.
+The inverse is then cached inside the
 [AffineCipher](https://shufflish.readthedocs.io/stable/api_reference.html#shufflish.AffineCipher)
 instance,
 so subsequent calls will be very fast.
