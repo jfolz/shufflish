@@ -7,11 +7,11 @@ API reference
 
 .. autoclass:: shufflish.AffineCipher
 
+    .. automethod:: expand(self) -> shufflish.AffineCipher
     .. automethod:: extents() -> slice
     .. automethod:: invert() -> shufflish.AffineCipher
     .. automethod:: is_slice(self) -> bool
     .. automethod:: parameters() -> tuple[domain, prime, pre_offset, post_offset]
-    .. automethod:: unslice(self) -> shufflish.AffineCipher
 
 .. autofunction:: shufflish.local_shuffle
 
