@@ -47,3 +47,11 @@ def test_large_domain_repetition():
     domain = 123456
     for seed in (0, 1, 123455, 123456):
         _is_complete(permutation(domain, seed, allow_repetition=True), domain)
+
+
+def test_invert_complete():
+    domain = 1234
+    p = permutation(domain)
+    ip = p.invert()
+    for x in range(domain):
+        assert ip[p[x]] == x

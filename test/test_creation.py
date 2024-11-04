@@ -134,3 +134,52 @@ def test_local_shuffle():
     t1 = tuple(p)
     t2 = tuple(local_shuffle(p))
     assert t1 != t2
+
+
+def test_slice_expand():
+    domain = 13
+    p = permutation(domain)
+    for start in range(domain):
+        for end in range(start+1, domain):
+            assert p[start:end].expand() == p
+
+
+def test_invert_roundtrip():
+    for domain in range(123, 127):
+        p = permutation(domain)
+        assert p == p.invert().invert()
+
+
+def test_invert_slice():
+    p = permutation(1325)
+    sl = p[5:23]
+    with pytest.raises(RuntimeError, match='cannot invert a slice'):
+        sl.invert()
+
+
+def test_invert_slice_expand():
+    domain = 1325
+    p = permutation(domain)
+    sl = p[5:23]
+    ip = sl.expand().invert()
+    for x in range(domain):
+        assert ip[p[x]] == x
+
+
+def test_extents():
+    domain = 13
+    p = permutation(domain)
+    for start in range(domain):
+        for end in range(start+1, domain):
+            assert p[start:end].extents() == slice(start, end, 1)
+
+
+def test_is_slice():
+    p = permutation(23)
+    assert not p.is_slice()
+    assert p[2:].is_slice()
+    assert p[:6].is_slice()
+    assert p[2:6].is_slice()
+    assert not p[::1].is_slice()
+    assert p[::-1].is_slice()
+    assert p[::-2].is_slice()
