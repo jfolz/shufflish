@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## Unreleased
+### Added
+- Add index method to AffineCipher
+### Fixed
+- Slices of slices with negative steps no longer have wrong extents
 
 
 ## [0.0.4] - 2024-11-04

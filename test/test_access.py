@@ -1,6 +1,18 @@
+from itertools import chain
 import pytest
 
 from shufflish import permutation
+
+
+def steps(domain):
+    return chain(range(1, domain), range(-1, -domain, -1))
+
+
+def extents(domain):
+    for start in range(-domain, domain):
+        for stop in range(-domain, domain+1):
+            for step in steps(domain):
+                yield start, stop, step
 
 
 def test_item():
@@ -29,34 +41,8 @@ def test_slice():
     domain = 10
     p = permutation(domain)
     t = tuple(p)
-    for start in range(domain):
-        for end in range(domain, start, -1):
-            num = end - start
-            assert t[start:end] == tuple(p[start:end]), (start, end)
-
-
-def test_slice_negative_start():
-    domain = 10
-    p = permutation(domain)
-    t = tuple(p)
-    for start in range(-1, -domain, -1):
-        assert t[start:] == tuple(p[start:]), start
-
-
-def test_slice_negative_stop():
-    domain = 10
-    p = permutation(domain)
-    t = tuple(p)
-    for stop in range(-1, -domain, -1):
-        assert t[:stop] == tuple(p[:stop]), stop
-
-
-def test_slice_negative_step():
-    domain = 10
-    p = permutation(domain)
-    t = tuple(p)
-    for step in range(-1, -domain, -1):
-        assert t[::step] == tuple(p[::step]), step
+    for start, stop, step in extents(domain):
+        assert t[start:stop:step] == tuple(p[start:stop:step]), (start, stop, step)
 
 
 def test_slice_out_of_bounds_empty():
@@ -65,6 +51,7 @@ def test_slice_out_of_bounds_empty():
     t = tuple(p)
     assert tuple(p[domain:]) == t[domain:]
     assert tuple(p[:-domain-1]) == t[:-domain-1]
+
 
 def test_slice_out_of_bounds_low():
     domain = 10
@@ -82,88 +69,31 @@ def test_slice_item():
     domain = 10
     p = permutation(domain)
     t = tuple(p)
-    for start in range(domain):
-        for stop in range(1,domain+1):
-            for step in range(1, domain):
-                tt = t[start:stop:step]
-                pp = p[start:stop:step]
-                assert tt == tuple(pp)
+    for start, stop, step in extents(domain):
+        tt = t[start:stop:step]
+        pp = p[start:stop:step]
+        assert tt == tuple(pp)
 
 
 def test_slice_len():
     domain = 10
     p = permutation(domain)
     t = tuple(p)
-    for start in range(domain):
-        for stop in range(1,domain+1):
-            for step in range(1, domain):
-                tt = t[start:stop:step]
-                pp = p[start:stop:step]
-                assert len(tt) == len(pp), (start, stop, step)
-
-
-def test_slice_item_negative_step():
-    domain = 10
-    p = permutation(domain)
-    t = tuple(p)
-    for start in range(domain):
-        for stop in range(1,domain+1):
-            for step in range(-1, -domain, -1):
-                tt = t[start:stop:step]
-                pp = p[start:stop:step]
-                assert tt == tuple(pp)
+    for start, stop, step in extents(domain):
+        tt = t[start:stop:step]
+        pp = p[start:stop:step]
+        assert len(tt) == len(pp), slice(start, stop, step)
 
 
 def test_slice_of_slice():
     domain = 10
     p = permutation(domain)
     t = tuple(p)
-    for start in range(domain):
-        pp = p[start:]
-        tt = t[start:]
-        for end in range(domain, start, -1):
-            assert tt[:end] == tuple(pp[:end]), (start, end)
-    for end in range(domain):
-        pp = p[:end]
-        tt = t[:end]
-        for start in range(domain, end, -1):
-            assert tt[:end] == tuple(pp[:end]), (start, end)
-
-
-def test_slice_of_slice_step():
-    domain = 10
-    p = permutation(domain)
-    t = tuple(p)
-    for start in range(domain):
-        for step1 in range(1, domain):
-            pp = p[start::step1]
-            tt = t[start::step1]
-            for step2 in range(1, domain):
-                assert tt[::step2] == tuple(pp[::step2]), (start, step1, step2)
-    for end in range(domain):
-        for step1 in range(1, domain):
-            pp = p[:end:step1]
-            tt = t[:end:step1]
-            for step2 in range(1, domain):
-                assert tt[::step2] == tuple(pp[::step2]), (end, step1, step2)
-
-
-def test_slice_of_slice_negative_step():
-    domain = 10
-    p = permutation(domain)
-    t = tuple(p)
-    for start in range(domain):
-        for step1 in range(1, domain):
-            pp = p[start::step1]
-            tt = t[start::step1]
-            for step2 in range(-1, -domain, -1):
-                assert tt[::step2] == tuple(pp[::step2]), (start, step1, step2)
-    for end in range(domain):
-        for step1 in range(1, domain):
-            pp = p[:end:step1]
-            tt = t[:end:step1]
-            for step2 in range(-1, -domain, -1):
-                assert tt[::step2] == tuple(pp[::step2]), (end, step1, step2)
+    for start, stop, step1 in extents(domain):
+        pp = p[start:stop:step1]
+        tt = t[start:stop:step1]
+        for step2 in chain(range(1, domain), range(-1, -domain-1, -1)):
+            assert tt[::step2] == tuple(pp[::step2]), (pp.extents(), start, stop, step1, step2)
 
 
 def test_contains():
@@ -173,17 +103,31 @@ def test_contains():
         assert v in p
 
 
-def test_slice_contains():
+def test_contains_slice():
     domain = 10
     p = permutation(domain)
     t = tuple(p)
-    for start in range(domain):
-        for stop in range(1,domain+1):
-            for step in range(1, domain):
-                tt = t[start:stop:step]
-                pp = p[start:stop:step]
-                for v in tt:
-                    assert v in pp, (t, tt)
-                for v in range(domain):
-                    if v not in tt:
-                        assert v not in pp, (v, tt, t[start:stop])
+    for start, stop, step in extents(domain):
+        tt = t[start:stop:step]
+        pp = p[start:stop:step]
+        for v in tt:
+            assert v in pp, (slice(start, stop, step), pp.extents(), v, tt)
+        for v in range(domain):
+            if v not in tt:
+                assert v not in pp, (slice(start, stop, step), pp.extents(), v, tt)
+
+
+def test_index():
+    domain = 10
+    p = permutation(domain)
+    for i, x in enumerate(p):
+        assert p.index(x) == i
+
+
+def test_index_slice():
+    domain = 10
+    p = permutation(domain)
+    for start, stop, step in extents(domain):
+        pp = p[start:stop:step]
+        for i, x in enumerate(pp):
+            assert pp.index(x) == i, (i, x, start, stop, step)

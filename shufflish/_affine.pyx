@@ -37,6 +37,20 @@ cdef inline int64_t mod_inverse(int64_t prime, int64_t domain) noexcept:
     return iprime
 
 
+cdef inline Py_ssize_t slice_len(Py_ssize_t start, Py_ssize_t stop, Py_ssize_t step) noexcept:
+    if step < 0:
+        if stop < start:
+            return (start - stop - 1) / -step + 1
+    else:
+        if start < stop:
+            return (stop - start - 1) / step + 1
+    return 0
+
+
+cdef inline Py_ssize_t sign(Py_ssize_t x) noexcept:
+    return (x > 0) - (x < 0)
+
+
 cdef class AffineCipher:
     """
     AffineCipher(domain: int, prime: int, pre_offset: int, post_offset: int)
@@ -123,13 +137,22 @@ cdef class AffineCipher:
         cdef AffineCipher ac
         if isinstance(item, slice):
             PySlice_Unpack(item, &start, &stop, &step)
-            step *= self.step
-            # since determining start is relatively easy, we could technically
-            # avoid calling this function, but to quote the code:
+
+            # Determining start should be relatively easy, and we calculate
+            # stop ourselves later, so we could technically avoid calling
+            # PySlice_AdjustIndices, but to quote the code:
             #     "this is harder to get right than you might think"
-            n = PySlice_AdjustIndices(self.stop - self.start, &start, &stop, step)
-            # set the stopping point such that subsequent slicing operations
+            # It needs the current slice length and returns the new length
+            n = slice_len(self.start, self.stop, self.step)
+            n = PySlice_AdjustIndices(n, &start, &stop, step)
+
+            # Combine step sizes and calculate the new start position
+            step *= self.step
+            start = self.start + start * self.step
+
+            # Set the stopping point such that subsequent slicing operations
             # behave the same as tuple et al.
+            #
             # Example 1:
             #     (0,1,2,3,4,5)[::2] == (0,2,4), so stop should be 5
             #     After adjust n=3, start=0, stop=6, step=2.
@@ -139,18 +162,17 @@ cdef class AffineCipher:
             #     After adjust n=3, start=5, stop=-1, step=-2.
             #     We calculate stop = 5 + (-2) * (3-1) - 1 = 0
             #
-            # n-1 because n would overshoot index by (step-1):
+            # There are n-1 steps in the slice; n overshoots by step-1:
             # (0,1,2,3,4,5)[::3] == (0, 3) -> n * step = 2 * 3 = 6
-            # actual stop should be 4
-            #
-            # (step > 0) - (step < 0) calculates sign(step)
-            # this adds 1 if step>0, because stop == first excluded index and
-            # subtracts 1 if step<0 instead, because we're going backwards
-            stop = start + (n-1) * step + (step > 0) - (step < 0)
+            # actual stop should be 4, i.e., the first exluded index:
+            # add 1 if step>0 => sign(step)=1
+            # subtract 1 if step<0 => sign(step)=-1
+            stop = start + (n-1) * step + sign(step)
+
             ac = AffineCipher.__new__(AffineCipher)
             ac.params = self.params
-            ac.start = start + self.start
-            ac.stop = stop + self.start
+            ac.start = start
+            ac.stop = stop
             ac.step = step
             ac.iprime = self.iprime
             return ac
@@ -192,13 +214,7 @@ cdef class AffineCipher:
         return eq != 0
 
     def __len__(self):
-        if self.step < 0:
-            if self.stop < self.start:
-                return (self.start - self.stop - 1) / -self.step + 1
-        else:
-            if self.start < self.stop:
-                return (self.stop - self.start - 1) / self.step + 1
-        return 0
+        return slice_len(self.start, self.stop, self.step)
 
     def __contains__(self, item):
         if not isinstance(item, int) or item < 0:
@@ -216,13 +232,38 @@ cdef class AffineCipher:
         cdef Py_ssize_t i = <Py_ssize_t> affineCipher(&params, v)
 
         # contains test
-        if self.start < self.stop:
+        if self.step > 0:
             if i >= self.start and i < self.stop and (i - self.start) % self.step == 0:
                 return True
-        elif self.stop > self.start:
+        elif self.step < 0:
             if i > self.stop and i <= self.start and (i - self.start) % self.step == 0:
                 return True
         return False
+
+    def index(self, uint64_t value):
+        """
+        Return the index of value.
+
+        Raises :class:`ValueError` if the value is not present.
+        """
+        # determine index i for value
+        if self.iprime == 0:
+            self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
+        cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
+        cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
+        cdef affineCipherParameters params
+        fillAffineCipherParameters(&params, self.params.domain, self.iprime, ipre_offset, ipost_offset)
+        # result must be >= 0 and < domain, which is Py_ssize_t in __init__
+        cdef Py_ssize_t i = <Py_ssize_t> affineCipher(&params, value)
+
+        # contains test + calculate slice index
+        if self.step > 0:
+            if i >= self.start and i < self.stop and (i - self.start) % self.step == 0:
+                return (i - self.start) / self.step
+        elif self.step < 0:
+            if i > self.stop and i <= self.start and (i - self.start) % self.step == 0:
+                return (i - self.start) / self.step
+        raise ValueError(f'{value} is not in slice')
 
     def parameters(self):
         """
@@ -272,10 +313,13 @@ cdef class AffineCipher:
         if self.iprime == 0:
             self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
         cdef AffineCipher ac = AffineCipher.__new__(AffineCipher)
-        ac.params.domain = self.params.domain
-        ac.params.prime = self.iprime
-        ac.params.pre_offset = self.params.domain - self.params.post_offset
-        ac.params.post_offset = self.params.domain - self.params.pre_offset
+        fillAffineCipherParameters(
+            &ac.params,
+            self.params.domain,
+            self.iprime,
+            self.params.domain - self.params.post_offset,
+            self.params.domain - self.params.pre_offset,
+        )
         ac.start = 0
         # domain is originally a Py_ssize_t in __init__
         ac.stop = <Py_ssize_t> self.params.domain
