@@ -224,10 +224,14 @@ cdef class AffineCipher:
         # determine index i for value v
         if self.iprime == 0:
             self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
-        cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
-        cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
         cdef affineCipherParameters params
-        fillAffineCipherParameters(&params, self.params.domain, self.iprime, ipre_offset, ipost_offset)
+        fillAffineCipherParameters(
+            &params,
+            self.params.domain,
+            self.iprime,
+            self.params.domain - self.params.post_offset,
+            self.params.domain - self.params.pre_offset,
+        )
         # result must be >= 0 and < domain, which is Py_ssize_t in __init__
         cdef Py_ssize_t i = <Py_ssize_t> affineCipher(&params, v)
 
@@ -249,10 +253,14 @@ cdef class AffineCipher:
         # determine index i for value
         if self.iprime == 0:
             self.iprime = <uint64_t> mod_inverse(self.params.prime, self.params.domain)
-        cdef uint64_t ipost_offset = self.params.domain - self.params.pre_offset
-        cdef uint64_t ipre_offset = self.params.domain - self.params.post_offset
         cdef affineCipherParameters params
-        fillAffineCipherParameters(&params, self.params.domain, self.iprime, ipre_offset, ipost_offset)
+        fillAffineCipherParameters(
+            &params,
+            self.params.domain,
+            self.iprime,
+            self.params.domain - self.params.post_offset,
+            self.params.domain - self.params.pre_offset,
+        )
         # result must be >= 0 and < domain, which is Py_ssize_t in __init__
         cdef Py_ssize_t i = <Py_ssize_t> affineCipher(&params, value)
 
