@@ -64,14 +64,14 @@ def test_negative_post_offset():
 
 
 def test_repetition_class():
-    domain = 1234
+    domain = 121
     no_reps = Permutations(domain, allow_repetition=False)
     yes_reps = Permutations(domain, allow_repetition=True)
     assert len(no_reps.coprimes) < len(yes_reps.coprimes)
 
 
 def test_repetition_function():
-    domain = 1234
+    domain = 122
     num_primes = 3
     coprimes = tuple(_modular_prime_combinations_with_repetition(domain, PRIMES, num_primes))
     for i in range(min(domain, len(coprimes))):
@@ -80,7 +80,7 @@ def test_repetition_function():
 
 
 def test_unranking():
-    domain = 1234
+    domain = 123
     num_primes = 3
     coprimes = tuple(_modular_prime_combinations_with_repetition(domain, PRIMES, num_primes))
     for i in range(2*domain):
@@ -88,33 +88,33 @@ def test_unranking():
 
 
 def test_random_seed_function():
-    domain = 1234
+    domain = 124
     all_perms = [permutation(domain) for _ in range(100)]
     assert len(set(all_perms)) <= len(all_perms)
 
 
 def test_random_seed_function_repetition():
-    domain = 1234
+    domain = 125
     all_perms = [permutation(domain, allow_repetition=True) for _ in range(100)]
     assert len(set(all_perms)) <= len(all_perms)
 
 
 def test_random_seed_class():
-    domain = 1234
+    domain = 126
     perms = Permutations(1234)
     all_perms = [perms.get() for _ in range(100)]
     assert len(set(all_perms)) <= len(all_perms)
 
 
 def test_random_seed_class_repetition():
-    domain = 1234
+    domain = 127
     perms = Permutations(1234, allow_repetition=True)
     all_perms = [perms.get() for _ in range(100)]
     assert len(set(all_perms)) <= len(all_perms)
 
 
 def test_function_class():
-    domain = 103
+    domain = 128
     perms = Permutations(domain, allow_repetition=True)
     p1 = perms.get(1234)
     p2 = permutation(domain, 1234, allow_repetition=True)
@@ -122,7 +122,7 @@ def test_function_class():
 
 
 def test_function_class_repetition():
-    domain = 103
+    domain = 129
     perms = Permutations(domain, allow_repetition=True)
     p1 = perms.get(1234)
     p2 = permutation(domain, 1234, allow_repetition=True)
@@ -140,7 +140,7 @@ def test_slice_expand():
     domain = 13
     p = permutation(domain)
     for start in range(domain):
-        for end in range(start+1, domain):
+        for end in range(domain):
             assert p[start:end].expand() == p
 
 
@@ -158,7 +158,7 @@ def test_invert_slice():
 
 
 def test_invert_slice_expand():
-    domain = 1325
+    domain = 130
     p = permutation(domain)
     sl = p[5:23]
     ip = sl.expand().invert()

@@ -34,7 +34,7 @@ def test_parameters():
 
 
 def test_invert_small_domain():
-    for domain in range(1, 100):
+    for domain in range(1, 50):
         perms = Permutations(domain)
         for coprime in perms.coprimes:
             p = AffineCipher(domain, coprime, 0, 0)

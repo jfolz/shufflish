@@ -16,7 +16,7 @@ def extents(domain):
 
 
 def test_item():
-    domain = 10
+    domain = 5
     p = permutation(domain)
     t = tuple(p)
     for i in range(domain):
@@ -24,21 +24,21 @@ def test_item():
 
 
 def test_item_out_of_bounds_low():
-    domain = 10
+    domain = 6
     p = permutation(domain)
     with pytest.raises(IndexError, match='index out of range'):
         p[-domain-1]
 
 
 def test_item_out_of_bounds_high():
-    domain = 10
+    domain = 7
     p = permutation(domain)
     with pytest.raises(IndexError, match='index out of range'):
         p[domain]
 
 
 def test_slice():
-    domain = 10
+    domain = 8
     p = permutation(domain)
     t = tuple(p)
     for start, stop, step in extents(domain):
@@ -46,7 +46,7 @@ def test_slice():
 
 
 def test_slice_out_of_bounds_empty():
-    domain = 10
+    domain = 9
     p = permutation(domain)
     t = tuple(p)
     assert tuple(p[domain:]) == t[domain:]
@@ -60,13 +60,13 @@ def test_slice_out_of_bounds_low():
 
 
 def test_slice_out_of_bounds_high():
-    domain = 10
+    domain = 11
     p = permutation(domain)
     assert tuple(p[:domain+1]) == tuple(p)
 
 
 def test_slice_item():
-    domain = 10
+    domain = 12
     p = permutation(domain)
     t = tuple(p)
     for start, stop, step in extents(domain):
@@ -76,7 +76,7 @@ def test_slice_item():
 
 
 def test_slice_len():
-    domain = 10
+    domain = 13
     p = permutation(domain)
     t = tuple(p)
     for start, stop, step in extents(domain):
@@ -86,7 +86,7 @@ def test_slice_len():
 
 
 def test_slice_of_slice():
-    domain = 10
+    domain = 5
     p = permutation(domain)
     t = tuple(p)
     for start, stop, step1 in extents(domain):
@@ -97,14 +97,14 @@ def test_slice_of_slice():
 
 
 def test_contains():
-    domain = 10
+    domain = 15
     p = permutation(domain)
     for v in range(domain):
         assert v in p
 
 
 def test_contains_slice():
-    domain = 10
+    domain = 6
     p = permutation(domain)
     t = tuple(p)
     for start, stop, step in extents(domain):
@@ -118,14 +118,14 @@ def test_contains_slice():
 
 
 def test_index():
-    domain = 10
+    domain = 17
     p = permutation(domain)
     for i, x in enumerate(p):
         assert p.index(x) == i
 
 
 def test_index_slice():
-    domain = 10
+    domain = 7
     p = permutation(domain)
     for start, stop, step in extents(domain):
         pp = p[start:stop:step]
