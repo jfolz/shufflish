@@ -131,3 +131,10 @@ def test_index_slice():
         pp = p[start:stop:step]
         for i, x in enumerate(pp):
             assert pp.index(x) == i, (i, x, start, stop, step)
+
+
+def test_index_negative():
+    domain = 18
+    p = permutation(domain)
+    with pytest.raises(OverflowError, match="can't convert negative value"):
+        p.index(-1)
