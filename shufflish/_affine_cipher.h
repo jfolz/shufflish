@@ -21,8 +21,8 @@ static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
     return (uint64_t)((__uint128_t)a * (__uint128_t)b % (__uint128_t)N);
 }
 
-// use intrinsics for MSVC
-#elif defined(_MSC_VER)
+// use intrinsics for x64 MSVC
+#elif defined(_MSC_VER) && !defined(_M_ARM)
 
 #include <intrin.h>
 
@@ -31,6 +31,25 @@ static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
     low = _umul128(a, b, &high);
     _udiv128(high, low, N, &remainder);
     return remainder;
+}
+
+#else
+
+static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
+    // Fallback using binary modular multiplication
+    a %= N;
+    b %= N;
+
+    uint64_t result = 0;
+    while (b) {
+        if (b & 1) {
+            // will not overflow since result, a < N
+            result = (result + a) % N;
+        }
+        a = (a << 1) % N;
+        b >>= 1;
+    }
+    return result;
 }
 
 #endif
