@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 
+## [0.1.0] - 2025-10-10
+### Added
+- Windows on ARM builds
+### Changed
+- Drop Python 3.8
+- Depend on cython~=3.1
+
+
 ## [0.0.5] - 2024-11-12
 ### Added
 - Add index method to AffineCipher

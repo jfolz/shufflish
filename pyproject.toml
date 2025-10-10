@@ -8,17 +8,16 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Intended Audience :: Information Technology",
     "Intended Audience :: Other Audience",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
-requires-python = ">=3.8"
-license = { file = "LICENSE" }
+requires-python = ">=3.9"
+license = "MIT"
 authors = [{ name = "Joachim Folz", email = "joachim.folz@dfki.de" }]
 keywords = [
     "shuffle",
@@ -40,7 +39,7 @@ Issues = "https://github.com/jfolz/shufflish/issues"
 Changelog = "https://github.com/jfolz/shufflish/blob/main/CHANGELOG.md"
 
 [build-system]
-requires = ["setuptools>=50.0.3", "wheel", "cython~=3.0", "setuptools_scm"]
+requires = ["setuptools>=77.0.3", "wheel", "cython~=3.1", "setuptools_scm"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
@@ -52,7 +51,8 @@ include = ["shufflish", "shufflish.*"]
 namespaces = false
 
 [tool.cibuildwheel]
-skip = "*i686* *win32* *universal2*"
+enable = ["pypy"]
+skip = "cp3[1-9][0-9]t-* *i686* *win32* *universal2*"
 build-verbosity = 1
 build-frontend = "build"
 test-requires = ["pytest>=5.3.2", "pytest-cov"]

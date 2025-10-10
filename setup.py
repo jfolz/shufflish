@@ -3,16 +3,7 @@ from pathlib import Path
 import platform
 
 from setuptools import Extension, setup, find_packages
-
-# don't require Cython for building
-try:
-    # noinspection PyPackageRequirements
-    from Cython.Build import cythonize
-    HAVE_CYTHON = True
-except ImportError:
-    def cythonize(*_, **__):
-        pass
-    HAVE_CYTHON = False
+from Cython.Build import cythonize
 
 
 PLATFORM = platform.system().lower()
