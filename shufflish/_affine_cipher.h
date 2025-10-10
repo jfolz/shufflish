@@ -22,7 +22,7 @@ static inline uint64_t mul_mod(uint64_t a, uint64_t b, uint64_t N) {
 }
 
 // use intrinsics for x64 MSVC
-#elif defined(_MSC_VER) && !defined(_M_ARM)
+#elif defined(_MSC_VER) && !defined(_M_ARM64)
 
 #include <intrin.h>
 
